@@ -77,6 +77,8 @@ r18 = Remember.create(user_id: u7.id, set_to_private: true, text: "")
 r19 = Remember.create(user_id: u7.id, set_to_private: false, text: "")
 r20 = Remember.create(user_id: u7.id, set_to_private: false, text: "")
 
+
+# classroom 2
 r21 = Remember.create(user_id: u8.id, set_to_private: false, text: "")
 r22 = Remember.create(user_id: u8.id, set_to_private: false, text: "")
 r23 = Remember.create(user_id: u8.id, set_to_private: true, text: "")
@@ -89,7 +91,7 @@ r28 = Remember.create(user_id: u9.id, set_to_private: false, text: "")
 r29 = Remember.create(user_id: u9.id, set_to_private: false, text: "")
 r30 = Remember.create(user_id: u9.id, set_to_private: false, text: "")
 
-# classroom 2
+# classroom 3
 r31 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember")
 r32 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember")
 r33 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember")
@@ -102,16 +104,4 @@ r38 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember"
 r39 = Remember.create(user_id: u11.id, set_to_private: true, text: "I remember")
 r40 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember")
 
-# classroom 3
 
-r41 = Remember.create(user_id: u12.id, set_to_private: false, text: "I remember")
-r42 = Remember.create(user_id: u12.id, set_to_private: true, text: "I remember")
-r43 = Remember.create(user_id: u12.id, set_to_private: false, text: "I remember")
-r44 = Remember.create(user_id: u12.id, set_to_private: false, text: "I remember")
-r45 = Remember.create(user_id: u12.id, set_to_private: false, text: "I remember")
-
-r46 = Remember.create(user_id: u13.id, set_to_private: false, text: "I remember")
-r47 = Remember.create(user_id: u13.id, set_to_private: false, text: "I remember")
-r48 = Remember.create(user_id: u13.id, set_to_private: true, text: "I remember")
-r49 = Remember.create(user_id: u13.id, set_to_private: false, text: "I remember")
-r50 = Remember.create(user_id: u13.id, set_to_private: false, text: "I remember")
