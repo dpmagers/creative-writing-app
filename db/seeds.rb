@@ -18,9 +18,7 @@ c3 = Classroom.create(class_name: "Introduction to Poetry", location: "Taft 301"
 t1 = Tag.create(name: "Covid")
 t2 = Tag.create(name: "Jobs")
 t3 = Tag.create(name: "School")
-t4 = Tag.create(name: "City")
-t5 = Tag.create(name: "Family")
-t6 = Tag.create(name: "Childhood")
+
 
 # User
 # username (str)
@@ -28,10 +26,12 @@ t6 = Tag.create(name: "Childhood")
 # classroom_id (int)
 # full_name (str)
 # is_instructor (Boolean)
+# CLASSROOM INSTRUCTORS
 u1 = User.create(username: "annak", password: "annak123", classroom_id: 1, full_name: "Anna Korn", is_instructor: true)
 u2 = User.create(username: "nola81", password: "nola1981", classroom_id: 2, full_name: "Norah May", is_instructor: true)
 u3 = User.create(username: "morodall", password: "molloybk", classroom_id: 3, full_name: "Dan Moore", is_instructor: true)
 
+# CLASSROOM 1 STUDENTS
 u4 = User.create(username: "vfoye00", password: "foye2000", classroom_id: 1, full_name: "Velma Foye", is_instructor: false)
 u5 = User.create(username: "mmounty", password: "mountain01", classroom_id: 1, full_name: "Mark Mountain", is_instructor: false)
 u6 = User.create(username: "gporter", password: "porter99", classroom_id: 1, full_name: "Gary Porter", is_instructor: false)
@@ -39,21 +39,13 @@ u7 = User.create(username: "amyland", password: "amyagain01", classroom_id: 1, f
 u8 = User.create(username: "cadenairi", password: "pokelife", classroom_id: 1, full_name: "Irizarry Cadena", is_instructor: false)
 u9 = User.create(username: "nazcerv", password: "nazzynai", classroom_id: 1, full_name: "Nazario Cervantes", is_instructor: false)
 
+# CLASSROOM 2 STUDENTS
 u10 = User.create(username: "cbabb1", password: "babbybab", classroom_id: 2, full_name: "Christina Babb", is_instructor: false)
 u11 = User.create(username: "danimoss", password: "moss1999", classroom_id: 2, full_name: "Danielle Moss", is_instructor: false)
+
+# CLASSROOM 3 STUDENTS
 u12 = User.create(username: "dkent01", password: "kentkent", classroom_id: 2, full_name: "Danny Kent", is_instructor: false)
 u13 = User.create(username: "bdenny2", password: "bd2000cool", classroom_id: 2, full_name: "Bobby Denny", is_instructor: false)
-u14 = User.create(username: "bumgarner", password: "dianeemail", classroom_id: 2, full_name: "Diane Bumgarner", is_instructor: false)
-u15 = User.create(username: "cduarte", password: "marvelcool", classroom_id: 2, full_name: "Cara Duarte", is_instructor: false)
-
-u16 = User.create(username: "mmarimar", password: "neverland", classroom_id: 3, full_name: "Mariangela Muñoz", is_instructor: false)
-u17 = User.create(username: "enajara", password: "esther2000", classroom_id: 3, full_name: "Esther Najara", is_instructor: false)
-u18 = User.create(username: "cclark", password: "clarkcar99", classroom_id: 3, full_name: "Carmen Clark", is_instructor: false)
-u19 = User.create(username: "maureenm", password: "greatlife", classroom_id: 3, full_name: "Maureen McSherry", is_instructor: false)
-u20 = User.create(username: "melidah", password: "hallway02", classroom_id: 3, full_name: "Melinda Hall", is_instructor: false)
-u21 = User.create(username: "sbergmann", password: "berger03", classroom_id: 3, full_name: "Sebastian Bergmann", is_instructor: false)
-
-
 
 # Remember
 # user_id (int)
@@ -110,6 +102,8 @@ r38 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember"
 r39 = Remember.create(user_id: u11.id, set_to_private: true, text: "I remember")
 r40 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember")
 
+# classroom 3
+
 r41 = Remember.create(user_id: u12.id, set_to_private: false, text: "I remember")
 r42 = Remember.create(user_id: u12.id, set_to_private: true, text: "I remember")
 r43 = Remember.create(user_id: u12.id, set_to_private: false, text: "I remember")
@@ -121,61 +115,3 @@ r47 = Remember.create(user_id: u13.id, set_to_private: false, text: "I remember"
 r48 = Remember.create(user_id: u13.id, set_to_private: true, text: "I remember")
 r49 = Remember.create(user_id: u13.id, set_to_private: false, text: "I remember")
 r50 = Remember.create(user_id: u13.id, set_to_private: false, text: "I remember")
-
-r51 = Remember.create(user_id: u14.id, set_to_private: false, text: "I remember")
-r52 = Remember.create(user_id: u14.id, set_to_private: false, text: "I remember")
-r53 = Remember.create(user_id: u14.id, set_to_private: true, text: "I remember")
-r54 = Remember.create(user_id: u14.id, set_to_private: false, text: "I remember")
-r55 = Remember.create(user_id: u14.id, set_to_private: false, text: "I remember")
-
-r56 = Remember.create(user_id: u15.id, set_to_private: false, text: "I remember")
-r57 = Remember.create(user_id: u15.id, set_to_private: true, text: "I remember")
-r58 = Remember.create(user_id: u15.id, set_to_private: false, text: "I remember")
-r59 = Remember.create(user_id: u15.id, set_to_private: false, text: "I remember")
-r60 = Remember.create(user_id: u15.id, set_to_private: false, text: "I remember")
-
-# classroom 3
-r61 = Remember.create(user_id: u16.id, set_to_private: false, text: "I remember")
-r62 = Remember.create(user_id: u16.id, set_to_private: false, text: "I remember")
-r63 = Remember.create(user_id: u16.id, set_to_private: false, text: "I remember")
-r64 = Remember.create(user_id: u16.id, set_to_private: false, text: "I remember")
-r65 = Remember.create(user_id: u16.id, set_to_private: true, text: "I remember")
-
-r66 = Remember.create(user_id: u17.id, set_to_private: false, text: "I remember")
-r67 = Remember.create(user_id: u17.id, set_to_private: false, text: "I remember")
-r68 = Remember.create(user_id: u17.id, set_to_private: false, text: "I remember")
-r69 = Remember.create(user_id: u17.id, set_to_private: true, text: "I remember")
-r70 = Remember.create(user_id: u17.id, set_to_private: false, text: "I remember")
-
-r71 = Remember.create(user_id: u18.id, set_to_private: false, text: "I remember")
-r72 = Remember.create(user_id: u18.id, set_to_private: true, text: "I remember")
-r73 = Remember.create(user_id: u18.id, set_to_private: false, text: "I remember")
-r74 = Remember.create(user_id: u18.id, set_to_private: false, text: "I remember")
-r75 = Remember.create(user_id: u18.id, set_to_private: false, text: "I remember")
-
-r76 = Remember.create(user_id: u19.id, set_to_private: false, text: "I remember")
-r77 = Remember.create(user_id: u19.id, set_to_private: false, text: "I remember")
-r78 = Remember.create(user_id: u19.id, set_to_private: true, text: "I remember")
-r79 = Remember.create(user_id: u19.id, set_to_private: false, text: "I remember")
-r80 = Remember.create(user_id: u19.id, set_to_private: false, text: "I remember")
-
-r81 = Remember.create(user_id: u20.id, set_to_private: false, text: "I remember")
-r82 = Remember.create(user_id: u20.id, set_to_private: false, text: "I remember")
-r83 = Remember.create(user_id: u20.id, set_to_private: true, text: "I remember")
-r84 = Remember.create(user_id: u20.id, set_to_private: false, text: "I remember")
-r85 = Remember.create(user_id: u20.id, set_to_private: false, text: "I remember")
-
-r86 = Remember.create(user_id: u21.id, set_to_private: false, text: "I remember")
-r87 = Remember.create(user_id: u21.id, set_to_private: true, text: "I remember")
-r88 = Remember.create(user_id: u21.id, set_to_private: false, text: "I remember")
-r89 = Remember.create(user_id: u21.id, set_to_private: false, text: "I remember")
-r90 = Remember.create(user_id: u21.id, set_to_private: false, text: "I remember")
-
-
-
-
-
-
-
-
-
