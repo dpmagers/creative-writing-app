@@ -17,25 +17,25 @@ c3 = Classroom.create(class_name: "Introduction to Poetry", location: "Taft 301"
 # User
 
 # CLASSROOM INSTRUCTORS
-u1 = User.create(username: "annak", password_digest: "annak123", classroom_id: 1, full_name: "Anna Korn", is_instructor: true)
-u2 = User.create(username: "nola81", password_digest: "nola1981", classroom_id: 2, full_name: "Norah May", is_instructor: true)
+u1 = User.create(username: "annak", password: "annak123", classroom_id: 1, full_name: "Anna Korn", is_instructor: true)
+u2 = User.create(username: "nola81", password: "nola1981", classroom_id: 2, full_name: "Norah May", is_instructor: true)
 u3 = User.create(username: "morodall", password_digest: "molloybk", classroom_id: 3, full_name: "Dan Moore", is_instructor: true)
 
 # CLASSROOM 1 STUDENTS
-u4 = User.create(username: "vfoye00", password_digest: "foye2000", classroom_id: 1, full_name: "Velma Foye", is_instructor: false)
-u5 = User.create(username: "mmounty", password_digest: "mountain01", classroom_id: 1, full_name: "Mark Mountain", is_instructor: false)
-u6 = User.create(username: "gporter", password_digest: "porter99", classroom_id: 1, full_name: "Gary Porter", is_instructor: false)
-u7 = User.create(username: "amyland", password_digest: "amyagain01", classroom_id: 1, full_name: "Amy Kriebel", is_instructor: false)
-u8 = User.create(username: "cadenairi", password_digest: "pokelife", classroom_id: 1, full_name: "Irizarry Cadena", is_instructor: false)
-u9 = User.create(username: "nazcerv", password_digest: "nazzynai", classroom_id: 1, full_name: "Nazario Cervantes", is_instructor: false)
+u4 = User.create(username: "vfoye00", password: "foye2000", classroom_id: 1, full_name: "Velma Foye", is_instructor: false)
+u5 = User.create(username: "mmounty", password: "mountain01", classroom_id: 1, full_name: "Mark Mountain", is_instructor: false)
+u6 = User.create(username: "gporter", password: "porter99", classroom_id: 1, full_name: "Gary Porter", is_instructor: false)
+u7 = User.create(username: "amyland", password: "amyagain01", classroom_id: 1, full_name: "Amy Kriebel", is_instructor: false)
+u8 = User.create(username: "cadenairi", password: "pokelife", classroom_id: 1, full_name: "Irizarry Cadena", is_instructor: false)
+u9 = User.create(username: "nazcerv", password: "nazzynai", classroom_id: 1, full_name: "Nazario Cervantes", is_instructor: false)
 
 # CLASSROOM 2 STUDENTS
-u10 = User.create(username: "cbabb1", password_digest: "babbybab", classroom_id: 2, full_name: "Christina Babb", is_instructor: false)
-u11 = User.create(username: "danimoss", password_digest: "moss1999", classroom_id: 2, full_name: "Danielle Moss", is_instructor: false)
+u10 = User.create(username: "cbabb1", password: "babbybab", classroom_id: 2, full_name: "Christina Babb", is_instructor: false)
+u11 = User.create(username: "danimoss", password: "moss1999", classroom_id: 2, full_name: "Danielle Moss", is_instructor: false)
 
 # CLASSROOM 3 STUDENTS
-u12 = User.create(username: "dkent01", password_digest: "kentkent", classroom_id: 3, full_name: "Danny Kent", is_instructor: false)
-u13 = User.create(username: "bdenny2", password_digest: "bd2000cool", classroom_id: 3, full_name: "Bobby Denny", is_instructor: false)
+u12 = User.create(username: "dkent01", password: "kentkent", classroom_id: 3, full_name: "Danny Kent", is_instructor: false)
+u13 = User.create(username: "bdenny2", password: "bd2000cool", classroom_id: 3, full_name: "Bobby Denny", is_instructor: false)
 
 
 
@@ -53,56 +53,56 @@ u13 = User.create(username: "bdenny2", password_digest: "bd2000cool", classroom_
 
 
 # classroom 1
-r1 = Remember.create(user_id: u4.id, set_to_private: false, text: "I remember in my high school letter jacket (for debate!).")
-r2 = Remember.create(user_id: u4.id, set_to_private: false, text: "I remember passing Claire Danes on the street in New York during our senior trip.")
-r3 = Remember.create(user_id: u4.id, set_to_private: false, text: "I remember being too depressed during the first April of covid that I couldn't do homework at all.")
-r4 = Remember.create(user_id: u4.id, set_to_private: false, text: "I remember DONT TOUCH ANY SURFACE.")
-r5 = Remember.create(user_id: u4.id, set_to_private: true, text: "I remember seeing US Airways Flight 1549 submerged in the Hudson River from the window of my office building.")
+r1 = Remember.create(user_id: u4.id, set_to_private: false, text: "I remember in my high school letter jacket (for debate!).", likes: 0)
+r2 = Remember.create(user_id: u4.id, set_to_private: false, text: "I remember passing Claire Danes on the street in New York during our senior trip.", likes: 0)
+r3 = Remember.create(user_id: u4.id, set_to_private: false, text: "I remember being too depressed during the first April of covid that I couldn't do homework at all.", likes: 0)
+r4 = Remember.create(user_id: u4.id, set_to_private: false, text: "I remember DONT TOUCH ANY SURFACE.", likes: 0)
+r5 = Remember.create(user_id: u4.id, set_to_private: true, text: "I remember seeing US Airways Flight 1549 submerged in the Hudson River from the window of my office building.", likes: 0)
 
-r6 = Remember.create(user_id: u5.id, set_to_private: false, text:  "I remember being unemployed, reading manga all day.")
-r7 = Remember.create(user_id: u5.id, set_to_private: false, text: "I remember feeling embarrassed reading Shakesspeare out loud in the classroom.")
-r8 = Remember.create(user_id: u5.id, set_to_private: false, text: "I remember seeing my apartment in a meme on instagram during covid.")
-r9 = Remember.create(user_id: u5.id, set_to_private: true, text: "I remember my first library card years at the library where I got my first job.")
-r10 = Remember.create(user_id: u5.id, set_to_private: false, text: "I remember getting paid minimum wage at my first job (shelving books at the library.")
+r6 = Remember.create(user_id: u5.id, set_to_private: false, text:  "I remember being unemployed, reading manga all day.", likes: 0)
+r7 = Remember.create(user_id: u5.id, set_to_private: false, text: "I remember feeling embarrassed reading Shakesspeare out loud in the classroom.", likes: 0)
+r8 = Remember.create(user_id: u5.id, set_to_private: false, text: "I remember seeing my apartment in a meme on instagram during covid.", likes: 0)
+r9 = Remember.create(user_id: u5.id, set_to_private: true, text: "I remember my first library card years at the library where I got my first job.", likes: 0)
+r10 = Remember.create(user_id: u5.id, set_to_private: false, text: "I remember getting paid minimum wage at my first job (shelving books at the library.", likes: 0)
 
-r11 = Remember.create(user_id: u6.id, set_to_private: false, text: "I remember -I do not know- was the wrong answer when I was a stockboy at Walmart.")
-r12 = Remember.create(user_id: u6.id, set_to_private: true, text: "I remember the first sunrise I ever saw: coming over Lake Michigan.")
-r13 = Remember.create(user_id: u6.id, set_to_private: false, text: "I remember my dad teaching me how to drive")
-r14 = Remember.create(user_id: u6.id, set_to_private: false, text: "I remember my dad teaching me to tie a tie")
-r15 = Remember.create(user_id: u6.id, set_to_private: false, text: "I remember dancing crazy in the front yard of my friend Steve at his 7th grade birthday party.")
+r11 = Remember.create(user_id: u6.id, set_to_private: false, text: "I remember -I do not know- was the wrong answer when I was a stockboy at Walmart.", likes: 0)
+r12 = Remember.create(user_id: u6.id, set_to_private: true, text: "I remember the first sunrise I ever saw: coming over Lake Michigan.", likes: 0)
+r13 = Remember.create(user_id: u6.id, set_to_private: false, text: "I remember my dad teaching me how to drive", likes: 0)
+r14 = Remember.create(user_id: u6.id, set_to_private: false, text: "I remember my dad teaching me to tie a tie", likes: 0)
+r15 = Remember.create(user_id: u6.id, set_to_private: false, text: "I remember dancing crazy in the front yard of my friend Steve at his 7th grade birthday party.", likes: 0)
 
-r16 = Remember.create(user_id: u7.id, set_to_private: false, text: "I remember ipsum dolor sit amet, consectetur adipiscing elit.")
-r17 = Remember.create(user_id: u7.id, set_to_private: false, text: "I remember do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
-r18 = Remember.create(user_id: u7.id, set_to_private: true, text: "I remember ut enim ad minim veniam.")
-r19 = Remember.create(user_id: u7.id, set_to_private: false, text: "I remember quis nostrud exercitation ullamco laboris.")
-r20 = Remember.create(user_id: u7.id, set_to_private: false, text: "I remember duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
+r16 = Remember.create(user_id: u7.id, set_to_private: false, text: "I remember ipsum dolor sit amet, consectetur adipiscing elit.", likes: 0)
+r17 = Remember.create(user_id: u7.id, set_to_private: false, text: "I remember do eiusmod tempor incididunt ut labore et dolore magna aliqua.", likes: 0)
+r18 = Remember.create(user_id: u7.id, set_to_private: true, text: "I remember ut enim ad minim veniam.", likes: 0)
+r19 = Remember.create(user_id: u7.id, set_to_private: false, text: "I remember quis nostrud exercitation ullamco laboris.", likes: 0)
+r20 = Remember.create(user_id: u7.id, set_to_private: false, text: "I remember duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", likes: 0)
 
 
 # classroom 2
-r21 = Remember.create(user_id: u8.id, set_to_private: false, text: "I remember ipsum dolor sit amet, consectetur adipiscing elit.")
-r22 = Remember.create(user_id: u8.id, set_to_private: false, text: "I remember duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
-r23 = Remember.create(user_id: u8.id, set_to_private: true, text: "I remember excepteur sint occaecat cupidatat non proident.")
-r24 = Remember.create(user_id: u8.id, set_to_private: false, text: "I remember sunt in culpa qui officia deserunt mollit anim id est laborum.")
-r25 = Remember.create(user_id: u8.id, set_to_private: false, text: "I remember quis nostrud exercitation ullamco laboris.")
+r21 = Remember.create(user_id: u8.id, set_to_private: false, text: "I remember ipsum dolor sit amet, consectetur adipiscing elit.", likes: 0)
+r22 = Remember.create(user_id: u8.id, set_to_private: false, text: "I remember duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", likes: 0)
+r23 = Remember.create(user_id: u8.id, set_to_private: true, text: "I remember excepteur sint occaecat cupidatat non proident.", likes: 0)
+r24 = Remember.create(user_id: u8.id, set_to_private: false, text: "I remember sunt in culpa qui officia deserunt mollit anim id est laborum.", likes: 0)
+r25 = Remember.create(user_id: u8.id, set_to_private: false, text: "I remember quis nostrud exercitation ullamco laboris.", likes: 0)
 
-r26 = Remember.create(user_id: u9.id, set_to_private: false, text: "I remember do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
-r27 = Remember.create(user_id: u9.id, set_to_private: true, text: "I remember nisi ut aliquip ex ea commodo consequat.")
-r28 = Remember.create(user_id: u9.id, set_to_private: false, text: "I remember sunt in culpa qui officia deserunt mollit anim id est laborum.")
-r29 = Remember.create(user_id: u9.id, set_to_private: false, text: "I remember lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
-r30 = Remember.create(user_id: u9.id, set_to_private: false, text: "I remember duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
+r26 = Remember.create(user_id: u9.id, set_to_private: false, text: "I remember do eiusmod tempor incididunt ut labore et dolore magna aliqua.", likes: 0)
+r27 = Remember.create(user_id: u9.id, set_to_private: true, text: "I remember nisi ut aliquip ex ea commodo consequat.", likes: 0)
+r28 = Remember.create(user_id: u9.id, set_to_private: false, text: "I remember sunt in culpa qui officia deserunt mollit anim id est laborum.", likes: 0)
+r29 = Remember.create(user_id: u9.id, set_to_private: false, text: "I remember lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", likes: 0)
+r30 = Remember.create(user_id: u9.id, set_to_private: false, text: "I remember duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", likes: 0)
 
 # classroom 3
-r31 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember ut enim ad minim veniam.")
-r32 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember excepteur sint occaecat cupidatat non proident.")
-r33 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember sunt in culpa qui officia deserunt mollit anim id est laborum.")
-r34 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
-r35 = Remember.create(user_id: u10.id, set_to_private: true, text: "I remember nisi ut aliquip ex ea commodo consequat.")
+r31 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember ut enim ad minim veniam.", likes: 0)
+r32 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember excepteur sint occaecat cupidatat non proident.", likes: 0)
+r33 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember sunt in culpa qui officia deserunt mollit anim id est laborum.", likes: 0)
+r34 = Remember.create(user_id: u10.id, set_to_private: false, text: "I remember lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", likes: 0)
+r35 = Remember.create(user_id: u10.id, set_to_private: true, text: "I remember nisi ut aliquip ex ea commodo consequat.", likes: 0)
 
-r36 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember nisi ut aliquip ex ea commodo consequat.")
-r37 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember sunt in culpa qui officia deserunt mollit anim id est laborum.")
-r38 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember ut enim ad minim veniam.")
-r39 = Remember.create(user_id: u11.id, set_to_private: true, text: "I remember excepteur sint occaecat cupidatat non proident.")
-r40 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember quis nostrud exercitation ullamco laboris.")
+r36 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember nisi ut aliquip ex ea commodo consequat.", likes: 0)
+r37 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember sunt in culpa qui officia deserunt mollit anim id est laborum.", likes: 0)
+r38 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember ut enim ad minim veniam.", likes: 0)
+r39 = Remember.create(user_id: u11.id, set_to_private: true, text: "I remember excepteur sint occaecat cupidatat non proident.", likes: 0)
+r40 = Remember.create(user_id: u11.id, set_to_private: false, text: "I remember quis nostrud exercitation ullamco laboris.", likes: 0)
 
 
 
