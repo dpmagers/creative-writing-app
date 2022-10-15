@@ -17,25 +17,25 @@ c3 = Classroom.create(class_name: "Introduction to Poetry", location: "Taft 301"
 # User
 
 # CLASSROOM INSTRUCTORS
-u1 = User.create(username: "annak", password: "annak123", classroom_id: 1, full_name: "Anna Korn", is_instructor: true)
-u2 = User.create(username: "nola81", password: "nola1981", classroom_id: 2, full_name: "Norah May", is_instructor: true)
-u3 = User.create(username: "morodall", password_digest: "molloybk", classroom_id: 3, full_name: "Dan Moore", is_instructor: true)
+u1 = User.create(username: "annak", password: "annak123", classroom_id: 1, full_name: "Anna Korn", is_instructor: true, admin: true)
+u2 = User.create(username: "nola81", password: "nola1981", classroom_id: 2, full_name: "Norah May", is_instructor: true, admin: true)
+u3 = User.create(username: "morodall", password_digest: "molloybk", classroom_id: 3, full_name: "Dan Moore", is_instructor: true, admin: true)
 
 # CLASSROOM 1 STUDENTS
-u4 = User.create(username: "vfoye00", password: "foye2000", classroom_id: 1, full_name: "Velma Foye", is_instructor: false)
-u5 = User.create(username: "mmounty", password: "mountain01", classroom_id: 1, full_name: "Mark Mountain", is_instructor: false)
-u6 = User.create(username: "gporter", password: "porter99", classroom_id: 1, full_name: "Gary Porter", is_instructor: false)
-u7 = User.create(username: "amyland", password: "amyagain01", classroom_id: 1, full_name: "Amy Kriebel", is_instructor: false)
-u8 = User.create(username: "cadenairi", password: "pokelife", classroom_id: 1, full_name: "Irizarry Cadena", is_instructor: false)
-u9 = User.create(username: "nazcerv", password: "nazzynai", classroom_id: 1, full_name: "Nazario Cervantes", is_instructor: false)
+u4 = User.create(username: "vfoye00", password: "foye2000", classroom_id: 1, full_name: "Velma Foye", is_instructor: false, admin: false)
+u5 = User.create(username: "mmounty", password: "mountain01", classroom_id: 1, full_name: "Mark Mountain", is_instructor: false, admin: false)
+u6 = User.create(username: "gporter", password: "porter99", classroom_id: 1, full_name: "Gary Porter", is_instructor: false, admin: false)
+u7 = User.create(username: "amyland", password: "amyagain01", classroom_id: 1, full_name: "Amy Kriebel", is_instructor: false, admin: false)
+u8 = User.create(username: "cadenairi", password: "pokelife", classroom_id: 1, full_name: "Irizarry Cadena", is_instructor: false, admin: false)
+u9 = User.create(username: "nazcerv", password: "nazzynai", classroom_id: 1, full_name: "Nazario Cervantes", is_instructor: false, admin: false)
 
 # CLASSROOM 2 STUDENTS
-u10 = User.create(username: "cbabb1", password: "babbybab", classroom_id: 2, full_name: "Christina Babb", is_instructor: false)
-u11 = User.create(username: "danimoss", password: "moss1999", classroom_id: 2, full_name: "Danielle Moss", is_instructor: false)
+u10 = User.create(username: "cbabb1", password: "babbybab", classroom_id: 2, full_name: "Christina Babb", is_instructor: false, admin: false)
+u11 = User.create(username: "danimoss", password: "moss1999", classroom_id: 2, full_name: "Danielle Moss", is_instructor: false, admin: false)
 
 # CLASSROOM 3 STUDENTS
-u12 = User.create(username: "dkent01", password: "kentkent", classroom_id: 3, full_name: "Danny Kent", is_instructor: false)
-u13 = User.create(username: "bdenny2", password: "bd2000cool", classroom_id: 3, full_name: "Bobby Denny", is_instructor: false)
+u12 = User.create(username: "dkent01", password: "kentkent", classroom_id: 3, full_name: "Danny Kent", is_instructor: false, admin: false)
+u13 = User.create(username: "bdenny2", password: "bd2000cool", classroom_id: 3, full_name: "Bobby Denny", is_instructor: false, admin: false)
 
 
 

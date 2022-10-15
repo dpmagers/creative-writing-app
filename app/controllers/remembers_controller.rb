@@ -2,6 +2,7 @@ class RemembersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
 before_action :authorize
+before_action :is_authorized?, only: [:show, :update, :destroy]
 
     def index
         render json: Remember.all, status: :ok
@@ -19,18 +20,19 @@ before_action :authorize
 
     def update
         remember = Remember.find(params[:id])
-        if remember.user_id == @current_user.id
+        if remember.user_id == @current_user.id || @current_user.admin == true
             remember.update!(remember_params)
             render json: remember, status: :accepted
         else 
-            render json: {errors: ["Not Authorized"]}, status: 401
+            render json: {errors: ["Not Authorized"]}, status: 401 
         end 
     end
 
+    # unless permitted
 
     def destroy
         remember = Remember.find(params[:id])
-        if remember.user_id == @current_user.id
+        if remember.user_id == @current_user.id || @current_user.admin == true
             remember.destroy
             render json: {}, status: 204
         else
@@ -40,13 +42,10 @@ before_action :authorize
 
 
 
-
-
     private
 
     def authorize
         @current_user = User.find_by(id: session[:user_id])
-  
         render json: {errors: ["Not Authorized, please login"]}, status: :unauthorized unless @current_user
     end 
 
@@ -60,6 +59,12 @@ before_action :authorize
 
     def invalid_data(error)
         render json: {error: error.message}, status: 422
+    end 
+
+    def is_authorized?
+        permitted = @current_user.admin?
+        # || remember.user_id == current_user.id
+        render json: {errors: "This user does not have permission"}, status: :forbidden unless permitted
     end 
 
 

@@ -9,4 +9,10 @@ class ApplicationController < ActionController::API
   
         render json: {errors: ["Not Authorized, please login"]}, status: :unauthorized unless @current_user
     end 
+
+    def is_authorized?
+        permitted = @current_user.admin?
+        # || remember.user_id == current_user.id
+        render json: {errors: "This user does not have permission"}, status: :forbidden
+    end 
 end

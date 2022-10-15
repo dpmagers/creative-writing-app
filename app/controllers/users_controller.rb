@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+skip_before_action :authorize, only: :create
 # rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
 
 
