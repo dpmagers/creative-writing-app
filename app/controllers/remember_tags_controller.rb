@@ -1,4 +1,7 @@
 class RememberTagsController < ApplicationController
+rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
+
 
 # temp for dev
     def index
@@ -18,7 +21,8 @@ class RememberTagsController < ApplicationController
     end
 
     def update
-        remember_tag = RememberTag.update!(remember_tag_params)
+        remember_tag = RememberTag.find(params[:id])
+        remember_tag.update!(remember_tag_params)
         render json: remember_tag, status: :accepted
     end
 
@@ -27,4 +31,13 @@ class RememberTagsController < ApplicationController
     def remember_tag_params
         params.permit(:remember_id, :tag_id)
     end 
+
+    def record_not_found
+        render json: {"error": "Remember_tag not found"}, status: 404
+    end 
+
+    def invalid_data(error)
+        render json: {error: error.message}, status: 422
+    end 
+
 end

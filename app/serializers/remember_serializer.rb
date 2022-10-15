@@ -1,5 +1,7 @@
 class RememberSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :set_to_private, :text
+  attributes :id, :user_id, :text
+
+  has_many :tags
 end
 
 
