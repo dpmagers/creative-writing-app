@@ -1,24 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import LoginForm from "./components/LoginForm"
+import SignupForm from "./components/SignupForm"
+
+import NavBar from "./components/NavBar"
+
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState(null)
+  const [page, setPage] = useState("/")
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+
 
   return (
     <BrowserRouter>
+      <NavBar onChangePage={setPage} setUser={setUser} />
       <div className="App">
         <Switch>
-          <Route path="/testing">
-            <h1>Test Route</h1>
+          <Route path="/about">
+            <h1>About Page</h1>
           </Route>
-          <Route path="/">
-            <h1>Page Count: {count}</h1>
+          <Route path="/login">
+            <LoginForm user={user} setUser={setUser}/>
+          </Route>
+          <Route path="/signup">
+            <SignupForm />
           </Route>
         </Switch>
       </div>
