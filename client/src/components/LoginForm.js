@@ -4,12 +4,13 @@ import { useHistory } from "react-router-dom"
 function LoginForm({user, setUser}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState() 
     let history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault()
   
-        console.log("hey")
         setUsername("")
         setPassword("")
   
@@ -19,10 +20,17 @@ function LoginForm({user, setUser}) {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({username, password})
         })
-            .then(res => res.json())
-            .then(data => setUser(data))
-
-            history.push("/about")
+              .then(res => {
+                setIsLoading(false)
+                if (res.ok) {
+                    res.json()
+            .then(user => setUser(user))
+            history.push('/about');
+              } else {
+                  res.json()
+                  .then(json => setError(json.error))
+                  }
+              })
     }
 
 

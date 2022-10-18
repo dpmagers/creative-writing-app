@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom"
+
 
 function SignupForm({ user, setUser }) {
   const [username, setUsername] = useState("");
@@ -8,6 +10,7 @@ function SignupForm({ user, setUser }) {
   const [classroomId, setClassroomId] = useState(0)
   const [isInstructor, setIsInstructor] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
+  let history = useHistory()
 
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +37,8 @@ function SignupForm({ user, setUser }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((data) => setUser(data));
+        r.json().then((user) => setUser(user));
+        history.push('/about');
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
