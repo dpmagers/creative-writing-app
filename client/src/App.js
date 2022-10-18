@@ -6,13 +6,14 @@ import SignupForm from "./components/SignupForm"
 import NavBar from "./components/NavBar"
 import About from "./components/About"
 import NewRememberList from "./components/NewRememberList"
-
+import TagForm from "./components/TagForm"
 
 
 function App() {
   const [user, setUser] = useState(null)
   const [page, setPage] = useState("/")
   const [rememberList, setRememberList] = useState("")
+  const [tagList, setTagList] = useState("")
 
     // const { user, setUser } = useContext(UserContext);
 
@@ -27,14 +28,14 @@ function App() {
       });
     }, []);
 
-    // useEffect(() => {
-    //   fetch("http://localhost:3000/remembers")
-    //   .then(res => res.json())
-    //   .then(setRememberList)
-    // },[])
+    useEffect(() => {
+      fetch("http://localhost:4000/tags")
+      .then(res => res.json())
+      .then(setTagList)
+      }, [])
 
 
-    console.log(user)
+    console.log(tagList)
 
   return (
     <BrowserRouter>
@@ -45,7 +46,7 @@ function App() {
             <About user={user}/>
           </Route>
           <Route path="/new-writing">
-            <NewRememberList user={user}/>
+            <NewRememberList user={user} tagList={tagList} setTagList={setTagList}/>
           </Route>
           <Route path="/login">
             <LoginForm user={user} setUser={setUser}/>

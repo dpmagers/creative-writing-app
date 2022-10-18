@@ -4,9 +4,13 @@ skip_before_action :authorize, only: :create
 # rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
 
 
-        def index 
+    def index 
         render json: User.all, status: :ok
     end 
+
+    def show
+        render json: @current_user
+    end
 
     def create
         user = User.create!(user_params)
@@ -14,23 +18,20 @@ skip_before_action :authorize, only: :create
         render json: user, status: :created
     end 
 
-    def show
-        render json: @current_user
-    end
 
     private 
 
     def user_params
-        params.permit(:username, :password, :classroom_id, :full_name, :is_instructor)
+        params.permit(:username, :password, :classroom_id, :full_name, :is_instructor, :admin)
     end
 
     def record_not_found
         render json: {"error": "User not found"}, status: 404
     end 
 
-    def invalid_data(error)
-        render json: {error: error.message}, status: 422
-    end 
+    # def invalid_data(error)
+    #     render json: {error: error.message}, status: 422
+    # end 
 
 
 

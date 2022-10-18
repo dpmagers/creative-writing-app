@@ -1,5 +1,13 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :full_name, :username, :is_instructor
+  attributes :id, :full_name, :username, :is_instructor, :classroom_id, :classroom
+
+  belongs_to :classroom
+
+  # def classroom
+  #   object.classroom
+  # end 
+
+
 end
 
 

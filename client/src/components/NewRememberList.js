@@ -3,7 +3,7 @@ import RememberForm from "./RememberForm"
 import NewRemItem from "./NewRemItem"
 
 
-function NewRememberList({user}) {
+function NewRememberList({user, tagList, setTagList}) {
     const [newRemembers, setNewRemembers] = useState("")
 
     // create new objec
@@ -25,11 +25,11 @@ function NewRememberList({user}) {
 
             <div> 
             <h1>Create New Writing Here</h1>
-            <RememberForm addRemember={addRemember} user={user} />
+            <RememberForm addRemember={addRemember} user={user}  tagList={tagList} setTagList={setTagList}/>
             <div className="left-column">
                 <div className="remember-container">
                 <ul className="remember-list"></ul>
-                    {newRemembers ?  newRemembers.map(remember => <NewRemItem  id={remember.id} text={remember.text} 
+                    {newRemembers ?  newRemembers.map(remember => <NewRemItem  id={remember.id} text={remember.text} tagList={tagList} setTagList={setTagList}
                     /> ) : null}
 
                 </div>

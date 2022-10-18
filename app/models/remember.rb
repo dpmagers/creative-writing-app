@@ -6,4 +6,6 @@ class Remember < ApplicationRecord
     validates :text, presence: true
 
 
+
+
 end
