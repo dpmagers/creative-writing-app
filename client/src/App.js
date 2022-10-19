@@ -15,6 +15,7 @@ function App() {
   const [rememberList, setRememberList] = useState("")
   const [tagList, setTagList] = useState("")
 
+
     // const { user, setUser } = useContext(UserContext);
 
     useEffect(() => {
@@ -35,7 +36,6 @@ function App() {
       }, [])
 
 
-    console.log(tagList)
 
   return (
     <BrowserRouter>
@@ -46,7 +46,10 @@ function App() {
             <About user={user}/>
           </Route>
           <Route path="/new-writing">
-            <NewRememberList user={user} tagList={tagList} setTagList={setTagList}/>
+            <NewRememberList user={user} tagList={tagList} setTagList={setTagList} />
+          </Route>
+          <Route path="/classroom-writing">
+            {/* <NewRememberList user={user} tagList={tagList} setTagList={setTagList}/> */}
           </Route>
           <Route path="/login">
             <LoginForm user={user} setUser={setUser}/>

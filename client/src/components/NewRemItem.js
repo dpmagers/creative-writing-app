@@ -1,16 +1,22 @@
 import React, {useState} from 'react'
 import TagForm from './TagForm'
+import CreateTag from './CreateTag'
 
-function NewRemItem ({text, tagList, setTagList}) {
+
+function NewRemItem ({text, tagList, setTagList, myNewRemember}) {
     const [clickAddTags, setClickAddTags] = useState(false)
+    const [clickCreateTags, setClickCreateTags] = useState(false)
+    const [newRememberTag, setNewRememberTag] = useState(false) 
 
-    const handleClick = (e) => {
-        setClickAddTags(!clickAddTags)
-        console.log(e.target.value)
-    }
-// how to pass in the Remember item to the handleClick? 
-    
- 
+
+const handleClick = (e) => {
+    setClickAddTags(!clickAddTags)
+    setClickCreateTags(!clickCreateTags)
+    console.log(e.target.value)
+}
+
+
+
 
     return (
         <div className="remember">
@@ -19,20 +25,11 @@ function NewRemItem ({text, tagList, setTagList}) {
             <button onClick={handleClick} className='add-tag'>
                 <i className="add-tag">Add Tags</i>
             </button>
-
-            {clickAddTags ? <TagForm  tagList={tagList} setTagList={setTagList}/> : null}
+            {clickCreateTags ? <CreateTag  tagList={tagList} setTagList={setTagList}/> : null}
+            {clickAddTags ? <TagForm  tagList={tagList} setTagList={setTagList} myNewRemember={myNewRemember}/> : null}
 
         </div>
     )
-    // <TagForm  />
-    // {tagList ?  tagList.map(tag => <TagFormDetail key={tag.id}  tag={tag} 
-    //     /> ) : null}
 
 }
-// turn this delete button into a category dropdown 
 export default NewRemItem
-
-// id: 1,                                                         
-// user_id: 4,                                                    
-// set_to_private: false,                                         
-// text:

@@ -2,27 +2,17 @@ import React, {useState, useEffect} from "react";
 import TagFormDetail from "./TagFormDetail"
 
 
-function TagForm({tagList, setTagList}) {
+function TagForm({tagList, setTagList, myNewRemember}) {
     // const [addTag, setAddTag] = useState(false)
-    const [newRememberTags, setNewRememberTags] = useState("")
-
-    const addRememberTag = id => {
-        // let brandNewRememberTag = 
-        // {remember_id: remember.id, 
-        // tag_id: tag.id} 
-
-        // setNewRememberTags([...newRememberTags, brandNewRememberTag]);
-      };
-
-    //   a rememberTag contains a remember.id & a tag.id
+ 
 
     return (
         <div>
-            <form>
+            <div>
 
-            {tagList ?  tagList.map(tag => <TagFormDetail key={tag.id}  tag={tag} 
+            {tagList ?  tagList.map(tag => <TagFormDetail key={tag.id}  tag={tag} tagList={tagList} myNewRemember={myNewRemember}
                     /> ) : null}
-            </form>
+            </div>
 
         </div>
     )
