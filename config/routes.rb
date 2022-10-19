@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show, :create, :destroy]
   resources :remember_tags, only: [:create, :update, :index, :show]
   resources :remembers, only: [:index, :show, :create, :update, :destroy]
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
   resources :classrooms, only: [:index, :show]
   
   post "/signup", to: "users#create"

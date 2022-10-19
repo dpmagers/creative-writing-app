@@ -2,11 +2,14 @@ class RemembersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
 before_action :authorize
-before_action :is_authorized?, only: [:show, :update, :destroy]
+# before_action :is_authorized?, only: [:update, :destroy]
 
     def index
         render json: Remember.all, status: :ok
+
     end 
+
+
 
     def show
         remember = Remember.find(params[:id])
@@ -28,7 +31,6 @@ before_action :is_authorized?, only: [:show, :update, :destroy]
         end 
     end
 
-    # unless permitted
 
     def destroy
         remember = Remember.find(params[:id])
@@ -61,12 +63,31 @@ before_action :is_authorized?, only: [:show, :update, :destroy]
         render json: {error: error.message}, status: 422
     end 
 
-    def is_authorized?
-        permitted = @current_user.admin?
-        # || remember.user_id == current_user.id
-        render json: {errors: "This user does not have permission"}, status: :forbidden unless permitted
-    end 
+    # def is_authorized?
+    #     permitted = @current_user.admin?
+    #     # || remember.user_id == current_user.id
+    #     render json: {errors: "This user does not have permission"}, status: :forbidden unless permitted
+    # end 
 
 
 
 end
+
+
+        # remember = Remember.find(params[:id])
+        # if remember.user_id == @current_user.id || @current_user.admin == true
+        #     render json: Remember.all, status: :ok
+        # else 
+        #     render json: Remember.where(set_to_private: false), status: :ok
+        # end
+
+            # Remember.where(user_id: @current_user.id)
+    # don't display "private" remembers unless 
+    # remember.user_id == @current_user.id || @current_user.admin == true
+    # don't show if remember.set_to_private == true
+    # if remember.set_to_private == true
+    # render json Remember.where(set_to_private: false)
+    # e
+    # don't display "private" remembers
+    
+    # Remember.where(set_to_private: true)
