@@ -30,6 +30,9 @@ function NavBar({ user, setUser }) {
       <NavLink to="/new-writing"> 
         New Writing 
       </NavLink>
+      <NavLink to="/classroom-writing"> 
+        Classroom Writing 
+      </NavLink>
       <button onClick={handleLogoutClick}>Logout</button>
     </nav> ) :
     (<nav>
