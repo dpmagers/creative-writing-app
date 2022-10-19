@@ -38,17 +38,15 @@ function App() {
       .then(setTagList)
       }, [])
 
-    // useEffect(() => {
-    //     fetch("http://localhost:4000/users")
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
-    // }, [])
+    useEffect(() => {
+        fetch("http://localhost:4000/users")
+        .then(res => res.json())
+        .then(setUserList)
 
-      // useEffect(() => {
-      //   fetch("http://localhost:4000/users")
-      //   .then(res => res.json())
-      //   .then(data => console.log(data)
-      // }, [])
+    }, [])
+    // .then(data => console.log(data))
+
+
 
 
   return (
@@ -63,7 +61,7 @@ function App() {
             <NewRememberList user={user} tagList={tagList} setTagList={setTagList} />
           </Route>
           <Route path="/classroom-writing">
-            <UsersContainer user={user}/> 
+            <UsersContainer user={user} userList={userList} setUserList={setUserList}/> 
             {/* <NewRememberList user={user} tagList={tagList} setTagList={setTagList}/> */}
           </Route>
           <Route path="/login">
