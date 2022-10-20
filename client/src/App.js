@@ -62,7 +62,6 @@ function App() {
           </Route>
           <Route path="/classroom-writing">
             <UsersContainer user={user} userList={userList} setUserList={setUserList}/> 
-            {/* <NewRememberList user={user} tagList={tagList} setTagList={setTagList}/> */}
           </Route>
           <Route path="/login">
             <LoginForm user={user} setUser={setUser}/>

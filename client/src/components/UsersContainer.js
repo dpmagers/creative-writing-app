@@ -1,16 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import UserWritingList from "./UserWritingList"
+import UserRemList from "./UserRemList"
 
 
 function UsersContainer ({user, userList, setUserList}) {
     const [selectedStudent, setSelectedStudent] = useState("")
     const [studentWriting, setStudentWriting] = useState("")
 
-    
 
-// function sameClassroomId (allUsersList) {
-// 	return user.classroom_id === current_user.classroom_id && !user.admin === true
-// }
 
     let classroomUsers 
 
@@ -49,17 +45,11 @@ function UsersContainer ({user, userList, setUserList}) {
                         ) : null}
                     </select>
                 <ul className="user-writing"></ul>
-                    {!studentData ? null : studentData.map(student => <UserWritingList 
+                    {!studentData ? null : studentData.map(student => <UserRemList 
                     key={student.id}
                     student={student}
                     />)}
 
-                                        {/* {studentData ? null : studentData.map(student => <UserWritingList 
-                    key={student.id}
-                    name={student.full_name}
-
-                    
-                    />)} */}
 
 
 
