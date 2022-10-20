@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
-import UsersDropdown from "./UsersDropdown"
+import React, {useEffect, useState} from 'react'
+import UserWritingList from "./UserWritingList"
 
 
 function UsersContainer ({user, userList, setUserList}) {
     const [selectedStudent, setSelectedStudent] = useState("")
+    const [studentWriting, setStudentWriting] = useState("")
 
     
 
@@ -25,6 +26,7 @@ function UsersContainer ({user, userList, setUserList}) {
     if (classroomUsers) {
         studentData = classroomUsers.filter(student =>{
             return student.full_name === selectedStudent
+            
         }) 
 
     }
@@ -46,7 +48,24 @@ function UsersContainer ({user, userList, setUserList}) {
         
                         ) : null}
                     </select>
+                <ul className="user-writing"></ul>
+                    {!studentData ? null : studentData.map(student => <UserWritingList 
+                    key={student.id}
+                    student={student}
+                    />)}
+
+                                        {/* {studentData ? null : studentData.map(student => <UserWritingList 
+                    key={student.id}
+                    name={student.full_name}
+
                     
+                    />)} */}
+
+
+
+                </div>
+                <div className="right-column">
+                    <p>[instructions right column]</p>
 
                 </div>
 
