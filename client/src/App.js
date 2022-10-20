@@ -6,14 +6,17 @@ import SignupForm from "./components/SignupForm"
 import NavBar from "./components/NavBar"
 import About from "./components/About"
 import NewRememberList from "./components/NewRememberList"
-import TagForm from "./components/TagForm"
+import UsersContainer from "./components/UsersContainer"
 
+
+// export const NameContext = React.createContext()
 
 function App() {
   const [user, setUser] = useState(null)
   const [page, setPage] = useState("/")
   const [rememberList, setRememberList] = useState("")
   const [tagList, setTagList] = useState("")
+  const [userList, setUserList] = useState("")
 
 
     // const { user, setUser } = useContext(UserContext);
@@ -35,6 +38,15 @@ function App() {
       .then(setTagList)
       }, [])
 
+    useEffect(() => {
+        fetch("http://localhost:4000/users")
+        .then(res => res.json())
+        .then(setUserList)
+
+    }, [])
+    // .then(data => console.log(data))
+
+
 
 
   return (
@@ -49,6 +61,7 @@ function App() {
             <NewRememberList user={user} tagList={tagList} setTagList={setTagList} />
           </Route>
           <Route path="/classroom-writing">
+            <UsersContainer user={user} userList={userList} setUserList={setUserList}/> 
             {/* <NewRememberList user={user} tagList={tagList} setTagList={setTagList}/> */}
           </Route>
           <Route path="/login">

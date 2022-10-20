@@ -5,7 +5,7 @@ skip_before_action :authorize, only: :create
 
 
     def index 
-        render json: User.all, status: :ok
+        render json: User.all, include: ['remembers', 'remembers.tags'], status: :ok
     end 
 
     def show

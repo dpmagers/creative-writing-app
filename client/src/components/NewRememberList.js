@@ -21,7 +21,7 @@ function NewRememberList({user, tagList, setTagList}) {
         set_to_private: false}
 
         setNewRemembers([...newRemembers, brandNewRemember]);
-        setMyNewRemember(brandNewRemember)
+        // setMyNewRemember(brandNewRemember)
     };
 
 
@@ -41,11 +41,10 @@ function NewRememberList({user, tagList, setTagList}) {
           })
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => setMyNewRemember(data))
 
         setValue("")
         setIsPrivate(false)
-        // setMyNewRemember(brandNewRemember)
     }
 
     console.log(myNewRemember)

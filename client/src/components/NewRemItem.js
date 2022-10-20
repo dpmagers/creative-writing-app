@@ -12,11 +12,10 @@ function NewRemItem ({text, tagList, setTagList, myNewRemember}) {
 const handleClick = (e) => {
     setClickAddTags(!clickAddTags)
     setClickCreateTags(!clickCreateTags)
-    console.log(e.target.value)
 }
 
 
-
+console.log(myNewRemember)
 
     return (
         <div className="remember">
