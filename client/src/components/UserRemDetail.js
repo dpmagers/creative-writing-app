@@ -1,8 +1,13 @@
 import React, {useState} from 'react'
 import UserTagList from "./UserTagList"
+import EditRemember from "./EditRemember"
 
 
-function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag}) {
+
+function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember}) {
+    const [clickEdit, setClickEdit] = useState(false)
+
+
 
         let tags
         if (remember ) {
@@ -16,11 +21,20 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag}) 
     
         }
 
+        const handleEditRemember = (remember) => {
+            setClickEdit(!clickEdit)
+            console.log(remember)
+        }
+
+
+
     return (
         <div>
             <ul className="student-remembers"></ul>
                 <li>{remember.text}</li>
-                <button>Update Remember</button>
+                <button onClick={() => handleEditRemember(remember)} className='update'>Update Remember</button>
+                {clickEdit ? <EditRemember remember={remember} editRemember={editRemember}  /> : null}
+
                 <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
                 {tags ? <h5 className="tag-label">Tags</h5> : null}
             <ul className="remember-tags"></ul>
@@ -30,6 +44,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag}) 
             errorList={errorList} 
             user={user} 
             deleteTag={deleteTag}
+            
 
              />) : null}
 

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import UserRemList from "./UserRemList"
 
 
-function UsersContainer ({user, userList, setUserList, deleteRemember, errorList, deleteTag}) {
+function UsersContainer ({user, userList, setUserList, deleteRemember, errorList, deleteTag, editRemember}) {
     const [selectedStudent, setSelectedStudent] = useState("")
     const [studentWriting, setStudentWriting] = useState("")
 
@@ -25,9 +25,7 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
         }) 
 
     }
- 
-
-    return (
+     return (
         <div>
             <h1>Classroom Writing</h1>
             <div className="left-column">
@@ -48,6 +46,7 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
                     errorList={errorList}
                     user={user}
                     deleteTag={deleteTag}
+                    editRemember={editRemember}
                     />)}
 
 

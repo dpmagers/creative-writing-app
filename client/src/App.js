@@ -90,6 +90,38 @@ function App() {
         })
   }
 
+    // PATCH REMEMBER
+    const editRemember = (remember, rememberinput) => {
+      console.log("hello")
+  
+      setRememberList(rememberList => rememberList.map(originalRemember => {
+            if (originalRemember.id === remember.id) {
+              return remember;
+            } else {
+              return originalRemember;
+            }
+          }))
+          console.log(remember)
+          console.log(rememberinput)
+      fetch(`http://localhost:4000/remembers/${remember.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(rememberinput),
+      })
+      .then((resp) => {
+        if (resp.status > 300) {
+          setErrorList([...errorList, {message: "update unauthorized", id: remember.id}])
+          console.log(errorList)
+        }
+        resp.json()
+      })
+      .then((updatedRemember) => {
+        setRememberList([...rememberList, updatedRemember]);
+      });
+  
+    }
 
 
   return (
@@ -104,7 +136,7 @@ function App() {
             <NewRememberList user={user} tagList={tagList} setTagList={setTagList} />
           </Route>
           <Route path="/classroom-writing">
-            <UsersContainer user={user} userList={userList} setUserList={setUserList} deleteRemember={deleteRemember} errorList={errorList} deleteTag={deleteTag}/> 
+            <UsersContainer user={user} userList={userList} setUserList={setUserList} deleteRemember={deleteRemember} errorList={errorList} deleteTag={deleteTag} editRemember={editRemember}/> 
           </Route>
           <Route path="/login">
             <LoginForm user={user} setUser={setUser}/>
