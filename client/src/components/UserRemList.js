@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import UserRemDetail from "./UserRemDetail"
 
 
-function UserRemList ({student}) {
+function UserRemList ({student, deleteRemember, errorList, user, deleteTag}) {
     // const [text, setText] = useState("")
 
 
@@ -22,6 +22,10 @@ if (student ) {
             {remembers ?  remembers.map(remember => <UserRemDetail 
             key={remember.id} 
             remember={remember}
+            deleteRemember={deleteRemember} 
+            errorList={errorList}
+            user={user}
+            deleteTag={deleteTag}
              />) : null}
         </div>
     )

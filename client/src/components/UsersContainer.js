@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import UserRemList from "./UserRemList"
 
 
-function UsersContainer ({user, userList, setUserList}) {
+function UsersContainer ({user, userList, setUserList, deleteRemember, errorList, deleteTag}) {
     const [selectedStudent, setSelectedStudent] = useState("")
     const [studentWriting, setStudentWriting] = useState("")
 
@@ -16,7 +16,6 @@ function UsersContainer ({user, userList, setUserList}) {
         })
     }
     
-    console.log(classroomUsers)
 
     let studentData
     if (classroomUsers) {
@@ -26,9 +25,6 @@ function UsersContainer ({user, userList, setUserList}) {
         }) 
 
     }
-    console.log(studentData)
-
- 
  
 
     return (
@@ -48,6 +44,10 @@ function UsersContainer ({user, userList, setUserList}) {
                     {!studentData ? null : studentData.map(student => <UserRemList 
                     key={student.id}
                     student={student}
+                    deleteRemember={deleteRemember} 
+                    errorList={errorList}
+                    user={user}
+                    deleteTag={deleteTag}
                     />)}
 
 
