@@ -21,7 +21,6 @@ function NewRememberList({user, tagList, setTagList}) {
         set_to_private: false}
 
         setNewRemembers([...newRemembers, brandNewRemember]);
-        // setMyNewRemember(brandNewRemember)
     };
 
 
@@ -47,7 +46,6 @@ function NewRememberList({user, tagList, setTagList}) {
         setIsPrivate(false)
     }
 
-    console.log(myNewRemember)
     return(
 
             <div> 

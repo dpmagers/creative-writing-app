@@ -17,6 +17,8 @@ function App() {
   const [rememberList, setRememberList] = useState("")
   const [tagList, setTagList] = useState("")
   const [userList, setUserList] = useState("")
+  const [errorList, setErrorList] = useState([])
+
 
 
     // const { user, setUser } = useContext(UserContext);
@@ -46,7 +48,80 @@ function App() {
     }, [])
     // .then(data => console.log(data))
 
+    useEffect(() => {
+      fetch("http://localhost:4000/remembers")
+      .then(res => res.json())
+      .then(setRememberList)
+    }, [])
 
+    // DELETE REMEMBER
+  const deleteRemember = (e) => {
+    fetch(`http://localhost:4000/remembers/${e}`, {
+      method: "DELETE",
+    })
+      .then((res) => {const data = rememberList.filter(i => i.id !== e)
+              console.log(data)
+              console.log(res)
+        setRememberList(data)
+        if (res.status > 300) {
+          setErrorList([...errorList, {message: "delete unauthorized", id: e}])
+          console.log(errorList)
+        }
+      }).catch((error) => {
+          console.log("this is", error)
+        })
+  }
+
+  // // DELETE TAG
+  const deleteTag = (e) => {
+    fetch(`http://localhost:4000/tags/${e}`, {
+      method: "DELETE",
+    })
+      .then((res) => {const data = tagList.filter(i => i.id !== e)
+              console.log(data)
+              console.log(res)
+        setTagList(data)
+        if (res.status > 300) {
+          setErrorList([...errorList, {message: "delete unauthorized", id: e}])
+          console.log(errorList)
+        }
+      }).catch((error) => {
+          console.log("this is", error)
+        })
+  }
+
+    // PATCH REMEMBER
+    const editRemember = (remember, rememberinput) => {
+      console.log("hello")
+  
+      setRememberList(rememberList => rememberList.map(originalRemember => {
+            if (originalRemember.id === remember.id) {
+              return remember;
+            } else {
+              return originalRemember;
+            }
+          }))
+          console.log(remember)
+          console.log(rememberinput)
+      fetch(`http://localhost:4000/remembers/${remember.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(rememberinput),
+      })
+      .then((resp) => {
+        if (resp.status > 300) {
+          setErrorList([...errorList, {message: "update unauthorized", id: remember.id}])
+          console.log(errorList)
+        }
+        resp.json()
+      })
+      .then((updatedRemember) => {
+        setRememberList([...rememberList, updatedRemember]);
+      });
+  
+    }
 
 
   return (
@@ -61,8 +136,7 @@ function App() {
             <NewRememberList user={user} tagList={tagList} setTagList={setTagList} />
           </Route>
           <Route path="/classroom-writing">
-            <UsersContainer user={user} userList={userList} setUserList={setUserList}/> 
-            {/* <NewRememberList user={user} tagList={tagList} setTagList={setTagList}/> */}
+            <UsersContainer user={user} userList={userList} setUserList={setUserList} deleteRemember={deleteRemember} errorList={errorList} deleteTag={deleteTag} editRemember={editRemember}/> 
           </Route>
           <Route path="/login">
             <LoginForm user={user} setUser={setUser}/>

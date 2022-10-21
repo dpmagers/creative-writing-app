@@ -1,16 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import UserWritingList from "./UserWritingList"
+import UserRemList from "./UserRemList"
 
 
-function UsersContainer ({user, userList, setUserList}) {
+function UsersContainer ({user, userList, setUserList, deleteRemember, errorList, deleteTag, editRemember}) {
     const [selectedStudent, setSelectedStudent] = useState("")
     const [studentWriting, setStudentWriting] = useState("")
 
-    
 
-// function sameClassroomId (allUsersList) {
-// 	return user.classroom_id === current_user.classroom_id && !user.admin === true
-// }
 
     let classroomUsers 
 
@@ -20,7 +16,6 @@ function UsersContainer ({user, userList, setUserList}) {
         })
     }
     
-    console.log(classroomUsers)
 
     let studentData
     if (classroomUsers) {
@@ -30,12 +25,7 @@ function UsersContainer ({user, userList, setUserList}) {
         }) 
 
     }
-    console.log(studentData)
-
- 
- 
-
-    return (
+     return (
         <div>
             <h1>Classroom Writing</h1>
             <div className="left-column">
@@ -49,17 +39,16 @@ function UsersContainer ({user, userList, setUserList}) {
                         ) : null}
                     </select>
                 <ul className="user-writing"></ul>
-                    {!studentData ? null : studentData.map(student => <UserWritingList 
+                    {!studentData ? null : studentData.map(student => <UserRemList 
                     key={student.id}
                     student={student}
+                    deleteRemember={deleteRemember} 
+                    errorList={errorList}
+                    user={user}
+                    deleteTag={deleteTag}
+                    editRemember={editRemember}
                     />)}
 
-                                        {/* {studentData ? null : studentData.map(student => <UserWritingList 
-                    key={student.id}
-                    name={student.full_name}
-
-                    
-                    />)} */}
 
 
 
