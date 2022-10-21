@@ -1,18 +1,19 @@
-import React, {useState} from 'react'
+import { RememberListContext } from '../GlobalContext/RememberListContext';
+import { useState, useEffect, useContext } from "react";
 import RememberForm from "./RememberForm"
 import NewRemItem from "./NewRemItem"
 
-
 function NewRememberList({user, tagList, setTagList}) {
     const [newRemembers, setNewRemembers] = useState("")
-    const [myNewRemember, setMyNewRemember] = useState("")
+    // const [myNewRemember, setMyNewRemember] = useState("")
     const [value, setValue] = useState("");
     const [isPrivate, setIsPrivate] = useState(false)
 
+    const { rememberList, updateRememberList } = useContext(RememberListContext);
+
+
     // create new objec
     // so I need to create object before I add to the spread operator 
-
-
 
     const addRemember = text => {
         let brandNewRemember = 
@@ -40,7 +41,8 @@ function NewRememberList({user, tagList, setTagList}) {
           })
         })
         .then(res => res.json())
-        .then(data => setMyNewRemember(data))
+        // .then(data => setMyNewRemember(data))
+        .then(data => (updateRememberList([...rememberList, data])))
 
         setValue("")
         setIsPrivate(false)
@@ -50,7 +52,8 @@ function NewRememberList({user, tagList, setTagList}) {
 
             <div> 
             <h1>Create New Writing Here</h1>
-            <RememberForm addRemember={addRemember} user={user}  tagList={tagList} setTagList={setTagList} myNewRemember={myNewRemember} handleSubmit={handleSubmit} value={value} setValue={setValue} isPrivate={isPrivate} setIsPrivate={setIsPrivate}/>
+            <RememberForm addRemember={addRemember} user={user}  tagList={tagList} setTagList={setTagList} handleSubmit={handleSubmit} value={value} setValue={setValue} isPrivate={isPrivate} setIsPrivate={setIsPrivate}/>
+            {/* myNewRemember={myNewRemember} */}
             <div className="left-column">
                 <div className="remember-container">
                 <ul className="remember-list"></ul>
@@ -59,7 +62,7 @@ function NewRememberList({user, tagList, setTagList}) {
                     text={remember.text} 
                     tagList={tagList} 
                     setTagList={setTagList}
-                    myNewRemember={myNewRemember}
+                    // myNewRemember={myNewRemember}
                 
                     /> ) : null}
 

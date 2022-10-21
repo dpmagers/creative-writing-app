@@ -5,8 +5,10 @@ function TagFormDetail({tag, tagList, myNewRemember}) {
     const [addTag, setAddTag] = useState(false) 
     const [rememberTagList, setRememberTagList] = useState("")
 
-console.log(myNewRemember)
+// console.log(myNewRemember)
 
+
+// console.log(tagList, "hello")
 
 
 const addRememberTag = id => {
@@ -33,8 +35,9 @@ const addRememberTag = id => {
     })
     })
     .then(res => res.json())
-    .then(data => console.log(data))
-    
+    .then(data => setRememberTagList(data))
+    // .then(data => console.log(data))
+
     setRememberTagList(false)
     
     }

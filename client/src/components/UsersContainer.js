@@ -7,7 +7,6 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
     const [studentWriting, setStudentWriting] = useState("")
 
 
-
     let classroomUsers 
 
     if (userList) {
@@ -15,7 +14,7 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
             return user.classroom_id === classroomUser.classroom_id 
         })
     }
-    
+    console.log(classroomUsers)
 
     let studentData
     if (classroomUsers) {
@@ -23,7 +22,6 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
             return student.full_name === selectedStudent
             
         }) 
-
     }
      return (
         <div>

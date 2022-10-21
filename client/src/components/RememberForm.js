@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
 
-function RememberForm({addRemember, text, user, value, setValue,  isPrivate,  setIsPrivate, handleSubmit }) {
+function RememberForm({addRemember, text, user, value, setValue,  isPrivate,  setIsPrivate, handleSubmit, tagList }) {
     // const [value, setValue] = useState("");
     // const [isPrivate, setIsPrivate] = useState(false)
+
+
+    // console.log(tagList)
 
 
     // const handleSubmit = e => {
