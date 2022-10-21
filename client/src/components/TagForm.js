@@ -5,7 +5,7 @@ import TagFormDetail from "./TagFormDetail"
 function TagForm({tagList, setTagList, myNewRemember}) {
     // const [addTag, setAddTag] = useState(false)
  
-    console.log(tagList, "hello")
+    // console.log(tagList, "hello")
 
 
     return (

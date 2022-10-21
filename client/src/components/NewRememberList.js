@@ -3,17 +3,14 @@ import { useState, useEffect, useContext } from "react";
 import RememberForm from "./RememberForm"
 import NewRemItem from "./NewRemItem"
 
-function NewRememberList({user, tagList, setTagList}) {
+function NewRememberList({user, tagList, setTagList, setUserList, userList}) {
     const [newRemembers, setNewRemembers] = useState("")
-    // const [myNewRemember, setMyNewRemember] = useState("")
+    const [myNewRemember, setMyNewRemember] = useState("")
     const [value, setValue] = useState("");
     const [isPrivate, setIsPrivate] = useState(false)
 
     const { rememberList, updateRememberList } = useContext(RememberListContext);
 
-
-    // create new objec
-    // so I need to create object before I add to the spread operator 
 
     const addRemember = text => {
         let brandNewRemember = 
@@ -23,6 +20,7 @@ function NewRememberList({user, tagList, setTagList}) {
 
         setNewRemembers([...newRemembers, brandNewRemember]);
     };
+
 
 
     const handleSubmit = e => {
@@ -41,19 +39,26 @@ function NewRememberList({user, tagList, setTagList}) {
           })
         })
         .then(res => res.json())
-        // .then(data => setMyNewRemember(data))
-        .then(data => (updateRememberList([...rememberList, data])))
+        .then(data => setMyNewRemember(data))
+
+        // .then(data => (updateRememberList([...myNewRemember, data])))
+
 
         setValue("")
         setIsPrivate(false)
+
+
+          fetch("http://localhost:4000/users")
+          .then(res => res.json())
+          .then(setUserList)
     }
 
     return(
 
             <div> 
             <h1>Create New Writing Here</h1>
-            <RememberForm addRemember={addRemember} user={user}  tagList={tagList} setTagList={setTagList} handleSubmit={handleSubmit} value={value} setValue={setValue} isPrivate={isPrivate} setIsPrivate={setIsPrivate}/>
-            {/* myNewRemember={myNewRemember} */}
+            <RememberForm addRemember={addRemember} user={user} handleSubmit={handleSubmit} value={value} setValue={setValue} isPrivate={isPrivate} setIsPrivate={setIsPrivate} myNewRemember={myNewRemember} setUserList={setUserList} userList={userList}/>
+           
             <div className="left-column">
                 <div className="remember-container">
                 <ul className="remember-list"></ul>
@@ -62,7 +67,7 @@ function NewRememberList({user, tagList, setTagList}) {
                     text={remember.text} 
                     tagList={tagList} 
                     setTagList={setTagList}
-                    // myNewRemember={myNewRemember}
+                    myNewRemember={myNewRemember}
                 
                     /> ) : null}
 

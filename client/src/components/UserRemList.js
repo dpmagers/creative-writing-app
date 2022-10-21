@@ -3,17 +3,13 @@ import UserRemDetail from "./UserRemDetail"
 
 
 function UserRemList ({student, deleteRemember, errorList, user, deleteTag, editRemember}) {
-    // const [text, setText] = useState("")
 
-
-// handle change 
 let remembers 
 
 if (student ) {
     remembers = student.remembers
     console.log(remembers)
 }
-
 
     return (
 

@@ -27,11 +27,11 @@ function CreateTag({tagList, setTagList} ) {
           })
         })
         .then(res => res.json())
-        .then(data => console.log(data))
-        setTagList([...tagList, createTag])
-        // setCreateTag("")
+        .then(data => setTagList([...tagList, data]))
 
     }
+
+    // i was trying to pass in state into the setTagList instead of the object itself 
 
     return (
         <div>

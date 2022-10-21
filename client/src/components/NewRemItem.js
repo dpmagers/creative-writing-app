@@ -3,7 +3,7 @@ import TagForm from './TagForm'
 import CreateTag from './CreateTag'
 
 
-function NewRemItem ({text, tagList, setTagList}) {
+function NewRemItem ({text, tagList, setTagList, myNewRemember}) {
     const [clickAddTags, setClickAddTags] = useState(false)
     const [clickCreateTags, setClickCreateTags] = useState(false)
     const [newRememberTag, setNewRememberTag] = useState(false) 
@@ -15,7 +15,6 @@ const handleClick = (e) => {
 }
 
 
-// console.log(myNewRemember)
 
     return (
         <div className="remember">
@@ -26,7 +25,7 @@ const handleClick = (e) => {
             </button>
             {clickCreateTags ? <CreateTag  tagList={tagList} setTagList={setTagList}/> : null}
             {clickAddTags ? <TagForm  tagList={tagList} setTagList={setTagList} 
-            // myNewRemember={myNewRemember}
+            myNewRemember={myNewRemember}
             /> : null}
 
         </div>

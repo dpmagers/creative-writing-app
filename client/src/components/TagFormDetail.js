@@ -1,14 +1,17 @@
-import React, {useState} from 'react'
+import { RememberListContext } from '../GlobalContext/RememberListContext';
+import { useState, useEffect, useContext } from "react";
+
 
 function TagFormDetail({tag, tagList, myNewRemember}) {
     // state for checkbox value
-    const [addTag, setAddTag] = useState(false) 
+    // const [addTag, setAddTag] = useState(false) 
     const [rememberTagList, setRememberTagList] = useState("")
 
-// console.log(myNewRemember)
+
+const { rememberList, updateRememberList } = useContext(RememberListContext);
 
 
-// console.log(tagList, "hello")
+console.log(myNewRemember, "hello")
 
 
 const addRememberTag = id => {
@@ -22,7 +25,7 @@ const addRememberTag = id => {
     
     const handleRememberTagSubmit = e => {
     e.preventDefault()
-    addRememberTag(addTag)
+    // addRememberTag()
     
     fetch(`http://localhost:4000/remember_tags`, {
     method: "POST",
@@ -48,12 +51,7 @@ const addRememberTag = id => {
     return (
         <form onSubmit={handleRememberTagSubmit}>
             <label htmlFor="tag-name">{tag.name}</label>
-            <input 
-                type="checkbox"
-                id="tag-name"
-                checked={addTag}
-                onChange={(e) => setAddTag(e.target.checked)}
-            />
+
             <button type="submit">Submit Tag</button>
         </form>
     )

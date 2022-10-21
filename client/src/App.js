@@ -15,19 +15,9 @@ function App() {
   const [page, setPage] = useState("/")
   // const [rememberList, setRememberList] = useState("")
   const [tagList, setTagList] = useState([])
-  const [userList, setUserList] = useState("")
+  const [userList, setUserList] = useState([])
   const [errorList, setErrorList] = useState([])
 
-
-  // 4 steps for every component using context
-  // at top
-  // import { RememberListContext } from './GlobalContext/RememberListContext';
-// import { useState, useEffect, useContext } from "react";
-
-// in app
-// const { rememberList, updateRememberList } = useContext(RememberListContext);
-
-// then updating syntax and deleting props 
 
   const { rememberList, updateRememberList } = useContext(RememberListContext);
 
@@ -81,6 +71,10 @@ function App() {
       }).catch((error) => {
           console.log("this is", error)
         })
+
+        fetch("http://localhost:4000/users")
+        .then(res => res.json())
+        .then(setUserList)
   }
 
   // // DELETE TAG
@@ -99,6 +93,10 @@ function App() {
       }).catch((error) => {
           console.log("this is", error)
         })
+
+        fetch("http://localhost:4000/users")
+        .then(res => res.json())
+        .then(setUserList)
   }
 
     // PATCH REMEMBER
@@ -131,6 +129,10 @@ function App() {
       .then((updatedRemember) => {
         updateRememberList([...rememberList, updatedRemember]);
       });
+
+      fetch("http://localhost:4000/users")
+      .then(res => res.json())
+      .then(setUserList)
   
     }
 
@@ -144,7 +146,7 @@ function App() {
             <About user={user}/>
           </Route>
           <Route path="/new-writing">
-            <NewRememberList user={user} tagList={tagList} setTagList={setTagList}  />
+            <NewRememberList user={user} tagList={tagList} setTagList={setTagList} setUserList={setUserList}  />
           </Route>
           <Route path="/classroom-writing">
             <UsersContainer user={user} userList={userList} setUserList={setUserList} deleteRemember={deleteRemember} errorList={errorList} deleteTag={deleteTag} editRemember={editRemember}/> 

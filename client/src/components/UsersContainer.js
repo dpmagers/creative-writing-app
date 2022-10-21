@@ -20,9 +20,10 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
     if (classroomUsers) {
         studentData = classroomUsers.filter(student =>{
             return student.full_name === selectedStudent
-            
         }) 
     }
+
+
      return (
         <div>
             <h1>Classroom Writing</h1>
