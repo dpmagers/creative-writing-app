@@ -26,6 +26,15 @@ rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
         render json: remember_tag, status: :accepted
     end
 
+    def destroy
+        remember_tag = RememberTag.find(params[:id])
+        # if remember_tag.user_id == @current_user.id || @current_user.admin == true
+            remember_tag.destroy
+            render json: {}, status: 204
+        # else
+            # render json: {errors: ["Not Authorized"]}, status: 401
+    end 
+
     private
 
     def remember_tag_params

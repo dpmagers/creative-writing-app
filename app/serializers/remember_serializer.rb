@@ -1,7 +1,8 @@
 class RememberSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :text
+  attributes :id, :user_id, :text, :remember_tags
 
   has_many :tags
+  has_many :remember_tags
 end
 
 

@@ -17,6 +17,7 @@ function App() {
   const [tagList, setTagList] = useState([])
   const [userList, setUserList] = useState([])
   const [errorList, setErrorList] = useState([])
+  const [rememberTagList, setRememberTagList] = useState([])
 
 
   const { rememberList, updateRememberList } = useContext(RememberListContext);
@@ -79,13 +80,13 @@ function App() {
 
   // // DELETE TAG
   const deleteTag = (e) => {
-    fetch(`http://localhost:4000/tags/${e}`, {
+    fetch(`http://localhost:4000/remember_tags/${e}`, {
       method: "DELETE",
     })
-      .then((res) => {const data = tagList.filter(i => i.id !== e)
+      .then((res) => {const data = rememberTagList.filter(i => i.id !== e)
               console.log(data)
               console.log(res)
-        setTagList(data)
+        setRememberTagList(data)
         if (res.status > 300) {
           setErrorList([...errorList, {message: "delete unauthorized", id: e}])
           console.log(errorList)

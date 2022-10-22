@@ -8,7 +8,7 @@ let remembers
 
 if (student ) {
     remembers = student.remembers
-    console.log(remembers)
+    console.log(student)
 }
 
     return (

@@ -8,22 +8,48 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
     const [clickEdit, setClickEdit] = useState(false)
 
 
+    // let tags
+    // if (remember ) {
+    //     tags = remember.tags
+    //     console.log(tags)
+    // }
 
-        let tags
+    let tags
+
+        let remember_tags
+        let newObject
+
+        const mergeById = (a1, a2) =>
+        a1.map(itm => ({
+            ...a2.find((item) => (item.tag_id === itm.id) && item),
+            ...itm
+        }));
+
         if (remember ) {
             tags = remember.tags
-            // console.log(tags)
+            remember_tags = remember.remember_tags
+            remember_tags = remember_tags.map(rt => {
+                rt['newId'] = rt.id
+                return rt
+            })
+            newObject = mergeById(tags, remember_tags)
         }
-        // console.log(remember.id)
+        // console.log(newObject)
 
         const handleClick = (remember) => {
             deleteRemember(remember.id)
     
         }
 
+    //     const mergeById = (a1, a2) =>
+    // a1.map(itm => ({
+    //     ...a2.find((item) => (item.id === itm.id) && item),
+    //     ...itm
+    // }));
+
         const handleEditRemember = (remember) => {
             setClickEdit(!clickEdit)
-            console.log(remember)
+            // console.log(remember)
         }
 
 
@@ -38,7 +64,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
                 <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
                 {tags ? <h5 className="tag-label">Tags</h5> : null}
             <ul className="remember-tags"></ul>
-            {tags ?  tags.map(tag => <UserTagList 
+            {newObject ?  newObject.map(tag => <UserTagList 
             key={tag.id} 
             tag={tag}
             errorList={errorList} 
@@ -48,6 +74,15 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
 
              />) : null}
 
+            {/* {tags ?  tags.map(tag => <UserTagList 
+            key={tag.id} 
+            tag={tag}
+            errorList={errorList} 
+            user={user} 
+            deleteTag={deleteTag}
+            
+
+             />) : null} */}
         </div>
     )
 }
