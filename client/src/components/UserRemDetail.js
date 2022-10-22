@@ -4,7 +4,7 @@ import EditRemember from "./EditRemember"
 
 
 
-function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember}) {
+function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList}) {
     const [clickEdit, setClickEdit] = useState(false)
 
 
@@ -59,7 +59,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             <ul className="student-remembers"></ul>
                 <li>{remember.text}</li>
                 <button onClick={() => handleEditRemember(remember)} className='update'>Update Remember</button>
-                {clickEdit ? <EditRemember remember={remember} editRemember={editRemember}  /> : null}
+                {clickEdit ? <EditRemember remember={remember} editRemember={editRemember} setUserList={setUserList} /> : null}
 
                 <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
                 {tags ? <h5 className="tag-label">Tags</h5> : null}

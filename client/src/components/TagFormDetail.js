@@ -2,7 +2,7 @@ import { RememberListContext } from '../GlobalContext/RememberListContext';
 import { useState, useEffect, useContext } from "react";
 
 
-function TagFormDetail({tag, tagList, myNewRemember}) {
+function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
     // state for checkbox value
     // const [addTag, setAddTag] = useState(false) 
     const [rememberTagList, setRememberTagList] = useState("")
@@ -40,6 +40,11 @@ const addRememberTag = id => {
     .then(res => res.json())
     .then(data => setRememberTagList(data))
     // .then(data => console.log(data))
+
+    fetch("http://localhost:4000/users")
+    .then(res => res.json())
+    .then(setUserList)
+
 
     setRememberTagList(false)
     

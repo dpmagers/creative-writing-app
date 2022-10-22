@@ -134,7 +134,8 @@ function App() {
       fetch("http://localhost:4000/users")
       .then(res => res.json())
       .then(setUserList)
-  
+      console.log(userList)
+
     }
 
 
