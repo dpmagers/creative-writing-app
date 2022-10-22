@@ -1,32 +1,7 @@
 import React, {useState} from 'react'
 
-function RememberForm({addRemember, text, user, value, setValue,  isPrivate,  setIsPrivate, handleSubmit }) {
-    // const [value, setValue] = useState("");
-    // const [isPrivate, setIsPrivate] = useState(false)
+function RememberForm({value, setValue,  isPrivate,  setIsPrivate, handleSubmit}) {
 
-
-    // const handleSubmit = e => {
-    //     e.preventDefault()
-    //     addRemember(value)
-
-    //     fetch(`http://localhost:4000/remembers`, {
-    //       method: "POST",
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify({
-    //         user_id: user.id,
-    //         set_to_private: isPrivate,
-    //         text: value 
-    //       })
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
-
-    //     setValue("")
-    //     setIsPrivate(false)
-
-    // }
     return (
         <div> 
             <form onSubmit={handleSubmit}>

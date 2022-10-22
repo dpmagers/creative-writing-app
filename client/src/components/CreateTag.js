@@ -5,17 +5,17 @@ function CreateTag({tagList, setTagList} ) {
     const [createTag, setCreateTag] = useState("")
 
 
-    const addCreateTag = name => {
-        let newTag = 
-        {name: name}
-        // createTag
-        setTagList([...tagList, createTag]);
-      };
+    // const addCreateTag = name => {
+    //     let newTag = 
+    //     {name: name}
+    //     // createTag
+    //     setTagList([...tagList, newTag]);
+    //   };
       
     const handleTagSubmit = e => {
         e.preventDefault()
         console.log("hello")
-        addCreateTag(createTag)
+        // addCreateTag(createTag)
 
         fetch(`http://localhost:4000/tags`, {
           method: "POST",
@@ -27,11 +27,11 @@ function CreateTag({tagList, setTagList} ) {
           })
         })
         .then(res => res.json())
-        .then(data => console.log(data))
-
-        setCreateTag("")
+        .then(data => setTagList([...tagList, data]))
 
     }
+
+    // i was trying to pass in state into the setTagList instead of the object itself 
 
     return (
         <div>

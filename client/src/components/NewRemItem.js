@@ -15,7 +15,6 @@ const handleClick = (e) => {
 }
 
 
-console.log(myNewRemember)
 
     return (
         <div className="remember">
@@ -25,7 +24,9 @@ console.log(myNewRemember)
                 <i className="add-tag">Add Tags</i>
             </button>
             {clickCreateTags ? <CreateTag  tagList={tagList} setTagList={setTagList}/> : null}
-            {clickAddTags ? <TagForm  tagList={tagList} setTagList={setTagList} myNewRemember={myNewRemember}/> : null}
+            {clickAddTags ? <TagForm  tagList={tagList} setTagList={setTagList} 
+            myNewRemember={myNewRemember}
+            /> : null}
 
         </div>
     )

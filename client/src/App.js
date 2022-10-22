@@ -1,5 +1,5 @@
-// import { UserContext, UserProvider } from './GlobalContext/UserProvider';
-import { useState, useEffect } from "react";
+import { RememberListContext } from './GlobalContext/RememberListContext';
+import { useState, useEffect, useContext } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LoginForm from "./components/LoginForm"
 import SignupForm from "./components/SignupForm"
@@ -9,19 +9,17 @@ import NewRememberList from "./components/NewRememberList"
 import UsersContainer from "./components/UsersContainer"
 
 
-// export const NameContext = React.createContext()
 
 function App() {
   const [user, setUser] = useState(null)
   const [page, setPage] = useState("/")
-  const [rememberList, setRememberList] = useState("")
-  const [tagList, setTagList] = useState("")
-  const [userList, setUserList] = useState("")
+  // const [rememberList, setRememberList] = useState("")
+  const [tagList, setTagList] = useState([])
+  const [userList, setUserList] = useState([])
   const [errorList, setErrorList] = useState([])
 
 
-
-    // const { user, setUser } = useContext(UserContext);
+  const { rememberList, updateRememberList } = useContext(RememberListContext);
 
     useEffect(() => {
       // auto-login
@@ -37,7 +35,7 @@ function App() {
     useEffect(() => {
       fetch("http://localhost:4000/tags")
       .then(res => res.json())
-      .then(setTagList)
+      .then(data => setTagList(data))
       }, [])
 
     useEffect(() => {
@@ -51,8 +49,11 @@ function App() {
     useEffect(() => {
       fetch("http://localhost:4000/remembers")
       .then(res => res.json())
-      .then(setRememberList)
+      .then(updateRememberList)
     }, [])
+
+    console.log(userList)
+
 
     // DELETE REMEMBER
   const deleteRemember = (e) => {
@@ -62,7 +63,7 @@ function App() {
       .then((res) => {const data = rememberList.filter(i => i.id !== e)
               console.log(data)
               console.log(res)
-        setRememberList(data)
+        updateRememberList(data)
         if (res.status > 300) {
           setErrorList([...errorList, {message: "delete unauthorized", id: e}])
           console.log(errorList)
@@ -70,6 +71,10 @@ function App() {
       }).catch((error) => {
           console.log("this is", error)
         })
+
+        fetch("http://localhost:4000/users")
+        .then(res => res.json())
+        .then(setUserList)
   }
 
   // // DELETE TAG
@@ -88,13 +93,17 @@ function App() {
       }).catch((error) => {
           console.log("this is", error)
         })
+
+        fetch("http://localhost:4000/users")
+        .then(res => res.json())
+        .then(setUserList)
   }
 
     // PATCH REMEMBER
     const editRemember = (remember, rememberinput) => {
       console.log("hello")
   
-      setRememberList(rememberList => rememberList.map(originalRemember => {
+      updateRememberList(rememberList => rememberList.map(originalRemember => {
             if (originalRemember.id === remember.id) {
               return remember;
             } else {
@@ -118,8 +127,12 @@ function App() {
         resp.json()
       })
       .then((updatedRemember) => {
-        setRememberList([...rememberList, updatedRemember]);
+        updateRememberList([...rememberList, updatedRemember]);
       });
+
+      fetch("http://localhost:4000/users")
+      .then(res => res.json())
+      .then(setUserList)
   
     }
 
@@ -133,7 +146,7 @@ function App() {
             <About user={user}/>
           </Route>
           <Route path="/new-writing">
-            <NewRememberList user={user} tagList={tagList} setTagList={setTagList} />
+            <NewRememberList user={user} tagList={tagList} setTagList={setTagList} setUserList={setUserList}  />
           </Route>
           <Route path="/classroom-writing">
             <UsersContainer user={user} userList={userList} setUserList={setUserList} deleteRemember={deleteRemember} errorList={errorList} deleteTag={deleteTag} editRemember={editRemember}/> 

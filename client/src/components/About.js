@@ -2,8 +2,6 @@ import React, { useReducer } from 'react'
 
 function About ({user}) {
 
-    console.log(user)
-
     return (
 
 
