@@ -8,14 +8,6 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
     const [clickEdit, setClickEdit] = useState(false)
 
 
-    // let tags
-    // if (remember ) {
-    //     tags = remember.tags
-    //     console.log(tags)
-    // }
-
-
-    console.log(student)
 
     let tags
 
@@ -37,7 +29,6 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             })
             newObject = mergeById(tags, remember_tags)
         }
-        // console.log(newObject)
 
         const handleClick = (remember) => {
             deleteRemember(remember.id)
@@ -49,6 +40,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
     //     ...a2.find((item) => (item.id === itm.id) && item),
     //     ...itm
     // }));
+    // https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
 
         const handleEditRemember = (remember) => {
             setClickEdit(!clickEdit)
@@ -56,9 +48,8 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
         }
 
         // console.log(user)
-        // console.log(remember.user_id)
 
-        console.log(user.admin)
+
 
     return (
         <div>

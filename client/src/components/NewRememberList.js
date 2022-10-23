@@ -4,7 +4,6 @@ import RememberForm from "./RememberForm"
 import NewRemItem from "./NewRemItem"
 
 
-// history.push('/about')
 
 function NewRememberList({user, tagList, setTagList, setUserList, userList, newRemembers, setNewRemembers, value, setValue, isPrivate, setIsPrivate, addRemember, handleSubmit, myNewRemember }) {
     // const [newRemembers, setNewRemembers] = useState("")
