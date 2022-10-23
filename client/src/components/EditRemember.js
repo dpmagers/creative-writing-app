@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-function EditRemember ({remember=null, editRemember}) {
+function EditRemember ({remember=null, editRemember, setUserList}) {
 
     const [formData, setFormData] = useState({
         // user_id:'',

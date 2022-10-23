@@ -44,13 +44,12 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList}) {
         // .then(data => (updateRememberList([...myNewRemember, data])))
 
 
-        setValue("")
-        setIsPrivate(false)
-
-
           fetch("http://localhost:4000/users")
           .then(res => res.json())
           .then(setUserList)
+
+          setValue("")
+          setIsPrivate(false)
     }
 
     return(
@@ -68,6 +67,7 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList}) {
                     tagList={tagList} 
                     setTagList={setTagList}
                     myNewRemember={myNewRemember}
+                    setUserList={setUserList}
                 
                     /> ) : null}
 

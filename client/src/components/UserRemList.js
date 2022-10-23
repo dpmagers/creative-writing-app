@@ -2,13 +2,13 @@ import React, {useState} from 'react'
 import UserRemDetail from "./UserRemDetail"
 
 
-function UserRemList ({student, deleteRemember, errorList, user, deleteTag, editRemember}) {
+function UserRemList ({student, deleteRemember, errorList, user, deleteTag, editRemember, setUserList}) {
 
 let remembers 
 
 if (student ) {
     remembers = student.remembers
-    console.log(remembers)
+    console.log(student)
 }
 
     return (
@@ -24,6 +24,7 @@ if (student ) {
             user={user}
             deleteTag={deleteTag}
             editRemember={editRemember}
+            setUserList={setUserList}
              />) : null}
         </div>
     )

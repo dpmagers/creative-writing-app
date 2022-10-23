@@ -5,8 +5,11 @@ function UserTagList ({tag, errorList, user, deleteTag}) {
 
     // console.log(tag.id)
 
+    console.log(tag)
+
     const handleClick = (tag) => {
-        deleteTag(tag.id)
+        deleteTag(tag.newId)
+
 
     }
     // <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>

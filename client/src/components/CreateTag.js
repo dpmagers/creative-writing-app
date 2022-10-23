@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function CreateTag({tagList, setTagList} ) {
+function CreateTag({tagList, setTagList, setUserList} ) {
 
     const [createTag, setCreateTag] = useState("")
 
@@ -28,7 +28,11 @@ function CreateTag({tagList, setTagList} ) {
         })
         .then(res => res.json())
         .then(data => setTagList([...tagList, data]))
+        setCreateTag("")
 
+        fetch("http://localhost:4000/users")
+        .then(res => res.json())
+        .then(setUserList)
     }
 
     // i was trying to pass in state into the setTagList instead of the object itself 

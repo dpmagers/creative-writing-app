@@ -3,7 +3,6 @@ class UserSerializer < ActiveModel::Serializer
 
   belongs_to :classroom
   has_many :remembers, serializer: RememberSerializer
-  
 
 
 

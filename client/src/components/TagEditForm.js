@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import TagFormDetail from "./TagFormDetail"
+import TagFormEditDetail from "./TagFormEditDetail"
 
 
-function TagForm({tagList, setTagList, myNewRemember, setUserList}) {
+function TagEditForm({tagList, setTagList, myNewRemember, setUserList}) {
     // const [addTag, setAddTag] = useState(false)
  
     // console.log(tagList, "hello")
@@ -12,9 +12,10 @@ function TagForm({tagList, setTagList, myNewRemember, setUserList}) {
         <div>
             <div>
 
-             {tagList.map(tag => <TagFormDetail key={tag.id}  tag={tag} 
+             {tagList.map(tag => <TagFormEditDetail key={tag.id}  tag={tag} 
              
-             tagList={tagList} myNewRemember={myNewRemember}
+             tagList={tagList} 
+             myNewRemember={myNewRemember}
              setUserList={setUserList}
                     /> ) }
             </div>
@@ -23,7 +24,7 @@ function TagForm({tagList, setTagList, myNewRemember, setUserList}) {
     )
 }
 
-export default TagForm
+export default TagEditForm
 
 
 // where does this component go? 
