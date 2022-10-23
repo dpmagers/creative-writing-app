@@ -4,7 +4,7 @@ import EditRemember from "./EditRemember"
 
 
 
-function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList}) {
+function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student}) {
     const [clickEdit, setClickEdit] = useState(false)
 
 
@@ -13,6 +13,9 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
     //     tags = remember.tags
     //     console.log(tags)
     // }
+
+
+    console.log(student)
 
     let tags
 
@@ -52,16 +55,23 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             // console.log(remember)
         }
 
+        // console.log(user)
+        // console.log(remember.user_id)
 
+        console.log(user.admin)
 
     return (
         <div>
             <ul className="student-remembers"></ul>
                 <li>{remember.text}</li>
+                
+                {user.id === remember.user_id || user.admin === true ? <div className="update-delete-buttons">
                 <button onClick={() => handleEditRemember(remember)} className='update'>Update Remember</button>
-                {clickEdit ? <EditRemember remember={remember} editRemember={editRemember} setUserList={setUserList} /> : null}
+                {clickEdit ? <EditRemember remember={remember} editRemember={editRemember} setUserList={setUserList} clickEdit={clickEdit} setClickEdit={setClickEdit} /> : null}
 
                 <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
+                </div> : null}
+
                 {tags ? <h5 className="tag-label">Tags</h5> : null}
             <ul className="remember-tags"></ul>
             {newObject ?  newObject.map(tag => <UserTagList 
@@ -70,6 +80,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             errorList={errorList} 
             user={user} 
             deleteTag={deleteTag}
+            remember={remember}
             
 
              />) : null}

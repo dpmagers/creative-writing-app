@@ -36,6 +36,8 @@ function LoginForm({user, setUser}) {
 
 
     return (
+      <div className="login-page">
+      <div className="login-form">
         <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
@@ -59,7 +61,18 @@ function LoginForm({user, setUser}) {
           Login
         </button>
 
+        
+
     </form>
+    </div>
+      
+      <img className="homepage-img"
+                src="https://m.media-amazon.com/images/I/71Npzl4Pl-L.jpg"
+                width="300px" 
+                height="460px"
+            ></img>
+      <h3>Please Login! If you do not have an account, click the Signup tab.</h3>
+    </div>
     )
 }
 

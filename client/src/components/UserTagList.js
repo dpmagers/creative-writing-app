@@ -1,11 +1,10 @@
 import React from 'react'
 
-function UserTagList ({tag, errorList, user, deleteTag}) {
+function UserTagList ({tag, errorList, user, deleteTag, remember}) {
 
 
-    // console.log(tag.id)
 
-    console.log(tag)
+
 
     const handleClick = (tag) => {
         deleteTag(tag.newId)
@@ -17,16 +16,25 @@ function UserTagList ({tag, errorList, user, deleteTag}) {
 
     return(
         <div className="remember-tags">
-                {/* {tag.name ? <h5 className="tag-label">Tags</h5> : null} */}
+
             <li>{tag.name}</li>
+            {user.id === remember.user_id || user.admin === true ? <div className="update-delete-buttons">
                 <button>Update Tags</button>
                 <button onClick={() => handleClick(tag)} className='delete'>Delete Tag</button>
-
+            </div> : null}
         </div>
     )
 }
 
 export default UserTagList
+// {user.id === remember.user_id ? <div className="update-delete-buttons">
+//                 <button onClick={() => handleEditRemember(remember)} className='update'>Update Remember</button>
+//                 {clickEdit ? <EditRemember remember={remember} editRemember={editRemember} setUserList={setUserList} /> : null}
+
+//                 <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
+//                 </div> : null}
+
+
 
 {/* <div className="student-writing">
             <h2 className='student-name'>{student.full_name}'s Writing</h2>

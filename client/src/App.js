@@ -1,12 +1,13 @@
 import { RememberListContext } from './GlobalContext/RememberListContext';
 import { useState, useEffect, useContext } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 import LoginForm from "./components/LoginForm"
 import SignupForm from "./components/SignupForm"
 import NavBar from "./components/NavBar"
 import About from "./components/About"
 import NewRememberList from "./components/NewRememberList"
 import UsersContainer from "./components/UsersContainer"
+import Home from "./components/Home"
 
 
 
@@ -18,6 +19,14 @@ function App() {
   const [userList, setUserList] = useState([])
   const [errorList, setErrorList] = useState([])
   const [rememberTagList, setRememberTagList] = useState([])
+  
+  const [newRemembers, setNewRemembers] = useState("")
+  const [value, setValue] = useState("")
+  const [isPrivate, setIsPrivate] = useState(false)
+  const [myNewRemember, setMyNewRemember] = useState("")
+
+  let history = useHistory()
+
 
 
   const { rememberList, updateRememberList } = useContext(RememberListContext);
@@ -53,7 +62,91 @@ function App() {
       .then(updateRememberList)
     }, [])
 
-    console.log(userList)
+    // console.log(userList)
+
+
+
+    // POST REMEMBER 
+    const addRemember = text => {
+      let brandNewRemember = 
+      {user_id: user.id, 
+      text: text, 
+      set_to_private: false}
+
+      setNewRemembers([...newRemembers, brandNewRemember]);
+  };
+
+  const handleSubmit = e => {
+      e.preventDefault()
+      addRemember(value)
+
+      fetch(`http://localhost:4000/remembers`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user_id: user.id,
+          set_to_private: isPrivate,
+          text: value 
+        })
+      })
+      .then(res => res.json())
+      .then(data => setMyNewRemember(data))
+
+      // .then(data => (updateRememberList([...myNewRemember, data])))
+
+
+        fetch("http://localhost:4000/users")
+        .then(res => res.json())
+        .then(setUserList)
+
+        setValue("")
+        setIsPrivate(false)
+  }
+
+// POST REMEMBERTAG
+  // const addRememberTag = id => {
+  //   let brandNewRememberTag = 
+  //   {remember_id: myNewRemember.id, 
+  //   tag_id: tag.id} 
+    
+  //   setRememberTagList([...rememberTagList, brandNewRememberTag]);
+  //   };
+    
+  // const handleRememberTagSubmit = e => {
+  // e.preventDefault()
+  // // addRememberTag()
+
+  // fetch(`http://localhost:4000/remember_tags`, {
+  // method: "POST",
+  // headers: {
+  // 'Content-Type': 'application/json'
+  // },
+  // body: JSON.stringify({
+  // remember_id: myNewRemember.id,
+  // tag_id: tag.id,
+  // })
+  // })
+  // .then(res => res.json())
+  // .then(data => setRememberTagList(data))
+  // // .then(data => console.log(data))
+
+  // fetch("http://localhost:4000/users")
+  // .then(res => res.json())
+  // .then(setUserList)
+
+  // setRememberTagList("")
+
+  // }
+
+
+
+
+
+
+
+
 
 
     // DELETE REMEMBER
@@ -129,13 +222,14 @@ function App() {
       })
       .then((updatedRemember) => {
         updateRememberList([...rememberList, updatedRemember]);
+        history.push('/about')
       });
 
       fetch("http://localhost:4000/users")
       .then(res => res.json())
       .then(setUserList)
       console.log(userList)
-
+      
     }
 
 
@@ -143,12 +237,26 @@ function App() {
     <BrowserRouter>
       <NavBar onChangePage={setPage} setUser={setUser} user={user} />
       <div className="App">
+      <header><h1 className="sitehead">I Remember: A Creative Writing App</h1></header>
         <Switch>
           <Route path="/about">
             <About user={user}/>
           </Route>
           <Route path="/new-writing">
-            <NewRememberList user={user} tagList={tagList} setTagList={setTagList} setUserList={setUserList}  />
+            <NewRememberList user={user} 
+            tagList={tagList} 
+            setTagList={setTagList} 
+            setUserList={setUserList} 
+            newRemembers={newRemembers} 
+            setNewRemembers={setNewRemembers}
+            value={value} 
+            setValue={setValue}
+            isPrivate={isPrivate} 
+            setIsPrivate={setIsPrivate}
+            myNewRemember={myNewRemember} 
+            setMyNewRemember={setMyNewRemember}
+            addRemember={addRemember}
+            handleSubmit={handleSubmit}  />
           </Route>
           <Route path="/classroom-writing">
             <UsersContainer user={user} userList={userList} setUserList={setUserList} deleteRemember={deleteRemember} errorList={errorList} deleteTag={deleteTag} editRemember={editRemember}/> 
@@ -158,6 +266,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupForm user={user} setUser={setUser}/>
+          </Route>
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       </div>

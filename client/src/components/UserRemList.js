@@ -10,7 +10,6 @@ if (student ) {
     remembers = student.remembers
     console.log(student)
 }
-
     return (
 
         <div className="student-writing">
@@ -25,6 +24,7 @@ if (student ) {
             deleteTag={deleteTag}
             editRemember={editRemember}
             setUserList={setUserList}
+            student={student}
              />) : null}
         </div>
     )
