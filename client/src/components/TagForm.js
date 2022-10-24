@@ -8,6 +8,7 @@ function TagForm({tagList, setTagList, myNewRemember, setUserList}) {
     // console.log(tagList, "hello")
 
 
+    console.log(tagList)
     return (
         <div>
             <div>

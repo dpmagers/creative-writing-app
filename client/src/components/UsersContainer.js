@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import UserRemList from "./UserRemList"
 
 
-function UsersContainer ({user, userList, setUserList, deleteRemember, errorList, deleteTag, editRemember}) {
+function UsersContainer ({user, userList, setUserList, deleteRemember, errorList, deleteTag, editRemember, tagList, setTagList, myNewRemember, setMyNewRemember}) {
     const [selectedStudent, setSelectedStudent] = useState("")
     const [studentWriting, setStudentWriting] = useState("")
 
@@ -48,6 +48,13 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
                     user={user}
                     deleteTag={deleteTag}
                     editRemember={editRemember}
+                    setUserList={setUserList}
+                    userList={userList}
+                    tagList={tagList}
+                    setTagList={setTagList}
+                    myNewRemember={myNewRemember}
+                    setMyNewRemember={setMyNewRemember}
+
                     />)}
 
                 </div>

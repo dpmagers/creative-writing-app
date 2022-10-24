@@ -16,20 +16,27 @@ function App() {
   const [page, setPage] = useState("/")
   // const [rememberList, setRememberList] = useState("")
   const [tagList, setTagList] = useState([])
+  // STATE for the entire set of tags in database
   const [userList, setUserList] = useState([])
+  // STATE for the entire set of users in database
   const [errorList, setErrorList] = useState([])
   const [rememberTagList, setRememberTagList] = useState([])
   
-  const [newRemembers, setNewRemembers] = useState("")
   const [value, setValue] = useState("")
   const [isPrivate, setIsPrivate] = useState(false)
+  const [newRemembers, setNewRemembers] = useState("")
+  // newRemembers is the STATE I created for the ARRAY of objects I am creating on the '/new-writing' client route. newRemembers is added to the full list of existing backend Remembers. 
   const [myNewRemember, setMyNewRemember] = useState("")
+    // myNewRemember is the STATE I created for the new Remember OBJECT
+    // i'm using myNewRemember.id as the value of the object I am stringifying in my RememberTag post in TagFormDetail 
+
 
   let history = useHistory()
 
 
-
   const { rememberList, updateRememberList } = useContext(RememberListContext);
+      // rememberList is the CONTEXT I created for the entire list of Remembers
+
 
     useEffect(() => {
       // auto-login
@@ -62,8 +69,6 @@ function App() {
       .then(updateRememberList)
     }, [])
 
-    // console.log(userList)
-
 
 
     // POST REMEMBER 
@@ -75,10 +80,18 @@ function App() {
 
       setNewRemembers([...newRemembers, brandNewRemember]);
   };
+    // addRemember is the FUNCTION that creates an object for the post and pushes a new object into the backend 
+    // let brandNewRemember is the created OBJECT that is being pushed to newRemembers
+    // newRemembers is the STATE I created for the ARRAY of objects I am creating on the '/new-writing' client route. newRemembers is added to the full list of existing backend Remembers. 
+    // myNewRemember is the STATE I created for the new Remember OBJECT
+    // i'm using myNewRemember.id as the value of the object I am stringifying in my RememberTag post in TagFormDetail 
+
+    // if I set a piece of state that sets the fullRemembers list, I won't have to refetch /Users and hope async issues come up (I think)
 
   const handleSubmit = e => {
       e.preventDefault()
       addRemember(value)
+      // addRemember(value) populates /new-writing route w/new Remember. The parameter (value/text) is the text that is put on the /new-writing route 
 
       fetch(`http://localhost:4000/remembers`, {
         method: "POST",
@@ -93,8 +106,10 @@ function App() {
       })
       .then(res => res.json())
       .then(data => setMyNewRemember(data))
+      // updateRememberList(newRemembers)
+      // have this idea to set this at context but need some guidance
+      console.log(myNewRemember)
 
-      // .then(data => (updateRememberList([...myNewRemember, data])))
 
 
         fetch("http://localhost:4000/users")
@@ -105,48 +120,9 @@ function App() {
         setIsPrivate(false)
   }
 
-// POST REMEMBERTAG
-  // const addRememberTag = id => {
-  //   let brandNewRememberTag = 
-  //   {remember_id: myNewRemember.id, 
-  //   tag_id: tag.id} 
-    
-  //   setRememberTagList([...rememberTagList, brandNewRememberTag]);
-  //   };
-    
-  // const handleRememberTagSubmit = e => {
-  // e.preventDefault()
-  // // addRememberTag()
-
-  // fetch(`http://localhost:4000/remember_tags`, {
-  // method: "POST",
-  // headers: {
-  // 'Content-Type': 'application/json'
-  // },
-  // body: JSON.stringify({
-  // remember_id: myNewRemember.id,
-  // tag_id: tag.id,
-  // })
-  // })
-  // .then(res => res.json())
-  // .then(data => setRememberTagList(data))
-  // // .then(data => console.log(data))
-
-  // fetch("http://localhost:4000/users")
-  // .then(res => res.json())
-  // .then(setUserList)
-
-  // setRememberTagList("")
-
-  // }
 
 
-
-
-
-
-
-
+  // console.log(rememberList)
 
 
     // DELETE REMEMBER
@@ -158,12 +134,12 @@ function App() {
               console.log(data)
               console.log(res)
         updateRememberList(data)
-        if (res.status > 300) {
-          setErrorList([...errorList, {message: "delete unauthorized", id: e}])
-          console.log(errorList)
-        }
-      }).catch((error) => {
-          console.log("this is", error)
+      //   if (res.status > 300) {
+      //     setErrorList([...errorList, {message: "delete unauthorized", id: e}])
+      //     console.log(errorList)
+      //   }
+      // }).catch((error) => {
+      //     console.log("this is", error)
         })
 
         fetch("http://localhost:4000/users")
@@ -180,12 +156,6 @@ function App() {
               console.log(data)
               console.log(res)
         setRememberTagList(data)
-        if (res.status > 300) {
-          setErrorList([...errorList, {message: "delete unauthorized", id: e}])
-          console.log(errorList)
-        }
-      }).catch((error) => {
-          console.log("this is", error)
         })
 
         fetch("http://localhost:4000/users")
@@ -193,19 +163,22 @@ function App() {
         .then(setUserList)
   }
 
-    // PATCH REMEMBER
+
+
+
+      // PATCH REMEMBER
+  const handleUpdatedRemember = (updatedRemember) => {
+    console.log(updatedRemember)
+    let updatedRememberList = rememberList.filter(remember => remember.id !== updatedRemember.id)
+    updatedRememberList.push(updatedRemember)
+    updateRememberList(updatedRememberList)
+  }
+
     const editRemember = (remember, rememberinput) => {
       console.log("hello")
-  
-      updateRememberList(rememberList => rememberList.map(originalRemember => {
-            if (originalRemember.id === remember.id) {
-              return remember;
-            } else {
-              return originalRemember;
-            }
-          }))
           console.log(remember)
           console.log(rememberinput)
+
       fetch(`http://localhost:4000/remembers/${remember.id}`, {
         method: "PATCH",
         headers: {
@@ -213,17 +186,9 @@ function App() {
         },
         body: JSON.stringify(rememberinput),
       })
-      .then((resp) => {
-        if (resp.status > 300) {
-          setErrorList([...errorList, {message: "update unauthorized", id: remember.id}])
-          console.log(errorList)
-        }
-        resp.json()
-      })
-      .then((updatedRemember) => {
-        updateRememberList([...rememberList, updatedRemember]);
-        history.push('/about')
-      });
+      .then((resp) => resp.json())
+      .then(updatedRemember => handleUpdatedRemember(updatedRemember))
+      // want to filter out the rememberList array and remove the stale version (finding the identical id with the updated remember). if id.updated === identical.id ; return updated remmeber in its place
 
       fetch("http://localhost:4000/users")
       .then(res => res.json())
@@ -259,7 +224,21 @@ function App() {
             handleSubmit={handleSubmit}  />
           </Route>
           <Route path="/classroom-writing">
-            <UsersContainer user={user} userList={userList} setUserList={setUserList} deleteRemember={deleteRemember} errorList={errorList} deleteTag={deleteTag} editRemember={editRemember}/> 
+            <UsersContainer 
+            user={user} 
+            userList={userList} 
+            setUserList={setUserList} 
+            deleteRemember={deleteRemember} 
+            errorList={errorList} 
+            deleteTag={deleteTag} 
+            editRemember={editRemember}
+            tagList={tagList}
+            setTagList={setTagList}
+            myNewRemember={myNewRemember}
+            setMyNewRemember={setMyNewRemember}
+
+            /> 
+            
           </Route>
           <Route path="/login">
             <LoginForm user={user} setUser={setUser}/>
@@ -277,3 +256,17 @@ function App() {
 }
 
 export default App;
+
+
+        // if (resp.status > 300) {
+        //   setErrorList([...errorList, {message: "update unauthorized", id: remember.id}])
+        //   console.log(errorList)
+        // }
+        // resp.json()
+
+              //   if (res.status > 300) {
+      //     setErrorList([...errorList, {message: "delete unauthorized", id: e}])
+      //     console.log(errorList)
+      //   }
+      // }).catch((error) => {
+      //     console.log("this is", error)
