@@ -63,7 +63,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
 
         // const [showTagUpdateList, setShowTagUpdateList]
 
-        console.log(tagList)
+        console.log(myNewRemember)
 
     return (
         <div>
@@ -89,9 +89,15 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
                 /> 
                 : null}
 
+{/* myNewRemember is  */}
+{/* // myNewRemember is the STATE I created for the new Remember OBJECT
+    // i'm using myNewRemember.id as the value of the object I am stringifying in my RememberTag post in TagFormDetail  */}
+{/* using myNewRemember for my RememberTagPost */}
 
 
                 {/* how to send down filtered of tags without interrupting the work TagForm does in client-side route? */}
+
+
 
             <ul className="remember-tags"></ul>
             {newObject ?  newObject.map(tag => <UserTagList 

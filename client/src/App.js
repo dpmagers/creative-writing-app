@@ -108,6 +108,7 @@ function App() {
       .then(data => setMyNewRemember(data))
       // updateRememberList(newRemembers)
       // have this idea to set this at context but need some guidance
+      console.log(myNewRemember)
 
 
 

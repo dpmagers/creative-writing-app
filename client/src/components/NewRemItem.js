@@ -14,7 +14,7 @@ const handleClick = (e) => {
     setClickCreateTags(!clickCreateTags)
 }
 
-console.log(tagList)
+// console.log(tagList)
 
 
     return (
