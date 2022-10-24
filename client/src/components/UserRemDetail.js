@@ -1,12 +1,21 @@
 import React, {useState} from 'react'
 import UserTagList from "./UserTagList"
 import EditRemember from "./EditRemember"
+import TagForm from "./TagForm"
+import CreateTag from "./CreateTag"
 
 
 
-function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student, userList}) {
+
+function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student, userList, studentRemembers, tagList, setTagList, myNewRemember, setMyNewRemember}) {
     const [clickEdit, setClickEdit] = useState(false)
+    const [showTagUpdateList, setShowTagUpdateList] = useState(false)
+    const [showTagCreate, setShowTagCreate] = useState(false)
 
+    // console.log(studentRemembers)
+    // this piece of state holds both an array of Tags (which includes name attribute) and RememberTag which is the join table connecting a Tag with a Remember)
+
+    // 
 
     let tags
 
@@ -33,7 +42,6 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             deleteRemember(remember.id)
     
         }
-
     //     const mergeById = (a1, a2) =>
     // a1.map(itm => ({
     //     ...a2.find((item) => (item.id === itm.id) && item),
@@ -48,7 +56,14 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
 
         // console.log(user)
 
+        const handleUpdateTags = (e) => {
+            setShowTagUpdateList(!showTagUpdateList)
+            setShowTagCreate(!showTagCreate)
+        }
 
+        // const [showTagUpdateList, setShowTagUpdateList]
+
+        console.log(tagList)
 
     return (
         <div>
@@ -62,7 +77,22 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
                 <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
                 </div> : null}
 
+{/* send down a filter list of tags  */}
                 {tags ? <h5 className="tag-label">Tags</h5> : null}
+               <button onClick={handleUpdateTags}>Update Tags</button>
+               {showTagCreate ? <CreateTag tagList={tagList} setTagList={setTagList}/> :null}
+               {showTagUpdateList ? 
+                <TagForm 
+                tagList={tagList} setTagList={setTagList} 
+                myNewRemember={myNewRemember}
+                
+                /> 
+                : null}
+
+
+
+                {/* how to send down filtered of tags without interrupting the work TagForm does in client-side route? */}
+
             <ul className="remember-tags"></ul>
             {newObject ?  newObject.map(tag => <UserTagList 
             key={tag.id} 

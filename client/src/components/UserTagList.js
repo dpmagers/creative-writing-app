@@ -3,23 +3,18 @@ import React from 'react'
 function UserTagList ({tag, errorList, user, deleteTag, remember}) {
 
 
-
-
-
     const handleClick = (tag) => {
         deleteTag(tag.newId)
 
 
     }
     // <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
-
+    // console.log(tag)
 
     return(
         <div className="remember-tags">
-
             <li>{tag.name}</li>
             {user.id === remember.user_id || user.admin === true ? <div className="update-delete-buttons">
-                <button>Update Tags</button>
                 <button onClick={() => handleClick(tag)} className='delete'>Delete Tag</button>
             </div> : null}
         </div>

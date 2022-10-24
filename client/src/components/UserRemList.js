@@ -3,7 +3,7 @@ import UserRemDetail from "./UserRemDetail"
 // import RememberFilter from "./RememberFilter"
 
 
-function UserRemList ({student, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, userList}) {
+function UserRemList ({student, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, userList, tagList, setTagList, myNewRemember, setMyNewRemember}) {
 
     const [sortBy, setSortBy] = useState("")
     const [studentRemembers, setStudentRemembers] = useState([])
@@ -13,7 +13,7 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
     if (student ) {
         remembers = student.remembers
     }
-    // console.log(remembers)
+    console.log(studentRemembers)
     useEffect(() => {
         setStudentRemembers(student.remembers)
 
@@ -53,6 +53,11 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
                 setUserList={setUserList}
                 student={student}
                 userList={userList}
+                studentRemembers={studentRemembers}
+                tagList={tagList}
+                setTagList={setTagList}
+                myNewRemember={myNewRemember}
+                setMyNewRemember={setMyNewRemember}
                 // remembers={remembers}
                 // remembersToDisplay={remembersToDisplay}
                 />) : null}

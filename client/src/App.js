@@ -121,7 +121,7 @@ function App() {
 
 
 
-  console.log(rememberList)
+  // console.log(rememberList)
 
 
     // DELETE REMEMBER
@@ -155,12 +155,6 @@ function App() {
               console.log(data)
               console.log(res)
         setRememberTagList(data)
-      //   if (res.status > 300) {
-      //     setErrorList([...errorList, {message: "delete unauthorized", id: e}])
-      //     console.log(errorList)
-      //   }
-      // }).catch((error) => {
-      //     console.log("this is", error)
         })
 
         fetch("http://localhost:4000/users")
@@ -168,6 +162,10 @@ function App() {
         .then(setUserList)
   }
 
+
+
+
+      // PATCH REMEMBER
   const handleUpdatedRemember = (updatedRemember) => {
     console.log(updatedRemember)
     let updatedRememberList = rememberList.filter(remember => remember.id !== updatedRemember.id)
@@ -175,10 +173,8 @@ function App() {
     updateRememberList(updatedRememberList)
   }
 
-    // PATCH REMEMBER
     const editRemember = (remember, rememberinput) => {
       console.log("hello")
-  
           console.log(remember)
           console.log(rememberinput)
 
@@ -191,9 +187,6 @@ function App() {
       })
       .then((resp) => resp.json())
       .then(updatedRemember => handleUpdatedRemember(updatedRemember))
-
-      // should rememberlist on 201 get changed to studentRemembers (piece of state declared in UserRemList?)
-
       // want to filter out the rememberList array and remove the stale version (finding the identical id with the updated remember). if id.updated === identical.id ; return updated remmeber in its place
 
       fetch("http://localhost:4000/users")
@@ -204,12 +197,6 @@ function App() {
     }
 
 
-      
-        // if (resp.status > 300) {
-        //   setErrorList([...errorList, {message: "update unauthorized", id: remember.id}])
-        //   console.log(errorList)
-        // }
-        // resp.json()
   return (
     <BrowserRouter>
       <NavBar onChangePage={setPage} setUser={setUser} user={user} />
@@ -236,7 +223,21 @@ function App() {
             handleSubmit={handleSubmit}  />
           </Route>
           <Route path="/classroom-writing">
-            <UsersContainer user={user} userList={userList} setUserList={setUserList} deleteRemember={deleteRemember} errorList={errorList} deleteTag={deleteTag} editRemember={editRemember}/> 
+            <UsersContainer 
+            user={user} 
+            userList={userList} 
+            setUserList={setUserList} 
+            deleteRemember={deleteRemember} 
+            errorList={errorList} 
+            deleteTag={deleteTag} 
+            editRemember={editRemember}
+            tagList={tagList}
+            setTagList={setTagList}
+            myNewRemember={myNewRemember}
+            setMyNewRemember={setMyNewRemember}
+
+            /> 
+            
           </Route>
           <Route path="/login">
             <LoginForm user={user} setUser={setUser}/>
@@ -254,3 +255,17 @@ function App() {
 }
 
 export default App;
+
+
+        // if (resp.status > 300) {
+        //   setErrorList([...errorList, {message: "update unauthorized", id: remember.id}])
+        //   console.log(errorList)
+        // }
+        // resp.json()
+
+              //   if (res.status > 300) {
+      //     setErrorList([...errorList, {message: "delete unauthorized", id: e}])
+      //     console.log(errorList)
+      //   }
+      // }).catch((error) => {
+      //     console.log("this is", error)

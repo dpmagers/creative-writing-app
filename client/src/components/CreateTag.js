@@ -12,6 +12,7 @@ function CreateTag({tagList, setTagList, setUserList} ) {
     //     setTagList([...tagList, newTag]);
     //   };
       
+    // POST TAGS (TO tagList)
     const handleTagSubmit = e => {
         e.preventDefault()
         console.log("hello")
