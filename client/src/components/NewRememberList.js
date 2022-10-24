@@ -1,5 +1,5 @@
 import { RememberListContext } from '../GlobalContext/RememberListContext';
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import RememberForm from "./RememberForm"
 import NewRemItem from "./NewRemItem"
@@ -14,7 +14,7 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList, newR
 
     const { rememberList, updateRememberList } = useContext(RememberListContext);
 
-    let history = useHistory()
+    // let history = useHistory()
 
     // const addRemember = text => {
     //     let brandNewRemember = 
@@ -56,16 +56,16 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList, newR
     //       setIsPrivate(false)
     // }
 
-            const handleNavClick = () => {
-                history.push('/classroom-writing')
-            }
+            // const handleNavClick = () => {
+            //     history.push('/classroom-writing')
+            // }
 
     return(
 
             <div> 
             <h1>Create New Writing Here</h1>
           
-            <button onClick={handleNavClick}>Check out your work</button>
+            {/* <button onClick={handleNavClick}>Check out your work</button> */}
          
             <RememberForm addRemember={addRemember} 
             user={user} 
