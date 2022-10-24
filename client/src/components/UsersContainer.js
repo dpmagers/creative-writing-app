@@ -17,7 +17,6 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
             return user.classroom_id === classroomUser.classroom_id 
         })
     }
-    console.log(classroomUsers)
 
     let studentData
     if (classroomUsers) {
@@ -50,9 +49,6 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
                     deleteTag={deleteTag}
                     editRemember={editRemember}
                     />)}
-
-
-
 
                 </div>
                 <div className="right-column">

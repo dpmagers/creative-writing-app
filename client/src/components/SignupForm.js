@@ -56,85 +56,90 @@ function SignupForm({ user, setUser }) {
 
 
   return (
-    <form onSubmit={handleSubmit}>
 
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+  <div className="login-page">
+    <div className="login-form">
+      <form onSubmit={handleSubmit}>
 
-
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete="current-password"
-        />
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            autoComplete="off"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
 
 
-        <label htmlFor="password">Password Confirmation</label>
-        <input
-          type="password"
-          id="password_confirmation"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-          autoComplete="current-password"
-        />
-        <label htmlFor="classroom-id"> Classroom Id</label>
-        <input
-            type="number"
-            id="classroom-id"
-            min="1" 
-            max="3"
-            value={classroomId}
-            onChange={(e) => setClassroomId(e.target.value)}
-        />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+          />
 
-        {/* <label htmlFor="classroom-id">Classroom Id</label>
-        <input
-          type="number"
-          id="classroom-id"
-          value={classroomId}
-          onChange={(e) => setClassroomId(e.target.value)}
-        /> */}
 
-        <label htmlFor="full-name">Full Name</label>
-        <input
-          type="text"
-          id="full-name"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
+          <label htmlFor="password">Password Confirmation</label>
+          <input
+            type="password"
+            id="password_confirmation"
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            autoComplete="current-password"
+          />
+          <label htmlFor="classroom-id"> Classroom Id</label>
+          <input
+              type="number"
+              id="classroom-id"
+              min="1" 
+              max="3"
+              value={classroomId}
+              onChange={(e) => setClassroomId(e.target.value)}
+          />
 
-        <label htmlFor="is-instructor">Is Instructor?</label>
-        <input 
-            type="checkbox"
-            id="is-instructor"
-            checked={isInstructor}
-            onChange={(e) => setIsInstructor(e.target.checked)}
-        />
+          <label htmlFor="full-name">Full Name</label>
+          <input
+            type="text"
+            id="full-name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
 
-        <label htmlFor="is-admin">Is Admin?</label>
-        <input 
-            type="checkbox"
-            id="is-admin"
-            checked={isAdmin}
-            onChange={(e) => setIsAdmin(e.target.checked)}
-        />
-        
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+          <label htmlFor="is-instructor">Is Instructor?</label>
+          <input 
+              type="checkbox"
+              id="is-instructor"
+              checked={isInstructor}
+              onChange={(e) => setIsInstructor(e.target.checked)}
+          />
 
-        {errors.map((err) => (
-          <error key={err}>{err}</error>
-        ))}
+          <label htmlFor="is-admin">Is Admin?</label>
+          <input 
+              type="checkbox"
+              id="is-admin"
+              checked={isAdmin}
+              onChange={(e) => setIsAdmin(e.target.checked)}
+          />
+          
+          <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
 
-    </form>
+          {errors.map((err) => (
+            <error key={err}>{err}</error>
+          ))}
+
+      </form>
+      </div>
+      
+      <img className="homepage-img"
+                src="https://m.media-amazon.com/images/I/71Npzl4Pl-L.jpg"
+                width="300px" 
+                height="460px"
+            ></img>
+      <h3>Sign up for an account here.</h3>
+    </div>
+    
   );
 }
 

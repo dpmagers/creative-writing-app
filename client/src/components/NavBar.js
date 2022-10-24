@@ -1,9 +1,13 @@
 import React, {useState} from 'react'
-import { NavLink } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom"
 
 
 
 function NavBar({ user, setUser }) {
+
+let history = useHistory()
+
+
     function handleLogoutClick() {
         fetch('/logout', {
             method: "DELETE"
@@ -13,6 +17,7 @@ function NavBar({ user, setUser }) {
                 setUser(null)
             }
         })
+        history.push('/')
     }
 
     // conditionally render home page display

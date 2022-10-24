@@ -1,62 +1,82 @@
 import { RememberListContext } from '../GlobalContext/RememberListContext';
+// import { useHistory } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import RememberForm from "./RememberForm"
 import NewRemItem from "./NewRemItem"
 
-function NewRememberList({user, tagList, setTagList, setUserList, userList}) {
-    const [newRemembers, setNewRemembers] = useState("")
-    const [myNewRemember, setMyNewRemember] = useState("")
-    const [value, setValue] = useState("");
-    const [isPrivate, setIsPrivate] = useState(false)
+
+
+function NewRememberList({user, tagList, setTagList, setUserList, userList, newRemembers, setNewRemembers, value, setValue, isPrivate, setIsPrivate, addRemember, handleSubmit, myNewRemember }) {
+    // const [newRemembers, setNewRemembers] = useState("")
+    // const [myNewRemember, setMyNewRemember] = useState("")
+    // const [value, setValue] = useState("");
+    // const [isPrivate, setIsPrivate] = useState(false)
 
     const { rememberList, updateRememberList } = useContext(RememberListContext);
 
+    // let history = useHistory()
 
-    const addRemember = text => {
-        let brandNewRemember = 
-        {user_id: user.id, 
-        text: text, 
-        set_to_private: false}
+    // const addRemember = text => {
+    //     let brandNewRemember = 
+    //     {user_id: user.id, 
+    //     text: text, 
+    //     set_to_private: false}
 
-        setNewRemembers([...newRemembers, brandNewRemember]);
-    };
-
-
-
-    const handleSubmit = e => {
-        e.preventDefault()
-        addRemember(value)
-
-        fetch(`http://localhost:4000/remembers`, {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            user_id: user.id,
-            set_to_private: isPrivate,
-            text: value 
-          })
-        })
-        .then(res => res.json())
-        .then(data => setMyNewRemember(data))
-
-        // .then(data => (updateRememberList([...myNewRemember, data])))
+    //     setNewRemembers([...newRemembers, brandNewRemember]);
+    // };
 
 
-          fetch("http://localhost:4000/users")
-          .then(res => res.json())
-          .then(setUserList)
 
-          setValue("")
-          setIsPrivate(false)
-    }
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     addRemember(value)
+
+    //     fetch(`http://localhost:4000/remembers`, {
+    //       method: "POST",
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       },
+    //       body: JSON.stringify({
+    //         user_id: user.id,
+    //         set_to_private: isPrivate,
+    //         text: value 
+    //       })
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => setMyNewRemember(data))
+
+    //     // .then(data => (updateRememberList([...myNewRemember, data])))
+
+
+    //       fetch("http://localhost:4000/users")
+    //       .then(res => res.json())
+    //       .then(setUserList)
+
+    //       setValue("")
+    //       setIsPrivate(false)
+    // }
+
+            // const handleNavClick = () => {
+            //     history.push('/classroom-writing')
+            // }
 
     return(
 
             <div> 
             <h1>Create New Writing Here</h1>
-            <RememberForm addRemember={addRemember} user={user} handleSubmit={handleSubmit} value={value} setValue={setValue} isPrivate={isPrivate} setIsPrivate={setIsPrivate} myNewRemember={myNewRemember} setUserList={setUserList} userList={userList}/>
+          
+            {/* <button onClick={handleNavClick}>Check out your work</button> */}
+         
+            <RememberForm addRemember={addRemember} 
+            user={user} 
+            handleSubmit={handleSubmit} 
+            value={value} 
+            setValue={setValue} 
+            isPrivate={isPrivate} 
+            setIsPrivate={setIsPrivate} 
+            myNewRemember={myNewRemember} 
+            setUserList={setUserList} 
+            userList={userList}/>
            
             <div className="left-column">
                 <div className="remember-container">

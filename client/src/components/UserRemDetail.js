@@ -4,15 +4,10 @@ import EditRemember from "./EditRemember"
 
 
 
-function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList}) {
+function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student}) {
     const [clickEdit, setClickEdit] = useState(false)
 
-
-    // let tags
-    // if (remember ) {
-    //     tags = remember.tags
-    //     console.log(tags)
-    // }
+    console.log(remember)
 
     let tags
 
@@ -34,8 +29,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             })
             newObject = mergeById(tags, remember_tags)
         }
-        // console.log(newObject)
-
+            console.log(remember)
         const handleClick = (remember) => {
             deleteRemember(remember.id)
     
@@ -46,11 +40,14 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
     //     ...a2.find((item) => (item.id === itm.id) && item),
     //     ...itm
     // }));
+    // https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
 
         const handleEditRemember = (remember) => {
             setClickEdit(!clickEdit)
             // console.log(remember)
         }
+
+        // console.log(user)
 
 
 
@@ -58,10 +55,14 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
         <div>
             <ul className="student-remembers"></ul>
                 <li>{remember.text}</li>
+                
+                {user.id === remember.user_id || user.admin === true ? <div className="update-delete-buttons">
                 <button onClick={() => handleEditRemember(remember)} className='update'>Update Remember</button>
-                {clickEdit ? <EditRemember remember={remember} editRemember={editRemember} setUserList={setUserList} /> : null}
+                {clickEdit ? <EditRemember remember={remember} editRemember={editRemember} setUserList={setUserList} clickEdit={clickEdit} setClickEdit={setClickEdit} /> : null}
 
                 <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
+                </div> : null}
+
                 {tags ? <h5 className="tag-label">Tags</h5> : null}
             <ul className="remember-tags"></ul>
             {newObject ?  newObject.map(tag => <UserTagList 
@@ -70,6 +71,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             errorList={errorList} 
             user={user} 
             deleteTag={deleteTag}
+            remember={remember}
             
 
              />) : null}

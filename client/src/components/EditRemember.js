@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
-function EditRemember ({remember=null, editRemember, setUserList}) {
+function EditRemember ({remember, editRemember, setUserList, clickEdit, setClickEdit}) {
+  // remember=null
 
     const [formData, setFormData] = useState({
         // user_id:'',
@@ -29,6 +30,7 @@ function EditRemember ({remember=null, editRemember, setUserList}) {
         }
         editRemember(remember, rememberinput)
         console.log("helloooo")
+        setClickEdit(!clickEdit)
       }
 
     //   console.log(editRemember)
