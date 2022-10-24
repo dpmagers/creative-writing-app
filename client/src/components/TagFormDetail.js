@@ -5,7 +5,7 @@ import { useState, useEffect, useContext } from "react";
 function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
     // state for checkbox value
     const [addTag, setAddTag] = useState(false) 
-    const [rememberTagList, setRememberTagList] = useState("")
+    const [rememberTagList, setRememberTagList] = useState([])
 
 
     const { rememberList, updateRememberList } = useContext(RememberListContext);
@@ -14,17 +14,16 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
     console.log(rememberTagList, "hello")
 
 
-    const addRememberTag = id => {
-        let brandNewRememberTag = 
-        {remember_id: myNewRemember.id, 
-        tag_id: tag.id} 
+    // const addRememberTag = id => {
+    //     // let brandNewRememberTag = 
+    //     // {remember_id: myNewRemember.id, 
+    //     // tag_id: tag.id} 
         
-        setRememberTagList([...rememberTagList, brandNewRememberTag]);
-        };
+    //     setRememberTagList([...rememberTagList, brandNewRememberTag]);
+    //     };
         
     const handleRememberTagSubmit = e => {
     e.preventDefault()
-    // addRememberTag()
 
     fetch(`http://localhost:4000/remember_tags`, {
     method: "POST",
@@ -37,7 +36,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
     })
     })
     .then(res => res.json())
-    .then(data => setRememberTagList(data))
+    .then(data => setRememberTagList([...rememberTagList, data]))
     // .then(data => console.log(data))
 
     fetch("http://localhost:4000/users")
@@ -48,6 +47,9 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
     
     }
 
+    // .then(data => setRememberTagList([...rememberTagList, data]))
+// STATE FOR YOUR TAGS SHOULD LIVE WHERE THE UPDATE AND DELETE TAGS ARE LIVING LINE 39 SHOULD LIVE AS STATE
+// WHERE I'M DOING UPDATE AND DELETE ; THIS INFO SHOULD BE PUT IN A FUNCTION THAT CAN BE CALLED 
 
 
 
