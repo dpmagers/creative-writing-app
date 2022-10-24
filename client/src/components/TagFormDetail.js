@@ -44,7 +44,8 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
     .then(setUserList)
 
     setRememberTagList("")
-    
+    console.log(rememberTagList)
+
     }
 
     // .then(data => setRememberTagList([...rememberTagList, data]))

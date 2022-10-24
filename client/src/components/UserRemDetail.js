@@ -4,10 +4,9 @@ import EditRemember from "./EditRemember"
 
 
 
-function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student}) {
+function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student, userList}) {
     const [clickEdit, setClickEdit] = useState(false)
 
-    console.log(remember)
 
     let tags
 
@@ -29,7 +28,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             })
             newObject = mergeById(tags, remember_tags)
         }
-            console.log(remember)
+            // console.log(remember)
         const handleClick = (remember) => {
             deleteRemember(remember.id)
     
@@ -72,6 +71,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             user={user} 
             deleteTag={deleteTag}
             remember={remember}
+            userList={userList}
             
 
              />) : null}

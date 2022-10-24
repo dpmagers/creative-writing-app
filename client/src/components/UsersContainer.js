@@ -48,6 +48,8 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
                     user={user}
                     deleteTag={deleteTag}
                     editRemember={editRemember}
+                    setUserList={setUserList}
+                    userList={userList}
                     />)}
 
                 </div>
