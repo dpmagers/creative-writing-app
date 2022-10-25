@@ -8,10 +8,16 @@ import About from "./components/About"
 import NewRememberList from "./components/NewRememberList"
 import UsersContainer from "./components/UsersContainer"
 import Home from "./components/Home"
+import {useStudentRemembers} from "./GlobalContext/StudentRemembersContext"
+import { RememberTagListContext } from './GlobalContext/RememberTagListContext';
+
 
 
 
 function App() {
+  const { studentRemembers, updateStudentRemembers} = useStudentRemembers()
+  const { rememberTagList, updateRememberTagList } = useContext(RememberTagListContext);
+
   const [user, setUser] = useState(null)
   const [page, setPage] = useState("/")
   // const [rememberList, setRememberList] = useState("")
@@ -20,8 +26,11 @@ function App() {
   const [userList, setUserList] = useState([])
   // STATE for the entire set of users in database
   const [errorList, setErrorList] = useState([])
-  const [rememberTagList, setRememberTagList] = useState([])
+  // const [rememberTagList, setRememberTagList] = useState([])
   
+// create context for rememberTagList then use that for the post request
+
+
   const [value, setValue] = useState("")
   const [isPrivate, setIsPrivate] = useState(false)
   const [newRemembers, setNewRemembers] = useState("")
@@ -130,10 +139,10 @@ function App() {
     fetch(`http://localhost:4000/remembers/${e}`, {
       method: "DELETE",
     })
-      .then((res) => {const data = rememberList.filter(i => i.id !== e)
+      .then((res) => {const data = studentRemembers.filter(i => i.id !== e)
               console.log(data)
               console.log(res)
-        updateRememberList(data)
+        updateStudentRemembers(data)
       //   if (res.status > 300) {
       //     setErrorList([...errorList, {message: "delete unauthorized", id: e}])
       //     console.log(errorList)
@@ -146,7 +155,6 @@ function App() {
         .then(res => res.json())
         .then(setUserList)
   }
-
   // // DELETE TAG
   const deleteTag = (e) => {
     fetch(`http://localhost:4000/remember_tags/${e}`, {
@@ -155,7 +163,7 @@ function App() {
       .then((res) => {const data = rememberTagList.filter(i => i.id !== e)
               console.log(data)
               console.log(res)
-        setRememberTagList(data)
+        updateRememberTagList(data)
         })
 
         fetch("http://localhost:4000/users")
@@ -166,18 +174,29 @@ function App() {
 
 
 
+
+  // i changed filter to map since filter is more for delete
       // PATCH REMEMBER
   const handleUpdatedRemember = (updatedRemember) => {
     console.log(updatedRemember)
-    let updatedRememberList = rememberList.filter(remember => remember.id !== updatedRemember.id)
-    updatedRememberList.push(updatedRemember)
-    updateRememberList(updatedRememberList)
+    let updatedRememberList = studentRemembers.map(remember => {
+      if (remember.id !== updatedRemember.id) {
+        return remember
+      } else 
+        return updatedRemember
+    })
+      updateStudentRemembers(updatedRememberList)
   }
+  //   updatedRememberList.push(updatedRemember)
+  //     remember.id !== updatedRemember.id
+  //   updatedRememberList.push(updatedRemember)
+  //   updateRememberList(updatedRememberList)
+  // }
 
     const editRemember = (remember, rememberinput) => {
-      console.log("hello")
-          console.log(remember)
-          console.log(rememberinput)
+      // console.log("hello")
+          // console.log(remember)
+          // console.log(rememberinput)
 
       fetch(`http://localhost:4000/remembers/${remember.id}`, {
         method: "PATCH",
@@ -187,15 +206,20 @@ function App() {
         body: JSON.stringify(rememberinput),
       })
       .then((resp) => resp.json())
+      // .then(data => updateStudentRemembers([...studentRemembers, data]))
       .then(updatedRemember => handleUpdatedRemember(updatedRemember))
+      // console.log(resp)
       // want to filter out the rememberList array and remove the stale version (finding the identical id with the updated remember). if id.updated === identical.id ; return updated remmeber in its place
 
       fetch("http://localhost:4000/users")
       .then(res => res.json())
       .then(setUserList)
-      console.log(userList)
+      // console.log(userList)
       
     }
+
+    // .then(data => updateStudentRemembers([...studentRemembers, data]))
+// post 
 
 
   return (

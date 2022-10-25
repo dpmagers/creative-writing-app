@@ -1,15 +1,14 @@
-import { RememberListContext } from '../GlobalContext/RememberListContext';
+import { RememberTagListContext } from '../GlobalContext/RememberTagListContext';
 import { useState, useEffect, useContext } from "react";
 
-
-function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId, rememberTags}) {
+function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId, rememberTags, setTagList}) {
     // state for checkbox value
     const [addTag, setAddTag] = useState(false) 
-    const [rememberTagList, setRememberTagList] = useState([])
+    // const [rememberTagList, setRememberTagList] = useState([])
     const [isSubmitClicked, setIsSubmitClicked] = useState(false)
 
 
-    const { rememberList, updateRememberList } = useContext(RememberListContext);
+    const { rememberTagList, updateRememberTagList } = useContext(RememberTagListContext);
 
     // const addRememberTag = id => {
     //     // let brandNewRememberTag = 
@@ -31,7 +30,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
         else {
             rememberIdToSubmit = currentRememberId
         }
-        console.log(currentRememberId, "currentRememberId")
+        // console.log(currentRememberId, "currentRememberId")
 
     fetch(`http://localhost:4000/remember_tags`, {
     method: "POST",
@@ -44,25 +43,35 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
     })
     })
     .then(res => res.json())
-    .then(data => setRememberTagList([...rememberTagList, data]))
+    .then(data => updateRememberTagList([...rememberTagList, data]))
     // .then(data => console.log(data))
+
 
     fetch("http://localhost:4000/users")
     .then(res => res.json())
     .then(setUserList)
 
-    setRememberTagList("")
-    console.log(rememberTagList)
+    setTagList(rememberTagList)    
+
 
     }
+    console.log(rememberTagList)
+
+    
+
+
+
+
+
+
 
 
     const isTagIncluded = !!rememberTags?.find(t => t.tag_id === tag.id) || false
-    console.log("==========================")
-    console.log(isTagIncluded, "isTagIncluded")
+    // console.log("==========================")
+    // console.log(isTagIncluded, "isTagIncluded")
 
-    console.log(rememberTags, "rememberTags")
-    console.log(tag, "tag")
+    // console.log(rememberTags, "rememberTags")
+    // console.log(tag, "tag")
 
 
 

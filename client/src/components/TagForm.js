@@ -1,11 +1,16 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import TagFormDetail from "./TagFormDetail"
+import { RememberTagListContext } from '../GlobalContext/RememberTagListContext';
+
 
 
 function TagForm({tagList, setTagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId, rememberTags}) {
     // const [addTag, setAddTag] = useState(false)
  
     // console.log(tagList, "hello")
+
+    const { rememberTagList, updateRememberTagList } = useContext(RememberTagListContext);
+
 
 
 

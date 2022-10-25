@@ -4,14 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RememberListProvider } from './GlobalContext/RememberListContext'
+import { RememberTagListProvider } from './GlobalContext/RememberTagListContext'
+import { StudentRemembersProvider } from './GlobalContext/StudentRemembersContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <RememberListProvider>
+      <StudentRemembersProvider>
+        <RememberTagListProvider>
     <App />
+        </RememberTagListProvider>
+      </StudentRemembersProvider>
     </RememberListProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 {/* <UserProvider>

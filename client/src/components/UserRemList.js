@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import UserRemDetail from "./UserRemDetail"
 import RememberFilter from "./RememberFilter"
+import {useStudentRemembers} from "../GlobalContext/StudentRemembersContext"
 
 
 function UserRemList ({student, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, userList, tagList, setTagList, myNewRemember, setMyNewRemember}) {
 
     const [sortBy, setSortBy] = useState("")
-    const [studentRemembers, setStudentRemembers] = useState([])
+    // const [studentRemembers, setStudentRemembers] = useState([])
     const [currentRememberId, setCurrentRememberId] = useState(null)
+    const { studentRemembers, updateStudentRemembers} = useStudentRemembers()
+
 
     let remembers 
 
@@ -15,9 +18,12 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
         remembers = student.remembers
     }
     useEffect(() => {
-        setStudentRemembers(student.remembers)
+        updateStudentRemembers(student.remembers)
 
     }, [])
+
+    console.log(studentRemembers)
+
 
     const handleSort = (e) => {
         console.log("inside handleSort", e.target.value)
@@ -40,9 +46,9 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
                 
             }) 
         }
-            setStudentRemembers(sortedItems)
+            updateStudentRemembers(sortedItems)
     }
-
+    console.log(student.remembers)
         return (
             <div className="student-writing">
                 <RememberFilter sortBy={sortBy} handleSort={handleSort}/>

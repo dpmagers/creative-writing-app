@@ -34,6 +34,32 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             })
             newObject = mergeById(tags, remember_tags)
         }
+
+        
+
+         //     const mergeById = (a1, a2) =>
+    // a1.map(itm => ({
+    //     ...a2.find((item) => (item.id === itm.id) && item),
+    //     ...itm
+    // }));
+    // https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
+
+
+    // console.log(tags, "tags........this user's tags for each remember")
+    // console.log(remember_tags, "remember_tags......... this user's remember_tags for each remember")
+    // console.log(newObject, "newObject........this user's ")
+
+        //     created_at: "2022-10-25T10:45:54.645Z"
+        // id: 3
+        // name: "School"
+        // newId: 2
+        // remember_id: 2
+        // tag_id: 3
+        // updated_at: "2022-10-25T10:45:54.645Z"
+
+
+    // these are all grabbed from the UserList fetch
+
         const handleClick = (remember) => {
             deleteRemember(remember.id)
         }
@@ -76,7 +102,6 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
                 currentRememberId={currentRememberId} 
                 setCurrentRememberId={setCurrentRememberId}
                 rememberTags={remember.remember_tags}
-                
                 /> 
                 : null}
 
@@ -129,9 +154,4 @@ export default UserRemDetail
 
 
 
-    //     const mergeById = (a1, a2) =>
-    // a1.map(itm => ({
-    //     ...a2.find((item) => (item.id === itm.id) && item),
-    //     ...itm
-    // }));
-    // https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
+   
