@@ -6,6 +6,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
     // state for checkbox value
     const [addTag, setAddTag] = useState(false) 
     const [rememberTagList, setRememberTagList] = useState([])
+    const [isSubmitClicked, setIsSubmitClicked] = useState(false)
 
 
     const { rememberList, updateRememberList } = useContext(RememberListContext);
@@ -21,6 +22,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
 
     const handleRememberTagSubmit = e => {
     e.preventDefault()
+    setIsSubmitClicked(true)
 
     let rememberIdToSubmit 
         if (myNewRemember?.id) {
@@ -63,6 +65,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
     console.log(tag, "tag")
 
 
+
     // .then(data => setRememberTagList([...rememberTagList, data]))
 // STATE FOR YOUR TAGS SHOULD LIVE WHERE THE UPDATE AND DELETE TAGS ARE LIVING LINE 39 SHOULD LIVE AS STATE
 // WHERE I'M DOING UPDATE AND DELETE ; THIS INFO SHOULD BE PUT IN A FUNCTION THAT CAN BE CALLED 
@@ -73,7 +76,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
         <form onSubmit={handleRememberTagSubmit}>
             <label htmlFor="tag-name">{tag.name}</label>
 
-            {!isTagIncluded ? <button type="submit">Submit Tag</button> : null }
+            {!isTagIncluded && !isSubmitClicked ? <button type="submit">Submit Tag</button> : null }
         </form>
     )
 }
