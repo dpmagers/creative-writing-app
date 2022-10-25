@@ -7,6 +7,7 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
 
     const [sortBy, setSortBy] = useState("")
     const [studentRemembers, setStudentRemembers] = useState([])
+    const [currentRememberId, setCurrentRememberId] = useState(null)
 
     let remembers 
 
@@ -58,6 +59,8 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
                 setTagList={setTagList}
                 myNewRemember={myNewRemember}
                 setMyNewRemember={setMyNewRemember}
+                currentRememberId={currentRememberId} 
+                setCurrentRememberId={setCurrentRememberId}
                 // remembers={remembers}
                 // remembersToDisplay={remembersToDisplay}
                 />) : null}

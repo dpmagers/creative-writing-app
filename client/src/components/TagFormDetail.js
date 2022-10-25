@@ -2,17 +2,13 @@ import { RememberListContext } from '../GlobalContext/RememberListContext';
 import { useState, useEffect, useContext } from "react";
 
 
-function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
+function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId}) {
     // state for checkbox value
     const [addTag, setAddTag] = useState(false) 
     const [rememberTagList, setRememberTagList] = useState([])
 
 
     const { rememberList, updateRememberList } = useContext(RememberListContext);
-
-
-    console.log(rememberTagList, "hello")
-
 
     // const addRememberTag = id => {
     //     // let brandNewRememberTag = 
@@ -25,13 +21,22 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
     const handleRememberTagSubmit = e => {
     e.preventDefault()
 
+    let rememberIdToSubmit 
+        if (myNewRemember?.id) {
+            rememberIdToSubmit = myNewRemember.id
+        }
+        else {
+            rememberIdToSubmit = currentRememberId
+        }
+        console.log(currentRememberId, "currentRememberId")
+
     fetch(`http://localhost:4000/remember_tags`, {
     method: "POST",
     headers: {
     'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-    remember_id: myNewRemember.id,
+    remember_id: rememberIdToSubmit,
     tag_id: tag.id,
     })
     })

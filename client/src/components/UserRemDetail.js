@@ -7,7 +7,7 @@ import CreateTag from "./CreateTag"
 
 
 
-function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student, userList, studentRemembers, tagList, setTagList, myNewRemember, setMyNewRemember}) {
+function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student, userList, studentRemembers, tagList, setTagList, myNewRemember, setMyNewRemember, currentRememberId, setCurrentRememberId}) {
     const [clickEdit, setClickEdit] = useState(false)
     const [showTagUpdateList, setShowTagUpdateList] = useState(false)
     const [showTagCreate, setShowTagCreate] = useState(false)
@@ -59,6 +59,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
         const handleUpdateTags = (e) => {
             setShowTagUpdateList(!showTagUpdateList)
             setShowTagCreate(!showTagCreate)
+            setCurrentRememberId(remember?.id)
         }
 
         // const [showTagUpdateList, setShowTagUpdateList]
@@ -85,6 +86,8 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
                 <TagForm 
                 tagList={tagList} setTagList={setTagList} 
                 myNewRemember={myNewRemember}
+                currentRememberId={currentRememberId} 
+                setCurrentRememberId={setCurrentRememberId}
                 
                 /> 
                 : null}
