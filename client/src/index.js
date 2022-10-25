@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { RememberListProvider } from './GlobalContext/RememberListContext'
 import { RememberTagListProvider } from './GlobalContext/RememberTagListContext'
 import { StudentRemembersProvider } from './GlobalContext/StudentRemembersContext'
+import { TagsListRememberProvider } from './GlobalContext/TagsListRememberContext'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +15,9 @@ root.render(
     <RememberListProvider>
       <StudentRemembersProvider>
         <RememberTagListProvider>
+          <TagsListRememberProvider>
     <App />
+        </TagsListRememberProvider>
         </RememberTagListProvider>
       </StudentRemembersProvider>
     </RememberListProvider>

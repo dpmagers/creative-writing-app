@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import UserTagList from "./UserTagList"
 import EditRemember from "./EditRemember"
 import TagForm from "./TagForm"
 import CreateTag from "./CreateTag"
+import { TagsListRememberContext } from '../GlobalContext/TagsListRememberContext'
+
 
 
 
@@ -13,6 +15,10 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
     const [showTagCreate, setShowTagCreate] = useState(false)
     // console.log(studentRemembers)
     // this piece of state holds both an array of Tags (which includes name attribute) and RememberTag which is the join table connecting a Tag with a Remember)
+
+    const { tagsListRemember, updateTagsListRemember } = useContext(TagsListRememberContext);
+
+
 
     let tags
 
@@ -35,7 +41,14 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             newObject = mergeById(tags, remember_tags)
         }
 
+        useEffect(() => {
+            updateTagsListRemember(remember)
+        }, [remember])
+
+        // updateTagsListRemember(newObject)
+        console.log(tagsListRemember, "tagsListRemember!!!!!")
         
+        // console.log(remember.tags)
 
          //     const mergeById = (a1, a2) =>
     // a1.map(itm => ({
@@ -57,6 +70,11 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
         // tag_id: 3
         // updated_at: "2022-10-25T10:45:54.645Z"
 
+
+        // console.log(tags)
+        // console.log(newObject, "newObject!!!!!!!!!!!!!!!!!!!!!!!!!")
+        // to change state here, change tags array 
+        // 
 
     // these are all grabbed from the UserList fetch
 
@@ -112,8 +130,6 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
 
 
                 {/* how to send down filtered of tags without interrupting the work TagForm does in client-side route? */}
-
-
 
             <ul className="remember-tags"></ul>
             {newObject ?  newObject.map(tag => <UserTagList 

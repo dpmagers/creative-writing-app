@@ -166,6 +166,7 @@ function App() {
         updateRememberTagList(data)
         })
 
+        console.log(rememberTagList)
         fetch("http://localhost:4000/users")
         .then(res => res.json())
         .then(setUserList)

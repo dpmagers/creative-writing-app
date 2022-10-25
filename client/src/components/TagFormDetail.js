@@ -51,11 +51,11 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
     .then(res => res.json())
     .then(setUserList)
 
-    setTagList(rememberTagList)    
+    // setTagList(rememberTagList)    
 
 
     }
-    console.log(rememberTagList)
+    // console.log(rememberTagList)
 
     
 

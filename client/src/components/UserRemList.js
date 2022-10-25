@@ -22,7 +22,7 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
 
     }, [])
 
-    console.log(studentRemembers)
+    // console.log(studentRemembers)
 
 
     const handleSort = (e) => {
@@ -48,7 +48,7 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
         }
             updateStudentRemembers(sortedItems)
     }
-    console.log(student.remembers)
+    // console.log(student.remembers)
         return (
             <div className="student-writing">
                 <RememberFilter sortBy={sortBy} handleSort={handleSort}/>
