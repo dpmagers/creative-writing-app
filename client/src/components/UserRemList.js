@@ -14,7 +14,7 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
     if (student ) {
         remembers = student.remembers
     }
-    console.log(studentRemembers)
+    // console.log(studentRemembers)
     useEffect(() => {
         setStudentRemembers(student.remembers)
 

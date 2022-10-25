@@ -40,8 +40,11 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             // console.log(remember)
         const handleClick = (remember) => {
             deleteRemember(remember.id)
-    
         }
+
+
+
+        console.log(remember, "remember")
     //     const mergeById = (a1, a2) =>
     // a1.map(itm => ({
     //     ...a2.find((item) => (item.id === itm.id) && item),
@@ -62,9 +65,13 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             setCurrentRememberId(remember?.id)
         }
 
+ 
         // const [showTagUpdateList, setShowTagUpdateList]
 
-        console.log(myNewRemember)
+        // console.log(myNewRemember)
+        // remember and its associated tags
+
+       
 
     return (
         <div>
@@ -88,6 +95,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
                 myNewRemember={myNewRemember}
                 currentRememberId={currentRememberId} 
                 setCurrentRememberId={setCurrentRememberId}
+                rememberTags={remember.remember_tags}
                 
                 /> 
                 : null}

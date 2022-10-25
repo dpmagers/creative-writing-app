@@ -2,7 +2,7 @@ import { RememberListContext } from '../GlobalContext/RememberListContext';
 import { useState, useEffect, useContext } from "react";
 
 
-function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId}) {
+function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId, rememberTags}) {
     // state for checkbox value
     const [addTag, setAddTag] = useState(false) 
     const [rememberTagList, setRememberTagList] = useState([])
@@ -18,6 +18,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
     //     setRememberTagList([...rememberTagList, brandNewRememberTag]);
     //     };
         
+
     const handleRememberTagSubmit = e => {
     e.preventDefault()
 
@@ -53,6 +54,15 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
 
     }
 
+
+    const isTagIncluded = !!rememberTags?.find(t => t.tag_id === tag.id) || false
+    console.log("==========================")
+    console.log(isTagIncluded, "isTagIncluded")
+
+    console.log(rememberTags, "rememberTags")
+    console.log(tag, "tag")
+
+
     // .then(data => setRememberTagList([...rememberTagList, data]))
 // STATE FOR YOUR TAGS SHOULD LIVE WHERE THE UPDATE AND DELETE TAGS ARE LIVING LINE 39 SHOULD LIVE AS STATE
 // WHERE I'M DOING UPDATE AND DELETE ; THIS INFO SHOULD BE PUT IN A FUNCTION THAT CAN BE CALLED 
@@ -63,7 +73,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
         <form onSubmit={handleRememberTagSubmit}>
             <label htmlFor="tag-name">{tag.name}</label>
 
-            <button type="submit">Submit Tag</button>
+            {!isTagIncluded ? <button type="submit">Submit Tag</button> : null }
         </form>
     )
 }

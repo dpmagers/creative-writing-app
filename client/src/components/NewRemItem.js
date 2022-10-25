@@ -16,6 +16,7 @@ const handleClick = (e) => {
 
 // console.log(tagList)
 
+console.log(myNewRemember, "myNewRemember")
 
     return (
         <div className="remember">
@@ -27,6 +28,7 @@ const handleClick = (e) => {
             {clickCreateTags ? <CreateTag  tagList={tagList} setTagList={setTagList}/> : null}
             {clickAddTags ? <TagForm  tagList={tagList} setTagList={setTagList} 
             myNewRemember={myNewRemember}
+            rememberTags={myNewRemember.remember_tags}
             /> : null}
 
         </div>
