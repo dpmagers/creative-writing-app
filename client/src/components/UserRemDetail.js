@@ -42,6 +42,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             deleteRemember(remember.id)
         }
 
+        console.log(remember.created_at, "remember.created_at")
 
 
         console.log(remember, "remember")
@@ -75,8 +76,12 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
 
     return (
         <div>
+            <hr />
             <ul className="student-remembers"></ul>
                 <li>{remember.text}</li>
+                <li>Created at:{remember.created_at}</li>
+                <li>Updated at:{remember.updated_at}</li>
+
                 
                 {user.id === remember.user_id || user.admin === true ? <div className="update-delete-buttons">
                 <button onClick={() => handleEditRemember(remember)} className='update'>Update Remember</button>

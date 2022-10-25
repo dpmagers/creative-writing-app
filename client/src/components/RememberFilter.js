@@ -5,6 +5,7 @@ function RememberFilter ({sortBy, handleSort}) {
 
     const handleSortBy = (e) => {
         handleSort(e)
+        
     }
 
     return (
@@ -21,8 +22,8 @@ function RememberFilter ({sortBy, handleSort}) {
                         value={sortBy}
                     >
                             <option value=""></option>
-                            <option value="name">Created At:</option>
-                            <option value="weight">Updated At:</option>
+                            <option value="created_at">Created At:</option>
+                            <option value="updated_at">Updated At:</option>
                     </select>
             </div>
 
