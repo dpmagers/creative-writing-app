@@ -236,9 +236,7 @@ function App() {
             setTagList={setTagList}
             myNewRemember={myNewRemember}
             setMyNewRemember={setMyNewRemember}
-
-            /> 
-            
+            />  
           </Route>
           <Route path="/login">
             <LoginForm user={user} setUser={setUser}/>

@@ -11,11 +11,8 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
     const [clickEdit, setClickEdit] = useState(false)
     const [showTagUpdateList, setShowTagUpdateList] = useState(false)
     const [showTagCreate, setShowTagCreate] = useState(false)
-
     // console.log(studentRemembers)
     // this piece of state holds both an array of Tags (which includes name attribute) and RememberTag which is the join table connecting a Tag with a Remember)
-
-    // 
 
     let tags
 
@@ -37,42 +34,20 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             })
             newObject = mergeById(tags, remember_tags)
         }
-            // console.log(remember)
         const handleClick = (remember) => {
             deleteRemember(remember.id)
         }
 
-        console.log(remember.created_at, "remember.created_at")
-
-
-        console.log(remember, "remember")
-    //     const mergeById = (a1, a2) =>
-    // a1.map(itm => ({
-    //     ...a2.find((item) => (item.id === itm.id) && item),
-    //     ...itm
-    // }));
-    // https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
-
         const handleEditRemember = (remember) => {
             setClickEdit(!clickEdit)
-            // console.log(remember)
         }
 
-        // console.log(user)
 
         const handleUpdateTags = (e) => {
             setShowTagUpdateList(!showTagUpdateList)
             setShowTagCreate(!showTagCreate)
             setCurrentRememberId(remember?.id)
         }
-
- 
-        // const [showTagUpdateList, setShowTagUpdateList]
-
-        // console.log(myNewRemember)
-        // remember and its associated tags
-
-       
 
     return (
         <div>
@@ -151,3 +126,12 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
         </div> */}
 
 export default UserRemDetail
+
+
+
+    //     const mergeById = (a1, a2) =>
+    // a1.map(itm => ({
+    //     ...a2.find((item) => (item.id === itm.id) && item),
+    //     ...itm
+    // }));
+    // https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key

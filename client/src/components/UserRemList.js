@@ -14,24 +14,10 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
     if (student ) {
         remembers = student.remembers
     }
-    // console.log(studentRemembers)
     useEffect(() => {
         setStudentRemembers(student.remembers)
 
     }, [])
-
-
-    // const handleSort = (e) =>  {
-    //     	setSortBy(e.target.value)
-    //     }
-    //     const remembersToDisplay = remembers
-    //     .sort((remember1, remember2) => {
-    //     	if (sortBy === "created_at") {
-    //     		return remember1.created_at - remember2.created_at
-    //     	} else if (sortBy === "updated_at"){
-    //     		return remember1.updated_at.localeCompare(remember2.updated_at)
-    //     	}
-    //     })
 
     const handleSort = (e) => {
         console.log("inside handleSort", e.target.value)
@@ -42,7 +28,6 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
             sortedItems.sort((a, b) => {
                 const aDate = new Date(a.created_at)
                 const bDate = new Date(b.created_at)
-                console.log(aDate, "aDate=====================")
                 return bDate - aDate
                 
             }) 
@@ -51,27 +36,12 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
             sortedItems.sort((a, b) => {
                 const aDate = new Date(a.updated_at)
                 const bDate = new Date(b.updated_at)
-                console.log(aDate, "aDate=====================")
                 return bDate - aDate
                 
             }) 
         }
             setStudentRemembers(sortedItems)
-
     }
-
-    // filteredItems.filter(item =>  )
-    // includes.
-    // clear out sorting 
-    // default clear sort if clear then default 
-    // const isTagIncluded = !!rememberTags?.find(t => t.tag_id === tag.id) || false
-    // console.log("==========================")
-    // console.log(isTagIncluded, "isTagIncluded")
-
-    // console.log(rememberTags, "rememberTags")
-    // console.log(tag, "tag")
-
-
 
         return (
             <div className="student-writing">
@@ -108,3 +78,17 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
 
 
 export default UserRemList
+
+
+
+
+   // filteredItems.filter(item =>  )
+    // includes.
+    // clear out sorting 
+    // default clear sort if clear then default 
+    // const isTagIncluded = !!rememberTags?.find(t => t.tag_id === tag.id) || false
+    // console.log("==========================")
+    // console.log(isTagIncluded, "isTagIncluded")
+
+    // console.log(rememberTags, "rememberTags")
+    // console.log(tag, "tag")
