@@ -7,7 +7,7 @@ import CreateTag from "./CreateTag"
 
 
 
-function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student, userList, studentRemembers, tagList, setTagList, myNewRemember, setMyNewRemember}) {
+function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student, userList, studentRemembers, tagList, setTagList, myNewRemember, setMyNewRemember, currentRememberId, setCurrentRememberId}) {
     const [clickEdit, setClickEdit] = useState(false)
     const [showTagUpdateList, setShowTagUpdateList] = useState(false)
     const [showTagCreate, setShowTagCreate] = useState(false)
@@ -40,8 +40,12 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             // console.log(remember)
         const handleClick = (remember) => {
             deleteRemember(remember.id)
-    
         }
+
+        console.log(remember.created_at, "remember.created_at")
+
+
+        console.log(remember, "remember")
     //     const mergeById = (a1, a2) =>
     // a1.map(itm => ({
     //     ...a2.find((item) => (item.id === itm.id) && item),
@@ -59,16 +63,25 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
         const handleUpdateTags = (e) => {
             setShowTagUpdateList(!showTagUpdateList)
             setShowTagCreate(!showTagCreate)
+            setCurrentRememberId(remember?.id)
         }
 
+ 
         // const [showTagUpdateList, setShowTagUpdateList]
 
-        console.log(myNewRemember)
+        // console.log(myNewRemember)
+        // remember and its associated tags
+
+       
 
     return (
         <div>
+            <hr />
             <ul className="student-remembers"></ul>
                 <li>{remember.text}</li>
+                <li>Created at:{remember.created_at}</li>
+                <li>Updated at:{remember.updated_at}</li>
+
                 
                 {user.id === remember.user_id || user.admin === true ? <div className="update-delete-buttons">
                 <button onClick={() => handleEditRemember(remember)} className='update'>Update Remember</button>
@@ -85,6 +98,9 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
                 <TagForm 
                 tagList={tagList} setTagList={setTagList} 
                 myNewRemember={myNewRemember}
+                currentRememberId={currentRememberId} 
+                setCurrentRememberId={setCurrentRememberId}
+                rememberTags={remember.remember_tags}
                 
                 /> 
                 : null}

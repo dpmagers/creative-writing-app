@@ -1,19 +1,20 @@
 import React, {useEffect, useState} from 'react'
 import UserRemDetail from "./UserRemDetail"
-// import RememberFilter from "./RememberFilter"
+import RememberFilter from "./RememberFilter"
 
 
 function UserRemList ({student, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, userList, tagList, setTagList, myNewRemember, setMyNewRemember}) {
 
     const [sortBy, setSortBy] = useState("")
     const [studentRemembers, setStudentRemembers] = useState([])
+    const [currentRememberId, setCurrentRememberId] = useState(null)
 
     let remembers 
 
     if (student ) {
         remembers = student.remembers
     }
-    console.log(studentRemembers)
+    // console.log(studentRemembers)
     useEffect(() => {
         setStudentRemembers(student.remembers)
 
@@ -32,12 +33,49 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
     //     	}
     //     })
 
+    const handleSort = (e) => {
+        console.log("inside handleSort", e.target.value)
+
+        let sortedItems = studentRemembers
+        setSortBy(e.target.value)
+        if (e.target.value === "created_at") {
+            sortedItems.sort((a, b) => {
+                const aDate = new Date(a.created_at)
+                const bDate = new Date(b.created_at)
+                console.log(aDate, "aDate=====================")
+                return bDate - aDate
+                
+            }) 
+        }
+        if (e.target.value === "updated_at") {
+            sortedItems.sort((a, b) => {
+                const aDate = new Date(a.updated_at)
+                const bDate = new Date(b.updated_at)
+                console.log(aDate, "aDate=====================")
+                return bDate - aDate
+                
+            }) 
+        }
+            setStudentRemembers(sortedItems)
+
+    }
+
+    // filteredItems.filter(item =>  )
+    // includes.
+    // clear out sorting 
+    // default clear sort if clear then default 
+    // const isTagIncluded = !!rememberTags?.find(t => t.tag_id === tag.id) || false
+    // console.log("==========================")
+    // console.log(isTagIncluded, "isTagIncluded")
+
+    // console.log(rememberTags, "rememberTags")
+    // console.log(tag, "tag")
+
 
 
         return (
-
             <div className="student-writing">
-                {/* <RememberFilter sortBy={sortBy} handleSort={handleSort}/> */}
+                <RememberFilter sortBy={sortBy} handleSort={handleSort}/>
 
                 {/* tried to map remembersToDisplay but this didn't seem to do anything */}
                 <h2 className='student-name'>{student.full_name}'s Writing</h2>
@@ -58,6 +96,8 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
                 setTagList={setTagList}
                 myNewRemember={myNewRemember}
                 setMyNewRemember={setMyNewRemember}
+                currentRememberId={currentRememberId} 
+                setCurrentRememberId={setCurrentRememberId}
                 // remembers={remembers}
                 // remembersToDisplay={remembersToDisplay}
                 />) : null}

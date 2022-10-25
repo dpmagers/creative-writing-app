@@ -2,17 +2,14 @@ import { RememberListContext } from '../GlobalContext/RememberListContext';
 import { useState, useEffect, useContext } from "react";
 
 
-function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
+function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId, rememberTags}) {
     // state for checkbox value
     const [addTag, setAddTag] = useState(false) 
     const [rememberTagList, setRememberTagList] = useState([])
+    const [isSubmitClicked, setIsSubmitClicked] = useState(false)
 
 
     const { rememberList, updateRememberList } = useContext(RememberListContext);
-
-
-    console.log(rememberTagList, "hello")
-
 
     // const addRememberTag = id => {
     //     // let brandNewRememberTag = 
@@ -22,8 +19,19 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
     //     setRememberTagList([...rememberTagList, brandNewRememberTag]);
     //     };
         
+
     const handleRememberTagSubmit = e => {
     e.preventDefault()
+    setIsSubmitClicked(true)
+
+    let rememberIdToSubmit 
+        if (myNewRemember?.id) {
+            rememberIdToSubmit = myNewRemember.id
+        }
+        else {
+            rememberIdToSubmit = currentRememberId
+        }
+        console.log(currentRememberId, "currentRememberId")
 
     fetch(`http://localhost:4000/remember_tags`, {
     method: "POST",
@@ -31,7 +39,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
     'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-    remember_id: myNewRemember.id,
+    remember_id: rememberIdToSubmit,
     tag_id: tag.id,
     })
     })
@@ -48,6 +56,16 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
 
     }
 
+
+    const isTagIncluded = !!rememberTags?.find(t => t.tag_id === tag.id) || false
+    console.log("==========================")
+    console.log(isTagIncluded, "isTagIncluded")
+
+    console.log(rememberTags, "rememberTags")
+    console.log(tag, "tag")
+
+
+
     // .then(data => setRememberTagList([...rememberTagList, data]))
 // STATE FOR YOUR TAGS SHOULD LIVE WHERE THE UPDATE AND DELETE TAGS ARE LIVING LINE 39 SHOULD LIVE AS STATE
 // WHERE I'M DOING UPDATE AND DELETE ; THIS INFO SHOULD BE PUT IN A FUNCTION THAT CAN BE CALLED 
@@ -58,7 +76,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList}) {
         <form onSubmit={handleRememberTagSubmit}>
             <label htmlFor="tag-name">{tag.name}</label>
 
-            <button type="submit">Submit Tag</button>
+            {!isTagIncluded && !isSubmitClicked ? <button type="submit">Submit Tag</button> : null }
         </form>
     )
 }
