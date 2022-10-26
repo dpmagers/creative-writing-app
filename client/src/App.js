@@ -1,3 +1,4 @@
+import './App.css';
 import { RememberListContext } from './GlobalContext/RememberListContext';
 import { useState, useEffect, useContext } from "react";
 import { BrowserRouter, Switch, Route, useHistory, } from "react-router-dom";
@@ -10,6 +11,8 @@ import UsersContainer from "./components/UsersContainer"
 import Home from "./components/Home"
 import {useStudentRemembers} from "./GlobalContext/StudentRemembersContext"
 import { RememberTagListContext } from './GlobalContext/RememberTagListContext';
+import Typography from '@mui/material/Typography';
+
 
 
 
@@ -227,7 +230,12 @@ function App() {
     <BrowserRouter forceRefresh>
       <NavBar onChangePage={setPage} setUser={setUser} user={user} />
       <div className="App">
-      <header><h1 className="sitehead">I Remember: A Creative Writing App</h1></header>
+      <header>
+        {/* <h1 className="sitehead">I Remember: A Creative Writing App</h1> */}
+      <Typography variant="h2" gutterBottom>
+                    I Remember: A Creative Writing App
+                </Typography>
+      </header>
         <Switch>
           <Route path="/about">
             <About user={user}/>

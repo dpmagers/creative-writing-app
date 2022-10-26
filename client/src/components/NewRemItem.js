@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import TagForm from './TagForm'
 import CreateTag from './CreateTag'
+import Button from '@mui/material/Button';
 
 
 function NewRemItem ({text, tagList, setTagList, myNewRemember}) {
@@ -22,9 +23,10 @@ console.log(myNewRemember, "myNewRemember")
         <div className="remember">
             <li className='remember-item'>{text}</li>
 
-            <button onClick={handleClick} className='add-tag'>
-                <i className="add-tag">Add Tags</i>
-            </button>
+            {/* <button onClick={handleClick} className='add-tag'>
+            </button> */}
+            <Button type="submit" variant="contained" color="secondary" onClick={handleClick}> Add Tags </Button>
+
             {clickCreateTags ? <CreateTag  tagList={tagList} setTagList={setTagList}/> : null}
             {clickAddTags ? <TagForm  tagList={tagList} setTagList={setTagList} 
             myNewRemember={myNewRemember}

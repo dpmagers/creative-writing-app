@@ -1,8 +1,14 @@
 import { RememberListContext } from '../GlobalContext/RememberListContext';
-// import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import RememberForm from "./RememberForm"
 import NewRemItem from "./NewRemItem"
+// import * as React from 'react';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
+
 
 function NewRememberList({user, tagList, setTagList, setUserList, userList, newRemembers, setNewRemembers, value, setValue, isPrivate, setIsPrivate, addRemember, handleSubmit, myNewRemember }) {
     // const [newRemembers, setNewRemembers] = useState("")
@@ -12,7 +18,7 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList, newR
 
     const { rememberList, updateRememberList } = useContext(RememberListContext);
 
-    // let history = useHistory()
+    let history = useHistory()
 
     // const addRemember = text => {
     //     let brandNewRemember = 
@@ -54,15 +60,18 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList, newR
     //       setIsPrivate(false)
     // }
 
-            // const handleNavClick = () => {
-            //     history.push('/classroom-writing')
-            // }
+            const handleNavClick = () => {
+                history.push('/classroom-writing')
+            }
 
     return(
 
             <div> 
-            <h1>Create New Writing Here</h1>
-          
+                <Typography variant="h6" gutterBottom>
+                    In the field below, begin a sentence with the words "I remember..." and write out a memory. Click the submit button. If you like, you can click the "set to private" checkbox. Add tags from the list of tags below. If you don't see the one you like, click "Create Tag" and it will appear at the end of the list. The write another "I remember..." and another....
+                     
+                </Typography>
+
             {/* <button onClick={handleNavClick}>Check out your work</button> */}
          
             <RememberForm addRemember={addRemember} 
@@ -93,7 +102,14 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList, newR
 
             </div>
             <div className="right-column">
-                 <p>[Instructions]</p>
+            <Typography variant="h5" gutterBottom>
+                    When you finish, check out your class's writing!
+                </Typography>
+          <Button variant="contained" color="secondary" onClick={handleNavClick}>Classroom Writing </Button>
+                 {/* <Typography variant="h6" gutterBottom>
+                         [Instructions]
+                </Typography> */}
+
             </div>
            
             

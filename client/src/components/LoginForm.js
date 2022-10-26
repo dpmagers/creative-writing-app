@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom"
+import Button from '@mui/material/Button';
+
 
 function LoginForm({user, setUser}) {
     const [username, setUsername] = useState("")
@@ -57,9 +59,10 @@ function LoginForm({user, setUser}) {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button variant="fill" color="primary" type="submit">
+        {/* <button variant="fill" color="primary" type="submit">
           Login
-        </button>
+        </button> */}
+        <Button variant="contained" color="secondary" type="submit">Login</Button>
 
         
 

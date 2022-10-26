@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import { NavLink, useHistory } from "react-router-dom"
+import Button from '@mui/material/Button';
+
 
 
 
@@ -38,7 +40,8 @@ let history = useHistory()
       <NavLink to="/classroom-writing"> 
         Classroom Writing 
       </NavLink>
-      <button onClick={handleLogoutClick}>Logout</button>
+      {/* <button onClick={handleLogoutClick}>Logout</button> */}
+      <Button variant="contained" color="secondary" onClick={handleLogoutClick}>Logout</Button>
     </nav> ) :
     (<nav>
     <NavLink exact to="/">

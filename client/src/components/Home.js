@@ -1,4 +1,6 @@
 import React from 'react'
+import Typography from '@mui/material/Typography';
+
 
 function Home () {
     return (
@@ -8,7 +10,11 @@ function Home () {
                 width="300px" 
                 height="460px"
             ></img>
-            <h3>I Remember: A Creative Writing App is an application inspired by Joe Brainard's seminal memoir I Remember and the teaching pedagogy it spawned.</h3>
+
+            <Typography variant="h5" gutterBottom>
+                    I Remember: A Creative Writing App is an application inspired by Joe Brainard's seminal memoir I Remember and the teaching pedagogy it spawned.
+            </Typography>
+            {/* <h3>I Remember: A Creative Writing App is an application inspired by Joe Brainard's seminal memoir I Remember and the teaching pedagogy it spawned.</h3> */}
         </div>
     )
 }
