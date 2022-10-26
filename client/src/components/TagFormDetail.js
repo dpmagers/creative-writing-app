@@ -47,9 +47,9 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
     // .then(data => console.log(data))
 
 
-    fetch("http://localhost:4000/users")
-    .then(res => res.json())
-    .then(setUserList)
+    // fetch("http://localhost:4000/users")
+    // .then(res => res.json())
+    // .then(setUserList)
 
     // setTagList(rememberTagList)    
 

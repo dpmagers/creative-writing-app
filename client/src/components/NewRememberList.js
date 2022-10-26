@@ -4,8 +4,6 @@ import { useState, useEffect, useContext } from "react";
 import RememberForm from "./RememberForm"
 import NewRemItem from "./NewRemItem"
 
-
-
 function NewRememberList({user, tagList, setTagList, setUserList, userList, newRemembers, setNewRemembers, value, setValue, isPrivate, setIsPrivate, addRemember, handleSubmit, myNewRemember }) {
     // const [newRemembers, setNewRemembers] = useState("")
     // const [myNewRemember, setMyNewRemember] = useState("")

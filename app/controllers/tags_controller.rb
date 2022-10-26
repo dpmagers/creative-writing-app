@@ -23,6 +23,13 @@ rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
             render json: {}, status: 204
     end 
 
+    def specific_remember
+        remember_tags = RememberTag.where(remember_id: params[:remember_id])
+        render json: remember_tags.map{|it| it.tag}, status: 200
+        
+   
+    end 
+
     private
 
     def tag_params

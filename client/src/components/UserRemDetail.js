@@ -6,9 +6,6 @@ import CreateTag from "./CreateTag"
 import { TagsListRememberContext } from '../GlobalContext/TagsListRememberContext'
 
 
-
-
-
 function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student, userList, studentRemembers, tagList, setTagList, myNewRemember, setMyNewRemember, currentRememberId, setCurrentRememberId}) {
     const [clickEdit, setClickEdit] = useState(false)
     const [showTagUpdateList, setShowTagUpdateList] = useState(false)
@@ -16,9 +13,41 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
     // console.log(studentRemembers)
     // this piece of state holds both an array of Tags (which includes name attribute) and RememberTag which is the join table connecting a Tag with a Remember)
 
-    const { tagsListRemember, updateTagsListRemember } = useContext(TagsListRememberContext);
+    // const { tagsListRemember, updateTagsListRemember } = useContext(TagsListRememberContext);
+
+    const [tagsForEachRemember, setTagsForEachRemember] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:4000/tags/remember/${remember.id}`)
+        .then(res => res.json())
+        .then(data => {setTagsForEachRemember(data)
+        console.log(data)})
+        }, [])
 
 
+        // delete "/tags/remember_tag/:remember_id/:tag_id", to: "remember_tags#delete_remember_tag"
+
+
+          // DELETE Remember TAG
+  const deleteRememberTag = (e) => {
+    fetch(`http://localhost:4000/tags/remember_tag/${remember.id}/${e}`, {
+      method: "DELETE",
+    })
+      .then((res) => {const data = tagsForEachRemember.filter(i => i.id !== e)
+              console.log(data)
+              console.log(res)
+        setTagsForEachRemember(data)
+        })
+
+        // reset re
+
+        // console.log(rememberTagList)
+        // fetch("http://localhost:4000/users")
+        // .then(res => res.json())
+        // .then(setUserList)
+  }
+
+        // console.log(data)
 
     let tags
 
@@ -41,12 +70,12 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             newObject = mergeById(tags, remember_tags)
         }
 
-        useEffect(() => {
-            updateTagsListRemember(remember)
-        }, [remember])
+        // useEffect(() => {
+        //     updateTagsListRemember(remember)
+        // }, [remember])
 
         // updateTagsListRemember(newObject)
-        console.log(tagsListRemember, "tagsListRemember!!!!!")
+        // console.log(tagsListRemember, "tagsListRemember!!!!!")
         
         // console.log(remember.tags)
 
@@ -130,9 +159,10 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
 
 
                 {/* how to send down filtered of tags without interrupting the work TagForm does in client-side route? */}
-
+                {/* setTagsForEachRemember */}
+                {/* {newObject ?  newObject.map(tag => <UserTagList  */}
             <ul className="remember-tags"></ul>
-            {newObject ?  newObject.map(tag => <UserTagList 
+            {tagsForEachRemember ?  tagsForEachRemember.map(tag => <UserTagList 
             key={tag.id} 
             tag={tag}
             errorList={errorList} 
@@ -140,6 +170,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             deleteTag={deleteTag}
             remember={remember}
             userList={userList}
+            deleteRememberTag={deleteRememberTag}
             
 
              />) : null}

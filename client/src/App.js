@@ -1,6 +1,6 @@
 import { RememberListContext } from './GlobalContext/RememberListContext';
 import { useState, useEffect, useContext } from "react";
-import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
+import { BrowserRouter, Switch, Route, useHistory, } from "react-router-dom";
 import LoginForm from "./components/LoginForm"
 import SignupForm from "./components/SignupForm"
 import NavBar from "./components/NavBar"
@@ -155,22 +155,22 @@ function App() {
         .then(res => res.json())
         .then(setUserList)
   }
-  // // DELETE TAG
-  const deleteTag = (e) => {
-    fetch(`http://localhost:4000/remember_tags/${e}`, {
-      method: "DELETE",
-    })
-      .then((res) => {const data = rememberTagList.filter(i => i.id !== e)
-              console.log(data)
-              console.log(res)
-        updateRememberTagList(data)
-        })
+  // // // DELETE TAG
+  // const deleteTag = (e) => {
+  //   fetch(`http://localhost:4000/remember_tags/${e}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then((res) => {const data = rememberTagList.filter(i => i.id !== e)
+  //             console.log(data)
+  //             console.log(res)
+  //       updateRememberTagList(data)
+  //       })
 
-        console.log(rememberTagList)
-        fetch("http://localhost:4000/users")
-        .then(res => res.json())
-        .then(setUserList)
-  }
+  //       console.log(rememberTagList)
+  //       fetch("http://localhost:4000/users")
+  //       .then(res => res.json())
+  //       .then(setUserList)
+  // }
 
 
 
@@ -224,7 +224,7 @@ function App() {
 
 
   return (
-    <BrowserRouter>
+    <BrowserRouter forceRefresh>
       <NavBar onChangePage={setPage} setUser={setUser} user={user} />
       <div className="App">
       <header><h1 className="sitehead">I Remember: A Creative Writing App</h1></header>
@@ -255,7 +255,7 @@ function App() {
             setUserList={setUserList} 
             deleteRemember={deleteRemember} 
             errorList={errorList} 
-            deleteTag={deleteTag} 
+            // deleteTag={deleteTag} 
             editRemember={editRemember}
             tagList={tagList}
             setTagList={setTagList}
