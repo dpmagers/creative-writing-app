@@ -1,37 +1,29 @@
 import React, {useEffect, useState} from 'react'
 import UserRemDetail from "./UserRemDetail"
 import RememberFilter from "./RememberFilter"
+import {useStudentRemembers} from "../GlobalContext/StudentRemembersContext"
 
 
 function UserRemList ({student, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, userList, tagList, setTagList, myNewRemember, setMyNewRemember}) {
 
     const [sortBy, setSortBy] = useState("")
-    const [studentRemembers, setStudentRemembers] = useState([])
+    // const [studentRemembers, setStudentRemembers] = useState([])
     const [currentRememberId, setCurrentRememberId] = useState(null)
+    const { studentRemembers, updateStudentRemembers} = useStudentRemembers()
+
 
     let remembers 
 
     if (student ) {
         remembers = student.remembers
     }
-    // console.log(studentRemembers)
     useEffect(() => {
-        setStudentRemembers(student.remembers)
+        updateStudentRemembers(student.remembers)
 
     }, [])
 
+    // console.log(studentRemembers)
 
-    // const handleSort = (e) =>  {
-    //     	setSortBy(e.target.value)
-    //     }
-    //     const remembersToDisplay = remembers
-    //     .sort((remember1, remember2) => {
-    //     	if (sortBy === "created_at") {
-    //     		return remember1.created_at - remember2.created_at
-    //     	} else if (sortBy === "updated_at"){
-    //     		return remember1.updated_at.localeCompare(remember2.updated_at)
-    //     	}
-    //     })
 
     const handleSort = (e) => {
         console.log("inside handleSort", e.target.value)
@@ -42,7 +34,6 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
             sortedItems.sort((a, b) => {
                 const aDate = new Date(a.created_at)
                 const bDate = new Date(b.created_at)
-                console.log(aDate, "aDate=====================")
                 return bDate - aDate
                 
             }) 
@@ -51,28 +42,13 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
             sortedItems.sort((a, b) => {
                 const aDate = new Date(a.updated_at)
                 const bDate = new Date(b.updated_at)
-                console.log(aDate, "aDate=====================")
                 return bDate - aDate
                 
             }) 
         }
-            setStudentRemembers(sortedItems)
-
+            updateStudentRemembers(sortedItems)
     }
-
-    // filteredItems.filter(item =>  )
-    // includes.
-    // clear out sorting 
-    // default clear sort if clear then default 
-    // const isTagIncluded = !!rememberTags?.find(t => t.tag_id === tag.id) || false
-    // console.log("==========================")
-    // console.log(isTagIncluded, "isTagIncluded")
-
-    // console.log(rememberTags, "rememberTags")
-    // console.log(tag, "tag")
-
-
-
+    // console.log(student.remembers)
         return (
             <div className="student-writing">
                 <RememberFilter sortBy={sortBy} handleSort={handleSort}/>
@@ -108,3 +84,17 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
 
 
 export default UserRemList
+
+
+
+
+   // filteredItems.filter(item =>  )
+    // includes.
+    // clear out sorting 
+    // default clear sort if clear then default 
+    // const isTagIncluded = !!rememberTags?.find(t => t.tag_id === tag.id) || false
+    // console.log("==========================")
+    // console.log(isTagIncluded, "isTagIncluded")
+
+    // console.log(rememberTags, "rememberTags")
+    // console.log(tag, "tag")

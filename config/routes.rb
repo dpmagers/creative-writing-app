@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  get "/tags/remember/:remember_id", to: "tags#specific_remember"
+  # get "/remember_tags/:remember_id", to: "remember_tags#specific_remember_tag"
+
+  delete "/tags/remember_tag/:remember_id/:tag_id", to: "remember_tags#delete_remember_tag"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

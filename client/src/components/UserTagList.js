@@ -1,15 +1,18 @@
 import React from 'react'
 
-function UserTagList ({tag, errorList, user, deleteTag, remember}) {
+function UserTagList ({tag, errorList, user, deleteTag, remember, deleteRememberTag}) {
 
 
     const handleClick = (tag) => {
-        deleteTag(tag.newId)
+        deleteRememberTag(tag.id)
+        // deleteTag(tag.newId)
 
 
     }
     // <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
-    // console.log(tag)
+    console.log(tag)
+
+
 
     return(
         <div className="remember-tags">
