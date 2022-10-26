@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import UserRemList from "./UserRemList"
+import Typography from '@mui/material/Typography';
+
 
 
 function UsersContainer ({user, userList, setUserList, deleteRemember, errorList, deleteTag, editRemember, tagList, setTagList, myNewRemember, setMyNewRemember}) {
@@ -31,7 +33,13 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
 
      return (
         <div>
-            <h1>Classroom Writing</h1>
+            {/* <h1>Classroom Writing</h1> */}
+            <Typography variant="h3" gutterBottom>
+                    Classroom Writing
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+                    The dropdown below lists the students in our class. Click on a student and you will see their "I remember" writing. By selecting your own name, you will be able to update and delete your remember items, as well as add or delete tags associated with the remember item.
+            </Typography>
             <div className="left-column">
                 <div className="users-container">
                 <ul className="users-list"></ul>
@@ -62,7 +70,7 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
 
                 </div>
                 <div className="right-column">
-                    <p>[instructions right column]</p>
+                    {/* <p>[instructions right column]</p> */}
 
                 </div>
 

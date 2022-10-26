@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import UserRemDetail from "./UserRemDetail"
 import RememberFilter from "./RememberFilter"
 import {useStudentRemembers} from "../GlobalContext/StudentRemembersContext"
+import Typography from '@mui/material/Typography';
+
 
 
 function UserRemList ({student, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, userList, tagList, setTagList, myNewRemember, setMyNewRemember}) {
@@ -54,7 +56,10 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
                 <RememberFilter sortBy={sortBy} handleSort={handleSort}/>
 
                 {/* tried to map remembersToDisplay but this didn't seem to do anything */}
-                <h2 className='student-name'>{student.full_name}'s Writing</h2>
+                <Typography variant="h4" gutterBottom>
+                    {student.full_name}'s Writing
+                </Typography>
+                {/* <h2 className='student-name'>{student.full_name}'s Writing</h2> */}
                 <ul className="student-remembers"></ul>
                 {studentRemembers != [] ?  studentRemembers.map(remember => <UserRemDetail 
                 key={remember.id} 

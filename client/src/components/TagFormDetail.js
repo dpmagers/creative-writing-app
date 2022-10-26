@@ -1,6 +1,7 @@
 import { RememberTagListContext } from '../GlobalContext/RememberTagListContext';
 import { useState, useEffect, useContext } from "react";
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 
 function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId, rememberTags, setTagList}) {
@@ -86,6 +87,7 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
     return (
         <form onSubmit={handleRememberTagSubmit}>
             <label htmlFor="tag-name">{tag.name}</label>
+            
 
             {/* {!isTagIncluded && !isSubmitClicked ? <button type="submit">Submit Tag</button> : null } */}
             {!isTagIncluded && !isSubmitClicked ? <Button type="submit" variant="contained" color="secondary"> Submit Tag </Button> : null }

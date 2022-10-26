@@ -4,17 +4,14 @@ import EditRemember from "./EditRemember"
 import TagForm from "./TagForm"
 import CreateTag from "./CreateTag"
 import { TagsListRememberContext } from '../GlobalContext/TagsListRememberContext'
-
+import Typography from '@mui/material/Typography';
+import { ListItemText } from '@mui/material';
+import Button from '@mui/material/Button';
 
 function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, student, userList, studentRemembers, tagList, setTagList, myNewRemember, setMyNewRemember, currentRememberId, setCurrentRememberId}) {
     const [clickEdit, setClickEdit] = useState(false)
     const [showTagUpdateList, setShowTagUpdateList] = useState(false)
     const [showTagCreate, setShowTagCreate] = useState(false)
-    // console.log(studentRemembers)
-    // this piece of state holds both an array of Tags (which includes name attribute) and RememberTag which is the join table connecting a Tag with a Remember)
-
-    // const { tagsListRemember, updateTagsListRemember } = useContext(TagsListRememberContext);
-
     const [tagsForEachRemember, setTagsForEachRemember] = useState([])
 
     useEffect(() => {
@@ -23,6 +20,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
         .then(data => {setTagsForEachRemember(data)
         console.log(data)})
         }, [])
+
 
 
         // delete "/tags/remember_tag/:remember_id/:tag_id", to: "remember_tags#delete_remember_tag"
@@ -70,7 +68,124 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
             newObject = mergeById(tags, remember_tags)
         }
 
-        // useEffect(() => {
+
+        const handleClick = (remember) => {
+            deleteRemember(remember.id)
+        }
+
+        const handleEditRemember = (remember) => {
+            setClickEdit(!clickEdit)
+        }
+
+
+        const handleUpdateTags = (e) => {
+            setShowTagUpdateList(!showTagUpdateList)
+            setShowTagCreate(!showTagCreate)
+            setCurrentRememberId(remember?.id)
+        }
+
+    return (
+        <div>
+            <hr />
+            <ul className="student-remembers"></ul>
+                <Typography variant="h6" gutterBottom>
+                        {remember.text}
+                </Typography>
+                {/* <ListItemText primary="dtdkdkdkdkdkdk"/> */}
+                <li>Created at:{remember.created_at}</li>
+                <li>Updated at:{remember.updated_at}</li>
+
+                
+                {user.id === remember.user_id || user.admin === true ? <div className="update-delete-buttons">
+                <Button type="submit" variant="contained" color="secondary" onClick={() => handleEditRemember(remember)}> Update Remember </Button>
+               
+                {clickEdit ? <EditRemember remember={remember} editRemember={editRemember} setUserList={setUserList} clickEdit={clickEdit} setClickEdit={setClickEdit} /> : null}
+                
+                <Button type="submit" variant="contained" color="secondary" onClick={() => handleClick(remember)}> Delete Remember </Button>
+
+                </div> : null}
+
+                {tags ? <Typography variant="h5" gutterBottom>
+                    Tags
+                </Typography> : null}
+
+               {user.id === remember.user_id || user.admin === true ? <Button type="submit" variant="contained" color="secondary" onClick={handleUpdateTags}> Update Tags </Button> : null}
+
+               {showTagCreate ? <CreateTag tagList={tagList} setTagList={setTagList}/> :null}
+               {showTagUpdateList ? 
+                <TagForm 
+                tagList={tagList} setTagList={setTagList} 
+                myNewRemember={myNewRemember}
+                currentRememberId={currentRememberId} 
+                setCurrentRememberId={setCurrentRememberId}
+                rememberTags={remember.remember_tags}
+                /> 
+                : null}
+
+            <ul className="remember-tags"></ul>
+            {tagsForEachRemember ?  tagsForEachRemember.map(tag => <UserTagList 
+            key={tag.id} 
+            tag={tag}
+            errorList={errorList} 
+            user={user} 
+            deleteTag={deleteTag}
+            remember={remember}
+            userList={userList}
+            deleteRememberTag={deleteRememberTag}
+            
+
+             />) : null}
+
+        </div>
+    )
+}
+
+
+
+export default UserRemDetail
+
+
+
+
+
+
+{/* myNewRemember is  */}
+{/* // myNewRemember is the STATE I created for the new Remember OBJECT
+    // i'm using myNewRemember.id as the value of the object I am stringifying in my RememberTag post in TagFormDetail  */}
+{/* using myNewRemember for my RememberTagPost */}
+
+
+                {/* how to send down filtered of tags without interrupting the work TagForm does in client-side route? */}
+                {/* setTagsForEachRemember */}
+                {/* {newObject ?  newObject.map(tag => <UserTagList  */}
+
+   {/* <div className="student-writing">
+            <h2 className='student-name'>{student.full_name}'s Writing</h2>
+            <ul className="student-remembers"></ul>
+            {remembers ?  remembers.map(remember => <UserRemDetail 
+            key={remember.id} 
+            remember={remember}
+             />) : null}
+        </div> */}
+
+
+            {/* {tags ?  tags.map(tag => <UserTagList 
+            key={tag.id} 
+            tag={tag}
+            errorList={errorList} 
+            user={user} 
+            deleteTag={deleteTag}
+            
+
+             />) : null} */}
+
+                              {/* <button onClick={() => handleEditRemember(remember)} className='update'>Update Remember</button> */}
+                {/* <Button type="submit" variant="contained" color="secondary" onClick={handleUpdateTags}> Update Tags </Button> */}
+                {/* <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button> */}
+{/* send down a filter list of tags  */}
+                {/* {tags ? <h5 className="tag-label">Tags</h5> : null} */}
+
+                        // useEffect(() => {
         //     updateTagsListRemember(remember)
         // }, [remember])
 
@@ -107,98 +222,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
 
     // these are all grabbed from the UserList fetch
 
-        const handleClick = (remember) => {
-            deleteRemember(remember.id)
-        }
+                // console.log(studentRemembers)
+    // this piece of state holds both an array of Tags (which includes name attribute) and RememberTag which is the join table connecting a Tag with a Remember)
 
-        const handleEditRemember = (remember) => {
-            setClickEdit(!clickEdit)
-        }
-
-
-        const handleUpdateTags = (e) => {
-            setShowTagUpdateList(!showTagUpdateList)
-            setShowTagCreate(!showTagCreate)
-            setCurrentRememberId(remember?.id)
-        }
-
-    return (
-        <div>
-            <hr />
-            <ul className="student-remembers"></ul>
-                <li>{remember.text}</li>
-                <li>Created at:{remember.created_at}</li>
-                <li>Updated at:{remember.updated_at}</li>
-
-                
-                {user.id === remember.user_id || user.admin === true ? <div className="update-delete-buttons">
-                <button onClick={() => handleEditRemember(remember)} className='update'>Update Remember</button>
-                {clickEdit ? <EditRemember remember={remember} editRemember={editRemember} setUserList={setUserList} clickEdit={clickEdit} setClickEdit={setClickEdit} /> : null}
-
-                <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
-                </div> : null}
-
-{/* send down a filter list of tags  */}
-                {tags ? <h5 className="tag-label">Tags</h5> : null}
-               <button onClick={handleUpdateTags}>Update Tags</button>
-               {showTagCreate ? <CreateTag tagList={tagList} setTagList={setTagList}/> :null}
-               {showTagUpdateList ? 
-                <TagForm 
-                tagList={tagList} setTagList={setTagList} 
-                myNewRemember={myNewRemember}
-                currentRememberId={currentRememberId} 
-                setCurrentRememberId={setCurrentRememberId}
-                rememberTags={remember.remember_tags}
-                /> 
-                : null}
-
-{/* myNewRemember is  */}
-{/* // myNewRemember is the STATE I created for the new Remember OBJECT
-    // i'm using myNewRemember.id as the value of the object I am stringifying in my RememberTag post in TagFormDetail  */}
-{/* using myNewRemember for my RememberTagPost */}
-
-
-                {/* how to send down filtered of tags without interrupting the work TagForm does in client-side route? */}
-                {/* setTagsForEachRemember */}
-                {/* {newObject ?  newObject.map(tag => <UserTagList  */}
-            <ul className="remember-tags"></ul>
-            {tagsForEachRemember ?  tagsForEachRemember.map(tag => <UserTagList 
-            key={tag.id} 
-            tag={tag}
-            errorList={errorList} 
-            user={user} 
-            deleteTag={deleteTag}
-            remember={remember}
-            userList={userList}
-            deleteRememberTag={deleteRememberTag}
-            
-
-             />) : null}
-
-            {/* {tags ?  tags.map(tag => <UserTagList 
-            key={tag.id} 
-            tag={tag}
-            errorList={errorList} 
-            user={user} 
-            deleteTag={deleteTag}
-            
-
-             />) : null} */}
-        </div>
-    )
-}
-
-{/* <div className="student-writing">
-            <h2 className='student-name'>{student.full_name}'s Writing</h2>
-            <ul className="student-remembers"></ul>
-            {remembers ?  remembers.map(remember => <UserRemDetail 
-            key={remember.id} 
-            remember={remember}
-             />) : null}
-        </div> */}
-
-export default UserRemDetail
-
-
-
-   
+    // const { tagsListRemember, updateTagsListRemember } = useContext(TagsListRememberContext);

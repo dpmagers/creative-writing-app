@@ -67,9 +67,11 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList, newR
     return(
 
             <div> 
+                <Typography variant="h3" gutterBottom>
+                    Your New Writing
+                </Typography>
                 <Typography variant="h6" gutterBottom>
-                    In the field below, begin a sentence with the words "I remember..." and write out a memory. Click the submit button. If you like, you can click the "set to private" checkbox. Add tags from the list of tags below. If you don't see the one you like, click "Create Tag" and it will appear at the end of the list. The write another "I remember..." and another....
-                     
+                    In the field below, begin a sentence with the words "I remember..." and write out a memory. Click the submit button. If you like, you can click the "set to private" checkbox. Add tags from the list of tags below. If you don't see the one you like, click "Create Tag" and it will appear at the end of the list. The write another "I remember..." and another. Don't edit yourself! Just focus on writing out your "remembers". You can delete and update "remember items" in the Classroom Writing page.
                 </Typography>
 
             {/* <button onClick={handleNavClick}>Check out your work</button> */}

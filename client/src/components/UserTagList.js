@@ -1,4 +1,7 @@
 import React from 'react'
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 
 function UserTagList ({tag, errorList, user, deleteTag, remember, deleteRememberTag}) {
 
@@ -15,10 +18,14 @@ function UserTagList ({tag, errorList, user, deleteTag, remember, deleteRemember
 
 
     return(
+
         <div className="remember-tags">
-            <li>{tag.name}</li>
+            {/* <li>{tag.name}</li> */}
+            <Typography variant="h6" gutterBottom>
+                    {tag.name}
+                </Typography>
             {user.id === remember.user_id || user.admin === true ? <div className="update-delete-buttons">
-                <button onClick={() => handleClick(tag)} className='delete'>Delete Tag</button>
+            <Button type="submit" variant="contained" color="secondary" onClick={() => handleClick(tag)}> Delete Tag </Button>
             </div> : null}
         </div>
     )

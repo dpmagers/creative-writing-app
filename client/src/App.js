@@ -12,12 +12,28 @@ import Home from "./components/Home"
 import {useStudentRemembers} from "./GlobalContext/StudentRemembersContext"
 import { RememberTagListContext } from './GlobalContext/RememberTagListContext';
 import Typography from '@mui/material/Typography';
-
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 
 
 
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#fefefe"
+      }
+    // typography: {
+    //   li: {
+    //     fontSize: "1.25rem"
+    //   }
+    // }
+    }
+  })
+
+
+
   const { studentRemembers, updateStudentRemembers} = useStudentRemembers()
   const { rememberTagList, updateRememberTagList } = useContext(RememberTagListContext);
 
@@ -227,14 +243,16 @@ function App() {
 
 
   return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
     <BrowserRouter forceRefresh>
       <NavBar onChangePage={setPage} setUser={setUser} user={user} />
       <div className="App">
       <header>
         {/* <h1 className="sitehead">I Remember: A Creative Writing App</h1> */}
-      <Typography variant="h2" gutterBottom>
+          <Typography variant="h2" gutterBottom>
                     I Remember: A Creative Writing App
-                </Typography>
+          </Typography>
       </header>
         <Switch>
           <Route path="/about">
@@ -283,6 +301,7 @@ function App() {
         </Switch>
       </div>
     </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
