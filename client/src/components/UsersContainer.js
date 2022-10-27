@@ -1,5 +1,10 @@
 import React, {useEffect, useState} from 'react'
+import { useHistory } from "react-router-dom";
+
 import UserRemList from "./UserRemList"
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
 
 
 function UsersContainer ({user, userList, setUserList, deleteRemember, errorList, deleteTag, editRemember, tagList, setTagList, myNewRemember, setMyNewRemember}) {
@@ -8,7 +13,11 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
     
 
 
+    let history = useHistory()
 
+    const handleNewWritingClick = () => {
+       history.push('/new-writing')
+    }
     
     let classroomUsers 
 
@@ -31,7 +40,17 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
 
      return (
         <div>
-            <h1>Classroom Writing</h1>
+            {/* <h1>Classroom Writing</h1> */}
+            <Typography variant="h3" gutterBottom>
+                    Classroom Writing
+            </Typography>
+            <Typography variant="h5" gutterBottom>
+                    Read creative writing by your classmates!                
+                </Typography>
+            <Typography variant="h6" gutterBottom>
+                    The dropdown below lists the students in our class. Click on a student and you will see their "I remember" writing. By selecting your own name, you will be able to update and delete your remember items, as well as add or delete tags associated with the remember item.
+            </Typography>
+
             <div className="left-column">
                 <div className="users-container">
                 <ul className="users-list"></ul>
@@ -41,7 +60,9 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
 
         
                         ) : null}
-                    </select>
+                    </select> <br></br>
+                    <Button variant="contained" color="secondary" onClick={handleNewWritingClick}>Return to New Writing Page</Button>
+
                 <ul className="user-writing"></ul>
                     {!studentData ? null : studentData.map(student => <UserRemList 
                     key={student.id}
@@ -62,7 +83,7 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
 
                 </div>
                 <div className="right-column">
-                    <p>[instructions right column]</p>
+                    {/* <p>[instructions right column]</p> */}
 
                 </div>
 

@@ -1,3 +1,4 @@
+import './App.css';
 import { RememberListContext } from './GlobalContext/RememberListContext';
 import { useState, useEffect, useContext } from "react";
 import { BrowserRouter, Switch, Route, useHistory, } from "react-router-dom";
@@ -10,11 +11,29 @@ import UsersContainer from "./components/UsersContainer"
 import Home from "./components/Home"
 import {useStudentRemembers} from "./GlobalContext/StudentRemembersContext"
 import { RememberTagListContext } from './GlobalContext/RememberTagListContext';
+import Typography from '@mui/material/Typography';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 
 
 
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#fefefe"
+      }
+    // typography: {
+    //   li: {
+    //     fontSize: "1.25rem"
+    //   }
+    // }
+    }
+  })
+
+
+
   const { studentRemembers, updateStudentRemembers} = useStudentRemembers()
   const { rememberTagList, updateRememberTagList } = useContext(RememberTagListContext);
 
@@ -39,9 +58,7 @@ function App() {
     // myNewRemember is the STATE I created for the new Remember OBJECT
     // i'm using myNewRemember.id as the value of the object I am stringifying in my RememberTag post in TagFormDetail 
 
-
   let history = useHistory()
-
 
   const { rememberList, updateRememberList } = useContext(RememberListContext);
       // rememberList is the CONTEXT I created for the entire list of Remembers
@@ -224,10 +241,18 @@ function App() {
 
 
   return (
+    <ThemeProvider theme={theme}>
+    <CssBaseline />
     <BrowserRouter forceRefresh>
+
       <NavBar onChangePage={setPage} setUser={setUser} user={user} />
       <div className="App">
-      <header><h1 className="sitehead">I Remember: A Creative Writing App</h1></header>
+      <header>
+        {/* <h1 className="sitehead">I Remember: A Creative Writing App</h1> */}
+          <Typography variant="h2" gutterBottom>
+                    I Remember: A Creative Writing App
+          </Typography>
+      </header>
         <Switch>
           <Route path="/about">
             <About user={user}/>
@@ -275,6 +300,8 @@ function App() {
         </Switch>
       </div>
     </BrowserRouter>
+    </ThemeProvider>
+
   );
 }
 

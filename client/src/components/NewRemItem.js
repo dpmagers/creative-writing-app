@@ -1,6 +1,11 @@
 import React, {useState} from 'react'
 import TagForm from './TagForm'
 import CreateTag from './CreateTag'
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import ListItemButton from '@mui/material/ListItemButton';
+import { ListItemText } from '@mui/material';
+
 
 
 function NewRemItem ({text, tagList, setTagList, myNewRemember}) {
@@ -20,11 +25,26 @@ console.log(myNewRemember, "myNewRemember")
 
     return (
         <div className="remember">
-            <li className='remember-item'>{text}</li>
+            {/* <li className='remember-item'>{text}</li> */}
+            {/* <ListItemText primary={text}/> */}
+                <Typography variant="h6" gutterBottom>
+                    {text}
+                </Typography>
+            {/* <ListItemButton><ListItemText style={text} primary="{text}" /></ListItemButton> */}
 
-            <button onClick={handleClick} className='add-tag'>
-                <i className="add-tag">Add Tags</i>
-            </button>
+
+            {/* <ListItemButton component="a" href="#simple-list">
+ <ListItemText
+        disableTypography
+        primary={<Typography type="body2" style={{ color: '#FFFFFF' }}>MyTitle</Typography>}
+      />            
+      </ListItemButton> */}
+
+
+            {/* <button onClick={handleClick} className='add-tag'>
+            </button> */}
+            <Button type="submit" variant="contained" color="secondary" onClick={handleClick}> Add Tags </Button>
+
             {clickCreateTags ? <CreateTag  tagList={tagList} setTagList={setTagList}/> : null}
             {clickAddTags ? <TagForm  tagList={tagList} setTagList={setTagList} 
             myNewRemember={myNewRemember}

@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import Button from '@mui/material/Button';
+
 
 function CreateTag({tagList, setTagList, setUserList} ) {
 
@@ -48,7 +50,9 @@ function CreateTag({tagList, setTagList, setUserList} ) {
                 value={createTag}
                 onChange={(e) => setCreateTag(e.target.value)}
             />
-            <button type="submit">Create Tag</button>
+            {/* <button type="submit">Create Tag</button> */}
+            <Button type="submit" variant="contained" color="secondary" > Create Tag </Button>
+
             </form>
 
         </div>

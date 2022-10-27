@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom"
+import Button from '@mui/material/Button';
 
 
 function SignupForm({ user, setUser }) {
@@ -123,7 +124,8 @@ function SignupForm({ user, setUser }) {
               onChange={(e) => setIsAdmin(e.target.checked)}
           />
           
-          <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+          {/* <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button> */}
+          <Button variant="contained" color ="secondary" type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
 
           {errors.map((err) => (
             <error key={err}>{err}</error>
