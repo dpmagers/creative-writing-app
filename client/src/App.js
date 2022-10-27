@@ -20,17 +20,34 @@ import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 function App() {
 
   const theme = createTheme({
+    // spacing: 1,
     palette: {
       primary: {
         main: "#fefefe"
       }
+    }
+    // spacing: {
+    //   margin: 50
+    // }
     // typography: {
+    //   p: 50
+    // }
+      //   sx={m: 3}},
+      // }}
+  
+  })
+
+          // spacing: {
+      //   m: 500,
+
+
+     // typography: {
     //   li: {
     //     fontSize: "1.25rem"
     //   }
     // }
-    }
-  })
+
+    
 
 
 
