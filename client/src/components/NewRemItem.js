@@ -6,8 +6,6 @@ import Typography from '@mui/material/Typography';
 import ListItemButton from '@mui/material/ListItemButton';
 import { ListItemText } from '@mui/material';
 
-
-
 function NewRemItem ({text, tagList, setTagList, myNewRemember}) {
     const [clickAddTags, setClickAddTags] = useState(false)
     const [clickCreateTags, setClickCreateTags] = useState(false)

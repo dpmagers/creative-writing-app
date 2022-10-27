@@ -2,14 +2,11 @@ class RemembersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
 before_action :authorize
-# before_action :is_authorized?, only: [:update, :destroy]
 
     def index
         render json: Remember.all, status: :ok
 
     end 
-
-
 
     def show
         remember = Remember.find(params[:id])
@@ -91,3 +88,6 @@ end
     # don't display "private" remembers
     
     # Remember.where(set_to_private: true)
+
+
+    # before_action :is_authorized?, only: [:update, :destroy]

@@ -8,57 +8,11 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-
-
 function NewRememberList({user, tagList, setTagList, setUserList, userList, newRemembers, setNewRemembers, value, setValue, isPrivate, setIsPrivate, addRemember, handleSubmit, myNewRemember }) {
-    // const [newRemembers, setNewRemembers] = useState("")
-    // const [myNewRemember, setMyNewRemember] = useState("")
-    // const [value, setValue] = useState("");
-    // const [isPrivate, setIsPrivate] = useState(false)
 
     const { rememberList, updateRememberList } = useContext(RememberListContext);
 
     let history = useHistory()
-
-    // const addRemember = text => {
-    //     let brandNewRemember = 
-    //     {user_id: user.id, 
-    //     text: text, 
-    //     set_to_private: false}
-
-    //     setNewRemembers([...newRemembers, brandNewRemember]);
-    // };
-
-
-
-    // const handleSubmit = e => {
-    //     e.preventDefault()
-    //     addRemember(value)
-
-    //     fetch(`http://localhost:4000/remembers`, {
-    //       method: "POST",
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify({
-    //         user_id: user.id,
-    //         set_to_private: isPrivate,
-    //         text: value 
-    //       })
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => setMyNewRemember(data))
-
-    //     // .then(data => (updateRememberList([...myNewRemember, data])))
-
-
-    //       fetch("http://localhost:4000/users")
-    //       .then(res => res.json())
-    //       .then(setUserList)
-
-    //       setValue("")
-    //       setIsPrivate(false)
-    // }
 
             const handleNavClick = () => {
                 history.push('/classroom-writing')
