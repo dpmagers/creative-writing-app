@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+
 import UserRemDetail from "./UserRemDetail"
 import RememberFilter from "./RememberFilter"
 import {useStudentRemembers} from "../GlobalContext/StudentRemembersContext"
@@ -82,6 +83,7 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
                 // remembers={remembers}
                 // remembersToDisplay={remembersToDisplay}
                 />) : null}
+
             </div>
 
         )

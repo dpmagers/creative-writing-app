@@ -58,9 +58,7 @@ function App() {
     // myNewRemember is the STATE I created for the new Remember OBJECT
     // i'm using myNewRemember.id as the value of the object I am stringifying in my RememberTag post in TagFormDetail 
 
-
   let history = useHistory()
-
 
   const { rememberList, updateRememberList } = useContext(RememberListContext);
       // rememberList is the CONTEXT I created for the entire list of Remembers
@@ -244,8 +242,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <CssBaseline />
     <BrowserRouter forceRefresh>
+
       <NavBar onChangePage={setPage} setUser={setUser} user={user} />
       <div className="App">
       <header>
@@ -302,6 +301,7 @@ function App() {
       </div>
     </BrowserRouter>
     </ThemeProvider>
+
   );
 }
 

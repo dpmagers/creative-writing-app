@@ -1,8 +1,20 @@
 import React from 'react'
 import Typography from '@mui/material/Typography';
-
+import { useHistory } from "react-router-dom"
+import Button from '@mui/material/Button';
 
 function Home () {
+
+    let history = useHistory()
+
+    const handleLoginClick = () => {
+       history.push('/login')
+    }
+
+    const handleSignupClick = () => {
+        history.push('/signup')
+     }
+
     return (
         <div className="Homepage">
             <img className="homepage-img"
@@ -12,9 +24,20 @@ function Home () {
             ></img>
 
             <Typography variant="h5" gutterBottom>
-                    I Remember: A Creative Writing App is an application inspired by Joe Brainard's seminal memoir I Remember and the teaching pedagogy it spawned.
+                    I Remember: A Creative Writing App is a web application inspired by American artist Joe Brainard's (March 11, 1942 – May 25, 1994) seminal memoir <i>I Remember</i> (1975) and the teaching pedagogy it inspired.<br></br>
             </Typography>
-            {/* <h3>I Remember: A Creative Writing App is an application inspired by Joe Brainard's seminal memoir I Remember and the teaching pedagogy it spawned.</h3> */}
+
+            <Typography variant="h6" gutterBottom>
+                    Login with your account or Signup in the navigation bar above.
+                </Typography>
+                {/* <Button variant="contained" color="secondary" onClick={handleLoginClick}>      Login
+                </Button> */}
+                {/* <Typography variant="h5" gutterBottom>
+                    Learn more about I Remember!
+                </Typography> */}
+                {/* <Button variant="contained" color="secondary" onClick={handleSignupClick}>      Signup
+                </Button> */}
+
         </div>
     )
 }

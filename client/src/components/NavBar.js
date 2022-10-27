@@ -19,12 +19,8 @@ let history = useHistory()
                 setUser(null)
             }
         })
-        history.push('/')
+        // history.push('/')
     }
-
-    // conditionally render home page display
-    // if (!user) return <LoginForm />
-
 
     return (
             user ? (<nav>
