@@ -20,17 +20,34 @@ import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 function App() {
 
   const theme = createTheme({
+    // spacing: 1,
     palette: {
       primary: {
         main: "#fefefe"
       }
+    }
+    // spacing: {
+    //   margin: 50
+    // }
     // typography: {
+    //   p: 50
+    // }
+      //   sx={m: 3}},
+      // }}
+  
+  })
+
+          // spacing: {
+      //   m: 500,
+
+
+     // typography: {
     //   li: {
     //     fontSize: "1.25rem"
     //   }
     // }
-    }
-  })
+
+    
 
 
 
@@ -39,29 +56,21 @@ function App() {
 
   const [user, setUser] = useState(null)
   const [page, setPage] = useState("/")
-  // const [rememberList, setRememberList] = useState("")
   const [tagList, setTagList] = useState([])
-  // STATE for the entire set of tags in database
   const [userList, setUserList] = useState([])
-  // STATE for the entire set of users in database
   const [errorList, setErrorList] = useState([])
-  // const [rememberTagList, setRememberTagList] = useState([])
   
-// create context for rememberTagList then use that for the post request
 
 
   const [value, setValue] = useState("")
   const [isPrivate, setIsPrivate] = useState(false)
   const [newRemembers, setNewRemembers] = useState("")
-  // newRemembers is the STATE I created for the ARRAY of objects I am creating on the '/new-writing' client route. newRemembers is added to the full list of existing backend Remembers. 
   const [myNewRemember, setMyNewRemember] = useState("")
-    // myNewRemember is the STATE I created for the new Remember OBJECT
-    // i'm using myNewRemember.id as the value of the object I am stringifying in my RememberTag post in TagFormDetail 
 
-  let history = useHistory()
 
   const { rememberList, updateRememberList } = useContext(RememberListContext);
-      // rememberList is the CONTEXT I created for the entire list of Remembers
+
+  let history = useHistory()
 
 
     useEffect(() => {
@@ -106,18 +115,10 @@ function App() {
 
       setNewRemembers([...newRemembers, brandNewRemember]);
   };
-    // addRemember is the FUNCTION that creates an object for the post and pushes a new object into the backend 
-    // let brandNewRemember is the created OBJECT that is being pushed to newRemembers
-    // newRemembers is the STATE I created for the ARRAY of objects I am creating on the '/new-writing' client route. newRemembers is added to the full list of existing backend Remembers. 
-    // myNewRemember is the STATE I created for the new Remember OBJECT
-    // i'm using myNewRemember.id as the value of the object I am stringifying in my RememberTag post in TagFormDetail 
-
-    // if I set a piece of state that sets the fullRemembers list, I won't have to refetch /Users and hope async issues come up (I think)
 
   const handleSubmit = e => {
       e.preventDefault()
       addRemember(value)
-      // addRemember(value) populates /new-writing route w/new Remember. The parameter (value/text) is the text that is put on the /new-writing route 
 
       fetch(`http://localhost:4000/remembers`, {
         method: "POST",
@@ -160,12 +161,7 @@ function App() {
               console.log(data)
               console.log(res)
         updateStudentRemembers(data)
-      //   if (res.status > 300) {
-      //     setErrorList([...errorList, {message: "delete unauthorized", id: e}])
-      //     console.log(errorList)
-      //   }
-      // }).catch((error) => {
-      //     console.log("this is", error)
+
         })
 
         fetch("http://localhost:4000/users")
@@ -205,11 +201,7 @@ function App() {
     })
       updateStudentRemembers(updatedRememberList)
   }
-  //   updatedRememberList.push(updatedRemember)
-  //     remember.id !== updatedRemember.id
-  //   updatedRememberList.push(updatedRemember)
-  //   updateRememberList(updatedRememberList)
-  // }
+
 
     const editRemember = (remember, rememberinput) => {
       // console.log("hello")
@@ -320,3 +312,17 @@ export default App;
       //   }
       // }).catch((error) => {
       //     console.log("this is", error)
+
+
+            //   if (res.status > 300) {
+      //     setErrorList([...errorList, {message: "delete unauthorized", id: e}])
+      //     console.log(errorList)
+      //   }
+      // }).catch((error) => {
+      //     console.log("this is", error)
+
+        //   updatedRememberList.push(updatedRemember)
+  //     remember.id !== updatedRemember.id
+  //   updatedRememberList.push(updatedRemember)
+  //   updateRememberList(updatedRememberList)
+  // }

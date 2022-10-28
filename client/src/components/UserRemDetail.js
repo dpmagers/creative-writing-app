@@ -37,16 +37,14 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
         setTagsForEachRemember(data)
         })
 
-        // reset re
-
-        // console.log(rememberTagList)
-        // fetch("http://localhost:4000/users")
-        // .then(res => res.json())
-        // .then(setUserList)
   }
 
-        // console.log(data)
 
+
+
+
+
+  
     let tags
 
         let remember_tags
@@ -226,3 +224,11 @@ export default UserRemDetail
     // this piece of state holds both an array of Tags (which includes name attribute) and RememberTag which is the join table connecting a Tag with a Remember)
 
     // const { tagsListRemember, updateTagsListRemember } = useContext(TagsListRememberContext);
+
+
+        // reset re
+
+        // console.log(rememberTagList)
+        // fetch("http://localhost:4000/users")
+        // .then(res => res.json())
+        // .then(setUserList)

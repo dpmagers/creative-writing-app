@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom"
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box'
+
 
 
 function LoginForm({user, setUser}) {
@@ -68,12 +70,24 @@ function LoginForm({user, setUser}) {
 
     </form>
     </div>
+    <Box
+                    component="img"
+                    sx={{
+                    spacing: 5,
+                    height: 460,
+                    width: 300,
+                    // maxHeight: { xs: 1500, md: 1350 },
+                    // maxWidth: { xs: 150, md: 200 },
+                    }}
+                    alt="I Remember book cover."
+                    src="https://m.media-amazon.com/images/I/71Npzl4Pl-L.jpg"
+                />
       
-      <img className="homepage-img"
+      {/* <img className="homepage-img"
                 src="https://m.media-amazon.com/images/I/71Npzl4Pl-L.jpg"
                 width="300px" 
                 height="460px"
-            ></img>
+            ></img> */}
       <h3>Please Login! If you do not have an account, click the Signup tab.</h3>
     </div>
     )

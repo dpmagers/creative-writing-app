@@ -2,26 +2,41 @@ import React from 'react'
 import Typography from '@mui/material/Typography';
 import { useHistory } from "react-router-dom"
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box'
 
 function Home () {
 
-    let history = useHistory()
+    // let history = useHistory()
 
-    const handleLoginClick = () => {
-       history.push('/login')
-    }
+    // const handleLoginClick = () => {
+    //    history.push('/login')
+    // }
 
-    const handleSignupClick = () => {
-        history.push('/signup')
-     }
+    // const handleSignupClick = () => {
+    //     history.push('/signup')
+    //  }
 
     return (
         <div className="Homepage">
-            <img className="homepage-img"
+
+            <Box
+                    component="img"
+                    sx={{
+                        // borderLeft: 50px solid, 
+                    // spacing: 5,
+                    height: 460,
+                    width: 300,
+                    // maxHeight: { xs: 1500, md: 1350 },
+                    // maxWidth: { xs: 150, md: 200 },
+                    }}
+                    alt="I Remember book cover."
+                    src="https://m.media-amazon.com/images/I/71Npzl4Pl-L.jpg"
+                />
+            {/* <img className="homepage-img"
                 src="https://m.media-amazon.com/images/I/71Npzl4Pl-L.jpg"
                 width="300px" 
                 height="460px"
-            ></img>
+            ></img> */}
 
             <Typography variant="h5" gutterBottom>
                     I Remember: A Creative Writing App is a web application inspired by American artist Joe Brainard's (March 11, 1942 – May 25, 1994) seminal memoir <i>I Remember</i> (1975) and the teaching pedagogy it inspired.<br></br>

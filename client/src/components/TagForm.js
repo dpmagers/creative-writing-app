@@ -5,15 +5,9 @@ import { RememberTagListContext } from '../GlobalContext/RememberTagListContext'
 
 
 function TagForm({tagList, setTagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId, rememberTags}) {
-    // const [addTag, setAddTag] = useState(false)
- 
-    // console.log(tagList, "hello")
+
 
     const { rememberTagList, updateRememberTagList } = useContext(RememberTagListContext);
-
-
-
-
 
 
     console.log(tagList, "tagList")
@@ -37,4 +31,3 @@ function TagForm({tagList, setTagList, myNewRemember, setUserList, currentRememb
 export default TagForm
 
 
-// where does this component go? 
