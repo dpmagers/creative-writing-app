@@ -2,20 +2,11 @@ import React from 'react'
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-
 function UserTagList ({tag, errorList, user, deleteTag, remember, deleteRememberTag}) {
-
 
     const handleClick = (tag) => {
         deleteRememberTag(tag.id)
-        // deleteTag(tag.newId)
-
-
     }
-    // <button onClick={() => handleClick(remember)} className='delete'>Delete Remember</button>
-    console.log(tag)
-
-
 
     return(
 
@@ -32,6 +23,17 @@ function UserTagList ({tag, errorList, user, deleteTag, remember, deleteRemember
 }
 
 export default UserTagList
+
+
+
+
+
+
+
+
+
+
+
 // {user.id === remember.user_id ? <div className="update-delete-buttons">
 //                 <button onClick={() => handleEditRemember(remember)} className='update'>Update Remember</button>
 //                 {clickEdit ? <EditRemember remember={remember} editRemember={editRemember} setUserList={setUserList} /> : null}

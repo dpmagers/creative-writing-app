@@ -22,9 +22,7 @@ function UserRemDetail ({remember, deleteRemember, errorList, user, deleteTag, e
         }, [])
 
 
-
-        // delete "/tags/remember_tag/:remember_id/:tag_id", to: "remember_tags#delete_remember_tag"
-
+// delete path "/tags/remember_tag/:remember_id/:tag_id", to: "remember_tags#delete_remember_tag"
 
           // DELETE Remember TAG
   const deleteRememberTag = (e) => {

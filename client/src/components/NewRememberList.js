@@ -3,7 +3,6 @@ import { useHistory, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import RememberForm from "./RememberForm"
 import NewRemItem from "./NewRemItem"
-// import * as React from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';

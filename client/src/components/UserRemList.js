@@ -5,12 +5,9 @@ import RememberFilter from "./RememberFilter"
 import {useStudentRemembers} from "../GlobalContext/StudentRemembersContext"
 import Typography from '@mui/material/Typography';
 
-
-
 function UserRemList ({student, deleteRemember, errorList, user, deleteTag, editRemember, setUserList, userList, tagList, setTagList, myNewRemember, setMyNewRemember}) {
 
     const [sortBy, setSortBy] = useState("")
-    // const [studentRemembers, setStudentRemembers] = useState([])
     const [currentRememberId, setCurrentRememberId] = useState(null)
     const { studentRemembers, updateStudentRemembers} = useStudentRemembers()
 
@@ -24,9 +21,6 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
         updateStudentRemembers(student.remembers)
 
     }, [])
-
-    // console.log(studentRemembers)
-
 
     const handleSort = (e) => {
         console.log("inside handleSort", e.target.value)
@@ -51,7 +45,6 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
         }
             updateStudentRemembers(sortedItems)
     }
-    // console.log(student.remembers)
         return (
             <div className="student-writing">
                 <RememberFilter sortBy={sortBy} handleSort={handleSort}/>
@@ -91,6 +84,11 @@ function UserRemList ({student, deleteRemember, errorList, user, deleteTag, edit
 
 
 export default UserRemList
+
+
+
+
+
 
 
 

@@ -15,6 +15,18 @@ Rails.application.routes.draw do
 
   delete "/tags/remember_tag/:remember_id/:tag_id", to: "remember_tags#delete_remember_tag"
   
+
+
+end
+
+
+
+
+
+
+
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -24,5 +36,3 @@ Rails.application.routes.draw do
   # get '*path',
   #     to: 'fallback#index',
   #     constraints: ->(req) { !req.xhr? && req.format.html? }
-
-end
