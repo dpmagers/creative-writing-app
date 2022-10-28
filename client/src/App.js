@@ -14,41 +14,16 @@ import { RememberTagListContext } from './GlobalContext/RememberTagListContext';
 import Typography from '@mui/material/Typography';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 
-
-
-
 function App() {
 
   const theme = createTheme({
-    // spacing: 1,
     palette: {
       primary: {
         main: "#fefefe"
       }
     }
-    // spacing: {
-    //   margin: 50
-    // }
-    // typography: {
-    //   p: 50
-    // }
-      //   sx={m: 3}},
-      // }}
-  
+
   })
-
-          // spacing: {
-      //   m: 500,
-
-
-     // typography: {
-    //   li: {
-    //     fontSize: "1.25rem"
-    //   }
-    // }
-
-    
-
 
 
   const { studentRemembers, updateStudentRemembers} = useStudentRemembers()
@@ -60,13 +35,10 @@ function App() {
   const [userList, setUserList] = useState([])
   const [errorList, setErrorList] = useState([])
   
-
-
   const [value, setValue] = useState("")
   const [isPrivate, setIsPrivate] = useState(false)
   const [newRemembers, setNewRemembers] = useState("")
   const [myNewRemember, setMyNewRemember] = useState("")
-
 
   const { rememberList, updateRememberList } = useContext(RememberListContext);
 
@@ -133,8 +105,6 @@ function App() {
       })
       .then(res => res.json())
       .then(data => setMyNewRemember(data))
-      // updateRememberList(newRemembers)
-      // have this idea to set this at context but need some guidance
       console.log(myNewRemember)
 
 
@@ -149,8 +119,7 @@ function App() {
 
 
 
-  // console.log(rememberList)
-
+ 
 
     // DELETE REMEMBER
   const deleteRemember = (e) => {
@@ -168,28 +137,8 @@ function App() {
         .then(res => res.json())
         .then(setUserList)
   }
-  // // // DELETE TAG
-  // const deleteTag = (e) => {
-  //   fetch(`http://localhost:4000/remember_tags/${e}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then((res) => {const data = rememberTagList.filter(i => i.id !== e)
-  //             console.log(data)
-  //             console.log(res)
-  //       updateRememberTagList(data)
-  //       })
-
-  //       console.log(rememberTagList)
-  //       fetch("http://localhost:4000/users")
-  //       .then(res => res.json())
-  //       .then(setUserList)
-  // }
 
 
-
-
-
-  // i changed filter to map since filter is more for delete
       // PATCH REMEMBER
   const handleUpdatedRemember = (updatedRemember) => {
     console.log(updatedRemember)
@@ -202,11 +151,8 @@ function App() {
       updateStudentRemembers(updatedRememberList)
   }
 
-
     const editRemember = (remember, rememberinput) => {
-      // console.log("hello")
-          // console.log(remember)
-          // console.log(rememberinput)
+
 
       fetch(`http://localhost:4000/remembers/${remember.id}`, {
         method: "PATCH",
@@ -272,7 +218,6 @@ function App() {
             setUserList={setUserList} 
             deleteRemember={deleteRemember} 
             errorList={errorList} 
-            // deleteTag={deleteTag} 
             editRemember={editRemember}
             tagList={tagList}
             setTagList={setTagList}
@@ -298,6 +243,18 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         // if (resp.status > 300) {
@@ -326,3 +283,26 @@ export default App;
   //   updatedRememberList.push(updatedRemember)
   //   updateRememberList(updatedRememberList)
   // }
+
+
+
+  // material ui theme attempts
+        // spacing: {
+    //   margin: 50
+    // }
+    // typography: {
+    //   p: 50
+    // }
+      //   sx={m: 3}},
+      // }}
+  
+
+          // spacing: {
+      //   m: 500,
+
+
+     // typography: {
+    //   li: {
+    //     fontSize: "1.25rem"
+    //   }
+    // }

@@ -6,9 +6,7 @@ import { RememberTagListContext } from '../GlobalContext/RememberTagListContext'
 
 function TagForm({tagList, setTagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId, rememberTags}) {
 
-
     const { rememberTagList, updateRememberTagList } = useContext(RememberTagListContext);
-
 
     console.log(tagList, "tagList")
     return (
@@ -27,7 +25,6 @@ function TagForm({tagList, setTagList, myNewRemember, setUserList, currentRememb
         </div>
     )
 }
-
 export default TagForm
 
 

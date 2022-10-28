@@ -27,6 +27,14 @@ skip_before_action :authorize, only: :create
     def record_not_found
         render json: {"error": "User not found"}, status: 404
     end 
+    
+end
+
+
+
+
+
+
 
     # def invalid_data(error)
     #     render json: {error: error.message}, status: 422
@@ -39,7 +47,7 @@ skip_before_action :authorize, only: :create
     #     render json: user, status: :ok
     # end
 
-end
+
 
 # rescue_from ActiveRecord::RecordInvalid, with: :invalid_data
 

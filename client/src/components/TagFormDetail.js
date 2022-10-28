@@ -3,11 +3,8 @@ import { useState, useEffect, useContext } from "react";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-
 function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRememberId, setCurrentRememberId, rememberTags, setTagList}) {
-    // state for checkbox value
     const [addTag, setAddTag] = useState(false) 
-    // const [rememberTagList, setRememberTagList] = useState([])
     const [isSubmitClicked, setIsSubmitClicked] = useState(false)
 
 
@@ -24,7 +21,6 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
         else {
             rememberIdToSubmit = currentRememberId
         }
-        // console.log(currentRememberId, "currentRememberId")
 
     fetch(`http://localhost:4000/remember_tags`, {
     method: "POST",
@@ -40,13 +36,9 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
     .then(data => updateRememberTagList([...rememberTagList, data]))
 
     }
-    // console.log(rememberTagList)
 
-    
     const isTagIncluded = !!rememberTags?.find(t => t.tag_id === tag.id) || false
   
-
-
     return (
         <form onSubmit={handleRememberTagSubmit}>
             <label htmlFor="tag-name">{tag.name}</label>
@@ -60,6 +52,12 @@ function TagFormDetail({tag, tagList, myNewRemember, setUserList, currentRemembe
 }
 
 export default TagFormDetail
+
+
+
+
+
+
 
 
 

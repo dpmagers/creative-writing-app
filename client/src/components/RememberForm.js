@@ -8,27 +8,12 @@ function RememberForm({value, setValue,  isPrivate,  setIsPrivate, handleSubmit}
     return (
         <div> 
             <form onSubmit={handleSubmit}>
-
-
-  
                 <textarea
                 type="text"
                 className="input"
                 value={value}
                 onChange={e => setValue(e.target.value)}
                 />
-                            {/* <TextField id="filled-basic" 
-                    label="Filled" 
-                    variant="filled" 
-                    type="text"
-                    className="input"
-                    size="large"
-                    value={value}
-                    onChange={e => setValue(e.target.value)}
-                    />
-                    <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
-
-
 
                 <label htmlFor="set-to-private">Set to Private</label>
                 <input 
@@ -51,3 +36,19 @@ function RememberForm({value, setValue,  isPrivate,  setIsPrivate, handleSubmit}
 }
 
 export default RememberForm
+
+
+
+
+                           {/* <TextField id="filled-basic" 
+                    label="Filled" 
+                    variant="filled" 
+                    type="text"
+                    className="input"
+                    size="large"
+                    value={value}
+                    onChange={e => setValue(e.target.value)}
+                    />
+                    <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
+
+

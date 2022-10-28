@@ -6,14 +6,7 @@ function CreateTag({tagList, setTagList, setUserList} ) {
 
     const [createTag, setCreateTag] = useState("")
 
-
-    // const addCreateTag = name => {
-    //     let newTag = 
-    //     {name: name}
-    //     // createTag
-    //     setTagList([...tagList, newTag]);
-    //   };
-      
+  
     // POST TAGS (TO tagList)
     const handleTagSubmit = e => {
         e.preventDefault()
@@ -38,7 +31,7 @@ function CreateTag({tagList, setTagList, setUserList} ) {
         .then(setUserList)
     }
 
-    // i was trying to pass in state into the setTagList instead of the object itself 
+    // pass the object itself into the setTagList instead of the piece of state
 
     return (
         <div>

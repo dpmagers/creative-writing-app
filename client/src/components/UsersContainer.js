@@ -5,14 +5,10 @@ import UserRemList from "./UserRemList"
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-
-
 function UsersContainer ({user, userList, setUserList, deleteRemember, errorList, deleteTag, editRemember, tagList, setTagList, myNewRemember, setMyNewRemember}) {
     const [selectedStudent, setSelectedStudent] = useState("")
     const [studentWriting, setStudentWriting] = useState("")
     
-
-
     let history = useHistory()
 
     const handleNewWritingClick = () => {
@@ -33,10 +29,6 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
             return student.full_name === selectedStudent
         }) 
     }
-
-    // console.log(studentData)
-
-
 
      return (
         <div>
