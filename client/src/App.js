@@ -12,18 +12,18 @@ import Home from "./components/Home"
 import {useStudentRemembers} from "./GlobalContext/StudentRemembersContext"
 import { RememberTagListContext } from './GlobalContext/RememberTagListContext';
 import Typography from '@mui/material/Typography';
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
+// import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 
 function App() {
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#fefefe"
-      }
-    }
+  // const theme = createTheme({
+  //   palette: {
+  //     primary: {
+  //       main: "#fefefe"
+  //     }
+  //   }
 
-  })
+  // })
 
 
   const { studentRemembers, updateStudentRemembers} = useStudentRemembers()
@@ -179,8 +179,8 @@ function App() {
 
 
   return (
-    <ThemeProvider theme={theme}>
-    <CssBaseline />
+    // <ThemeProvider theme={theme}>
+    // <CssBaseline />
     <BrowserRouter forceRefresh>
 
       <NavBar onChangePage={setPage} setUser={setUser} user={user} />
@@ -237,7 +237,7 @@ function App() {
         </Switch>
       </div>
     </BrowserRouter>
-    </ThemeProvider>
+    // </ThemeProvider>
 
   );
 }

@@ -18,7 +18,12 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList, newR
             }
 
     return(
-
+<Box sx={{
+            m: 5,
+            // p: 2
+        }}
+        
+        >
             <div> 
                 <Typography variant="h3" gutterBottom>
                     Your New Writing
@@ -69,6 +74,7 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList, newR
            
             
         </div>
+        </Box>
 
     )
 }
