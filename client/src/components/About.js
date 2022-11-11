@@ -30,6 +30,12 @@ function About ({user}) {
         //     },
         // }}
         // >
+        <Box sx={{
+            m: 5,
+            // p: 2
+        }}
+        
+        >
         <div>
 
                 {/* <Box
@@ -64,7 +70,7 @@ function About ({user}) {
             <div className="right-column">
 
 
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="myVariant"  gutterBottom>
                 Joe Brainard (March 11, 1942 – May 25, 1994) was an American artist and writer associated with the New York School. His prodigious and innovative body of work included assemblages, collages, drawing, and painting, as well as designs for book and album covers, theatrical sets and costumes. In particular, Brainard broke new ground in using comics as a poetic medium in his collaborations with other New York School poets. He is best known for his memoir I Remember, of which Paul Auster said: "It is ... one of the few totally original books I have ever read." (from Wikipedia) <br></br>
                 <i>I Remember</i> is an experimental memoir/prose poem, wherein Brainard begins a sentence with “I remember” and writes a memory from his life. With no attempt at telling a chronological story, or even a consistent theme, Brainard, in the words of Paul Auster, “in simple, forthright, declarative sentences…charts the map of the human soul and permanently alters the way we look at the world. I Remember is both uproariously funny and deeply moving.” (from back cover of <i>I Remember</i>) <br></br>
                 The book’s simple, yet profound style has inspired the use of the “I remember” concept to the teaching of writing and poetry to adults, high school and college students, and even to children. 
@@ -83,7 +89,7 @@ function About ({user}) {
 
             </div>
         </div>
-        // </Box>
+        </Box>
 
     )
 

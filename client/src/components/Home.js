@@ -17,6 +17,12 @@ function Home () {
     //  }
 
     return (
+        <Box
+        sx={{
+            m: 5,
+            // p: 2
+        }}
+        >
         <div className="Homepage">
 
             <Box
@@ -54,6 +60,7 @@ function Home () {
                 </Button> */}
 
         </div>
+        </Box>
     )
 }
 

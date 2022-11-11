@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import UserRemList from "./UserRemList"
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+
 
 function UsersContainer ({user, userList, setUserList, deleteRemember, errorList, deleteTag, editRemember, tagList, setTagList, myNewRemember, setMyNewRemember}) {
     const [selectedStudent, setSelectedStudent] = useState("")
@@ -31,6 +33,12 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
     }
 
      return (
+        <Box sx={{
+            m: 5,
+            // p: 2
+        }}
+        
+        >
         <div>
             {/* <h1>Classroom Writing</h1> */}
             <Typography variant="h3" gutterBottom>
@@ -82,6 +90,7 @@ function UsersContainer ({user, userList, setUserList, deleteRemember, errorList
             </div>
 
         </div>
+        </Box>
     )
 }
 

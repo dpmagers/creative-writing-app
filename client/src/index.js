@@ -3,30 +3,85 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { StudentRemembersProvider } from './GlobalContext/StudentRemembersContext'
 import { RememberListProvider } from './GlobalContext/RememberListContext'
 import { RememberTagListProvider } from './GlobalContext/RememberTagListContext'
-import { StudentRemembersProvider } from './GlobalContext/StudentRemembersContext'
 import { TagsListRememberProvider } from './GlobalContext/TagsListRememberContext'
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import 'semantic-ui-css/semantic.min.css'
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
+import { orange } from '@mui/material/colors'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// orange[500]
+// "#fefefe"
+
+const theme = createTheme({
+    // spacing: {
+    //   margin: 10,
+            
+    // },
+    palette: {
+      primary: {
+        main: "#fefefe"
+      },
+      secondary: {
+        main: orange[500]
+      }
+    },
+    typography: {
+      myVariant: {
+        fontSize: "1rem",
+        // color: orange[500]
+      }
+    }
+
+  })
+
 root.render(
-  // <React.StrictMode>
-    <RememberListProvider>
-      <StudentRemembersProvider>
-        <RememberTagListProvider>
-          <TagsListRememberProvider>
-    <App />
-        </TagsListRememberProvider>
-        </RememberTagListProvider>
-      </StudentRemembersProvider>
-    </RememberListProvider>
-  // </React.StrictMode>
+
+
+
+  <ThemeProvider theme={theme}>
+<RememberListProvider>
+<StudentRemembersProvider>
+  <RememberTagListProvider>
+    <TagsListRememberProvider>
+<App />
+  </TagsListRememberProvider>
+  </RememberTagListProvider>
+</StudentRemembersProvider>
+</RememberListProvider>
+</ThemeProvider>
+
+
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {/* <UserProvider>
 <App />
