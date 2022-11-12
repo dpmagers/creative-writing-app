@@ -16,14 +16,7 @@ import Typography from '@mui/material/Typography';
 
 function App() {
 
-  // const theme = createTheme({
-  //   palette: {
-  //     primary: {
-  //       main: "#fefefe"
-  //     }
-  //   }
 
-  // })
 
 
   const { studentRemembers, updateStudentRemembers} = useStudentRemembers()

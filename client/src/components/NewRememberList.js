@@ -62,10 +62,10 @@ function NewRememberList({user, tagList, setTagList, setUserList, userList, newR
 
             </div>
             <div className="right-column">
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h5" sx={{ m: 2}} gutterBottom>
                     When you finish, check out your class's writing!
                 </Typography>
-          <Button variant="contained" color="secondary" onClick={handleNavClick}>Classroom Writing </Button>
+          <Button variant="contained" sx={{ m: 2}} color="secondary" onClick={handleNavClick}>Classroom Writing </Button>
                  {/* <Typography variant="h6" gutterBottom>
                          [Instructions]
                 </Typography> */}

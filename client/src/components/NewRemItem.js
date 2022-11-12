@@ -3,6 +3,7 @@ import TagForm from './TagForm'
 import CreateTag from './CreateTag'
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import { ListItemText } from '@mui/material';
 
@@ -20,13 +21,16 @@ console.log(myNewRemember, "myNewRemember")
 
     return (
         <div className="remember">
-
+            <List>
+                {/* <ListItemText sx={{ variant: "h6"}} variant="h6" primary={text} /> */}
                 <Typography variant="h6" gutterBottom>
                     {text}
                 </Typography>
 
             <Button type="submit" variant="contained" color="secondary" onClick={handleClick}> Add Tags </Button>
+            {/* <ListItemButton type="submit" variant="contained" color="secondary" onClick={handleClick}> Add Tags </ListItemButton> */}
 
+            </List>
             {clickCreateTags ? <CreateTag  tagList={tagList} setTagList={setTagList}/> : null}
             {clickAddTags ? <TagForm  tagList={tagList} setTagList={setTagList} 
             myNewRemember={myNewRemember}
